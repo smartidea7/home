@@ -57,12 +57,20 @@ box-shadow:
 
 }
     
-  .hero-image-box {
-  width:100%;
-  aspect-ratio:2 / 1;
-  position:relative;
-  overflow:hidden;
-  border-radius:8px;
+  .hero-image-box{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-image-box::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.30),
+        rgba(0,0,0,.08)
+    );
 }
 
 .hero-image-box img {
