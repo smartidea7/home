@@ -14,21 +14,49 @@
   --border: #ddd;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Vazirmatn', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding-bottom: 0px; } 
+body { font-family: 'Vazirmatn', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding-bottom: 20px; } 
   body {
   max-width: 480px;
   margin: 0 auto;
 }
 .container { padding: 16px; }
-header { margin-bottom:25px; text-align:center; }
-.logo { width: 80px; max-width: 100%; margin-bottom:12px; }
+header { margin-bottom:24px; text-align:center; }
+.logo { width: 120px; max-width: 100%; margin-bottom:12px; }
 header h1 { font-size:1rem; font-weight:400; letter-spacing:-0.3px; }
-header h1 span { display:block; margin-top:4px; font-family:'Playfair Display', serif; font-size:0.8rem; color:#999; font-weight:400; letter-spacing:1px; }
+header h1 span{
+    color:#8a8a8a;
+    font-size:.95rem;
+    font-weight:400;
+    letter-spacing:.5px;
+}
 header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(--muted); }
-.gallery { display:flex; flex-direction:column; gap:24px; }
+.gallery{
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+}
+.gallery-item{
+
+    border-radius:16px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.gallery-item:active{
+
+    transform:scale(.985);
+
+}    
+    
 .gallery-item h2 { font-size:0.95rem; font-weight:500; }
 .gallery-item h3 { font-size:0.75rem; color: var(--muted); margin:2px 0 8px; }
-.image-box { width:100%; padding-top:100%; position:relative; overflow:hidden; border-radius:6px; }
+.image-box{
+
+box-shadow:
+0 10px 28px rgba(0,0,0,.10);
+
+}
+    
   .hero-image-box {
   width:100%;
   aspect-ratio:2 / 1;
@@ -67,15 +95,12 @@ header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(-
   <header>
   <img src="images/logo.png" alt="Smart Idea Logo" class="logo">
 
-  <h1>
-    *ایده هوشمند*
-بازرگانی | طراحی | مهندسی
-    <span>Smart Idea | Trading, Design & Engineering Group</span>
-  </h1>
-
+<h1>
+گروه بازرگانی، طراحی و مهندسی ایده هوشمند
+<span>Smart Idea | Trading, Design & Engineering Group</span>
+</h1>
   <p>
-    *تامین تجهیزات تخصصی*
-طراحی و اجرای فضاهای متمایز
+      تأمین کالاهای تخصصی و اجرای پروژه‌های طراحی و مهندسی
   </p>
 </header>
 
