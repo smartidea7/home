@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>ایده هوشمند | Smart Idea</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #fafafa;
+  --text: #111;
+  --muted: #777;
+  --accent: #e46f1f;
+  --border: #ddd;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding-bottom: 70px; }
+
+.container { padding: 20px; }
+
+/* ===== Header ===== */
+header { margin-bottom: 48px; text-align:center; }
+.logo { width: 120px; margin-bottom: 16px; max-width: 100%;
+  } /* بدون دایره */
+ 
+header h1 { font-size: 1.6rem; font-weight: 500; }
+header h1 span { font-size: 0.9rem; color: var(--muted); margin-right: 6px; display:block; }
+header p { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+
+/* ===== Gallery ===== */
+.gallery { display: flex; flex-direction: column; gap: 40px; }
+
+.gallery-item h2 { font-size: 1rem; font-weight: 500; }
+.gallery-item h3 { font-size: 0.8rem; color: var(--muted); margin-top: 2px; margin-bottom: 10px; }
+
+/* مربع واقعی */
+.image-box {
+  width: 100%;
+  padding-top: 100%; /* نسبت 1:1 */
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.image-box img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item a { display: inline-block; margin-top: 10px; font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight:500; }
+
+/* ===== Fade Effect ===== */
+/* ===== Fade Effect ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(14px); /* شروع از پایین */
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===== Lead Form ===== */
+.lead { margin: 60px 0 50px; padding-top: 36px; border-top: 1px solid var(--border); }
+.lead p { font-size: 0.9rem; margin-bottom: 14px; }
+.lead form { display: flex; gap: 8px; }
+.lead input { flex: 1; padding: 10px; border: 1px solid var(--border); font-size: 0.85rem; background: transparent; }
+.lead button { padding: 10px 16px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 0.85rem; cursor: pointer; }
+
+/* ===== Bottom Navigation ===== */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 60px; background:#fff; border-top:1px solid var(--border); display:flex; justify-content:space-around; align-items:center; z-index:1000; }
+.bottom-nav a { text-decoration:none; color:#333; font-size:0.7rem; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.icon { width:20px; height:20px; stroke:var(--accent); fill:none; stroke-width:1.6; }
+/* ===== Header Font Fix ===== */
+body {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+ 
+  
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+header h1 span {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  color: #999;
+  letter-spacing: 1px;
+  
+  
+  
+  font-weight: 400;
+}
+
+header p {
+  max-width: 320px;
+  margin: 14px auto 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+/* ===== Bottom Nav Refinement ===== */
+.bottom-nav a {
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: #222;
+}
+
+.bottom-nav a:active {
+  color: var(--accent);
+}
+
+.bottom-nav .icon {
+  stroke: var(--accent);
+}
+.gallery-item a {
+  position: relative;
+}
+
+.gallery-item a::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  margin-top: 4px;
+}
+.footer {
+  margin-top: 60px;
+  padding: 30px 10px 10px;
+  text-align: center;
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.footer .brand {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.footer .desc {
+  font-size: 0.75rem;
+  line-height: 1.8;
+  color: #999;
+  max-width: 320px;
+  margin: 0 auto 10px;
+}
+
+.footer .copy {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <img src="smart/images/logo.png" alt="Smart Idea Logo" class="logo">
+
+  <h1>
+    گروه طراحی و مهندسی ایده هوشمند
+    <span>Smart Idea | Design & Engineering Group</span>
+  </h1>
+
+  <p>
+    خلق فضاهای بی‌نظیر ، با نگاه خلاقانه ،
+طراحی ماندگار ، برای زندگی امروز
+  </p>
+</header>
+
+
+<section class="gallery">
+
+  <div class="gallery-item fade">
+    <h2>دکوراسیون داخلی</h2>
+    <h3>Interior Design</h3>
+    <div class="image-box">
+      <img src="images/interior.jpg" alt="دکوراسیون داخلی">
+
+    </div>
+    <a href="gallery-decor.html">مشاهده گالری ←</a>
+  </div>
+
+  <div class="gallery-item fade">
+    <h2>دکوراسیون آشپزخانه</h2>
+    <h3>Kitchen Design</h3>
+    <div class="image-box">
+      <img src="images/kitchen.jpg" alt="دکوراسیون آشپزخانه">
+    </div>
+    <a href="gallery-kitchen.html">مشاهده گالری ←</a>
+  </div>
+
+  <div class="gallery-item fade">
+    <h2>دکوراسیون اداری</h2>
+    <h3>Office Design</h3>
+    <div class="image-box">
+      <img src="images/office.jpg" alt="دکوراسیون اداری">
+    </div>
+    <a href="gallery-office.html">مشاهده گالری ←</a>
+  </div>
+
+  <div class="gallery-item fade">
+    <h2>دکوراسیون فروشگاهی</h2>
+    <h3>Commercial Design</h3>
+    <div class="image-box">
+      <img src="images/Commercial.jpg" alt="دکوراسیون فروشگاهی">
+    </div>
+    <a href="gallery-store.html">مشاهده گالری ←</a>
+  </div>
+
+  <div class="gallery-item fade">
+    <h2>دکوراسیون نمایشگاهی</h2>
+    <h3>Exhibition Design</h3>
+    <div class="image-box">
+      <img src="images/Exhibition.jpg" alt="دکوراسیون نمایشگاهی">
+    </div>
+    <a href="gallery-exhibit.html">مشاهده گالری ←</a>
+  </div>
+
+</section>
+
+<section class="lead">
+  <p> برای مشاوره و دریافت پیشنهادات اختصاصی، شماره موبایل خود را ثبت کنید.</p>
+  <form id="leadForm">
+    <input type="tel" id="mobile" placeholder="شماره موبایل" required>
+    <button type="submit">ثبت</button>
+  </form>
+  <p id="msg" style="margin-top:10px;font-size:0.8rem;"></p>
+</section>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-6h-6v6H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+  <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67 A2 2 0 0 1 4.11 2h3 a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91 a16 16 0 0 0 6 6l1.27-1.27 a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="icon-send" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></symbol>
+</svg>
+
+<nav class="bottom-nav">
+  <a href="indexmobile.html"><svg class="icon"><use href="#icon-home"></use></svg>خانه</a>
+  <a href="#projects"><svg class="icon"><use href="#icon-grid"></use></svg>پروژه‌ها</a>
+  <a href="#about"><svg class="icon"><use href="#icon-user"></use></svg>درباره</a>
+  <a href="#contact"><svg class="icon"><use href="#icon-phone"></use></svg>تماس</a>
+  <a href="https://instagram.com/YOUR_USERNAME" target="_blank"><svg class="icon"><use href="#icon-send"></use></svg>دایرکت</a>
+</nav>
+
+<footer class="footer">
+  <p class="brand">Smart Idea | ایده هوشمند</p>
+  <p class="desc">
+    تهران شهرک صنعتی کارآفرینان جاجرود - 02188842064
+  </p>
+  <p class="copy">© 2026 Smart Idea. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+/* Fade In Observer */
+const faders = document.querySelectorAll('.fade'); // همه آیتم‌هایی که کلاس fade دارن
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) { // وقتی که آیتم وارد صفحه میشه
+      entry.target.classList.add('show'); // انیمیشن فعال میشه
+      observer.unobserve(entry.target); // فقط یکبار این انیمیشن اجرا بشه
+    }
+  });
+}, { threshold: 0.2 }); // وقتی حداقل ۲۰٪ از آیتم در صفحه دیده بشه
+
+faders.forEach(el => observer.observe(el)); // اعمال به تمام فیدرها
+
+
+/* Lead Form */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAUnBW40ncBOIITLzsBNCyWTIQ21i3eexeP7XHmZBhqPihc0wIMPs_O9k6DXpUA73z/exec';
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const mobile = document.getElementById('mobile').value;
+  fetch(SCRIPT_URL,{
+    method:'POST',
+    body:JSON.stringify({mobile})
+  })
+  .then(()=>{document.getElementById('msg').innerText='شماره شما با موفقیت ثبت شد. به‌زودی با شما تماس می‌گیریم.'; e.target.reset();})
+  .catch(()=>{document.getElementById('msg').innerText='خطا در ثبت اطلاعات';});
+});
+</script>
+
+</body>
+</html>
