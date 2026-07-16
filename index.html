@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Idea</title>
+
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Tahoma, sans-serif;
+    color:#555;
+}
+</style>
+
+<script>
+(function () {
+
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        window.location.replace("mobile/index.html");
+    } else {
+        window.location.replace("desktop/index.html");
+    }
+
+})();
+</script>
+
+</head>
+
+<body>
+در حال انتقال...
+</body>
+</html>
