@@ -356,24 +356,6 @@ pointer-events:none;
 
 }
 
-.lightbox-watermark{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-background:
-url("images/watermark/watermark.png")
-center center / 45% no-repeat;
-
-opacity:.10;
-
-z-index:2;
-
-}
-    
 
 
 /* ANIMATION */
@@ -405,44 +387,32 @@ transform:none;
 
 .lightbox{
 
-
+position:fixed;
 
 inset:0;
 
 background:rgba(0,0,0,.82);
 
-display:flex;
+display:none;
 
 justify-content:center;
 
 align-items:center;
 
+z-index:2000;
+
 padding:20px;
 
-position:relative;
-z-index:1;
-
-opacity:0;
-
-visibility:hidden;
-
-transition:
-opacity .25s ease,
-visibility .25s ease;
-
 }
-
 
 
 
 .lightbox.active{
 
-opacity:1;
-
-visibility:visible;
+display:flex;
 
 }
-    
+
 
 
 .lightbox img{
@@ -481,7 +451,6 @@ border-radius:50%;
 font-size:24px;
 
 cursor:pointer;
-z-index:3;
 
 }
 .lightbox-prev,
@@ -804,7 +773,6 @@ id="productsContainer">
 id="lightboxImage"
 src=""
 alt="">
-<div class="lightbox-watermark"></div>
 
 
 <button class="lightbox-next">
