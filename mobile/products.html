@@ -19,6 +19,9 @@ body { font-family: 'Vazirmatn', sans-serif; background: var(--bg); color: var(-
   max-width: 480px;
   margin: 0 auto;
 }
+html{
+    scroll-behavior:smooth;
+}
 .container { padding: 16px; }
 header { margin-bottom:25px; text-align:center; }
 .logo { width: 80px; max-width: 100%; margin-bottom:12px; }
@@ -148,9 +151,12 @@ color:var(--accent);
 }
 
 .cat-item.active .cat-icon{
+    background:var(--accent);
+    border-color:var(--accent);
+}
 
-border-color:var(--accent);
-
+.cat-item.active .cat-svg{
+    stroke:#fff;
 }
 .gallery-item h2 { font-size:0.95rem; font-weight:500; }
 .gallery-item h3 { font-size:0.75rem; color: var(--muted); margin:2px 0 8px; }
@@ -754,69 +760,49 @@ count:0
 
   
  <script>
+const container = document.getElementById("productsContainer");
 
-const container =
-document.getElementById("productsContainer");
+productCategories.forEach(cat => {
 
-productCategories.forEach(cat=>{
+let html = `
 
-let html=`
+<section class="product-section fade" id="${cat.id}">
 
-<section
-class="product-section fade"
-id="${cat.id}">
+    <div class="section-title">
 
-<div class="section-title">
+        <div class="section-line"></div>
 
-<div class="section-line"></div>
+        <div class="section-info">
+            <h2>${cat.title}</h2>
+            <span>${cat.en}</span>
+        </div>
 
-<div class="section-info">
+        <svg class="icon">
+            <use href="images/icons.svg#${cat.icon}"></use>
+        </svg>
 
-<h2>${cat.title}</h2>
+    </div>
 
-<span>${cat.en}</span>
-
-</div>
-
-<svg class="icon">
-
-<use href="images/icons.svg#${cat.icon}"></use>
-
-</svg>
-
-</div>
-
-
-<div class="product-grid">
+    <div class="product-grid">
 
 `;
 
-for(let i=1;i<=cat.count;i++){
+for(let i=1; i<=cat.count; i++){
 
-const file=String(i).padStart(3,"0");
+    const file = String(i).padStart(3,"0");
 
-html+=`
+    html += `
 
-<a
-class="product-card gallery-link"
+<a class="product-card gallery-link"
+   href="images/originals/${cat.folder}/${file}.jpg"
+   data-category="${cat.folder}"
+   data-caption="">
 
-href="images/originals/${cat.folder}/${file}.jpg"
-
-data-category="${cat.folder}"
-
-data-caption="">
-
-<img
-
-loading="lazy"
-
-decoding="async"
-
-src="images/originals/${cat.folder}/${file}.jpg"
-
-alt="${cat.title}">
-
-
+    <img
+        loading="lazy"
+        decoding="async"
+        src="images/originals/${cat.folder}/${file}.jpg"
+        alt="${cat.title}">
 
 </a>
 
@@ -824,41 +810,50 @@ alt="${cat.title}">
 
 }
 
-html+=`
+html += `
 
-</div>
+    </div>
 
 </section>
 
 `;
 
-container.insertAdjacentHTML("beforeend",html);
+container.insertAdjacentHTML("beforeend", html);
 
 });
+
+
+
+/* ---------- Scroll Spy ---------- */
 
 const sections = document.querySelectorAll(".product-section");
 const navItems = document.querySelectorAll(".cat-item");
 
 const sectionObserver = new IntersectionObserver((entries)=>{
 
-entries.forEach(entry=>{
+    entries.forEach(entry=>{
 
-if(entry.isIntersecting){
+        if(!entry.isIntersecting) return;
 
-navItems.forEach(item=>item.classList.remove("active"));
+        navItems.forEach(item=>item.classList.remove("active"));
 
-document
-.querySelector(`.cat-item[data-target="${entry.target.id}"]`)
-?.classList.add("active");
+        const active =
+            document.querySelector(
+                `.cat-item[data-target="${entry.target.id}"]`
+            );
 
-}
+        if(active) active.classList.add("active");
 
-});
+    });
 
 },{
-threshold:.35
+    threshold:0.35,
+    rootMargin:"-80px 0px -45% 0px"
 });
-sections.forEach(sec=>sectionObserver.observe(sec));
+
+sections.forEach(section=>{
+    sectionObserver.observe(section);
+});
 
 </script>
 
