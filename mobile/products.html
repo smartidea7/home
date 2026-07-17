@@ -88,122 +88,103 @@ header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(-
 
 }
 .gallery { display:flex; flex-direction:column; gap:24px; }
-/* ===== Category Navigation ===== */
+/* ==============================
+   Category Navigation
+============================== */
 
 .category-nav{
 
-    position:sticky;
+position:sticky;
 
-    top:0;
+top:0;
 
-    z-index:900;
+z-index:900;
 
-    background:rgba(250,250,250,.96);
+background:#fafafa;
 
-    backdrop-filter:blur(14px);
+display:flex;
 
-    -webkit-backdrop-filter:blur(14px);
+justify-content:space-between;
 
-    padding:10px 0 12px;
+padding:6px 0;
 
-    margin-bottom:26px;
+margin-bottom:18px;
 
-    border-bottom:1px solid #ececec;
-
-}
-
-.category-scroll{
-
-    display:flex;
-
-    gap:18px;
-
-    overflow-x:auto;
-
-    overflow-y:hidden;
-
-    scroll-behavior:smooth;
-
-    padding:0 6px;
-
-    scrollbar-width:none;
+border-bottom:1px solid #ececec;
 
 }
 
-.category-scroll::-webkit-scrollbar{
+.cat-item{
 
-    display:none;
+display:flex;
 
-}
+flex-direction:column;
 
-.category-item{
+align-items:center;
 
-    flex:0 0 auto;
+text-decoration:none;
 
-    text-decoration:none;
+color:#222;
 
-    color:#111;
+font-size:.62rem;
 
-    text-align:center;
+font-weight:500;
 
-}
-
-.category-circle{
-
-    width:58px;
-
-    height:58px;
-
-    border:1.5px solid #111;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin:auto;
-
-    transition:.25s;
+gap:4px;
 
 }
 
-.category-item:hover .category-circle,
-.category-item.active .category-circle{
+.cat-icon{
 
-    border-color:var(--accent);
+width:42px;
+
+height:42px;
+
+border:1.4px solid #222;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#fff;
+
+transition:.25s;
 
 }
 
-.category-circle svg{
+.cat-svg{
 
-    width:24px;
+width:20px;
 
-    height:24px;
+height:20px;
 
-    stroke:var(--accent);
+stroke:var(--accent);
 
-    fill:none;
+fill:none;
 
-    stroke-width:1.8;
+stroke-width:1.7;
 
 }
 
-.category-item span{
+.cat-item.active .cat-icon{
 
-    display:block;
+border-color:var(--accent);
 
-    margin-top:8px;
+}
 
-    font-size:.68rem;
+.cat-item.active{
 
-    color:#333;
+color:var(--accent);
 
-    line-height:1.4;
+}
 
-    white-space:nowrap;
+.cat-item:active .cat-icon{
+
+transform:scale(.94);
 
 }
 .gallery-item h2 { font-size:0.95rem; font-weight:500; }
@@ -320,54 +301,50 @@ line-height:1.2;
 
 <nav class="category-nav">
 
-<div class="category-scroll">
+    <a href="#consumables" class="cat-item active">
+        <div class="cat-icon">
+            <svg class="cat-svg">
+                <use href="images/icons.svg#icon-consumables"></use>
+            </svg>
+        </div>
+        <span>مصرفی</span>
+    </a>
 
-<a href="#con" class="category-item">
-<div class="category-circle">
-<svg class="icon">
-<use href="images/icons.svg#icon-consumables"></use>
-</svg>
-</div>
-<span>مصرفی</span>
-</a>
+    <a href="#hospital" class="cat-item">
+        <div class="cat-icon">
+            <svg class="cat-svg">
+                <use href="images/icons.svg#icon-hospital"></use>
+            </svg>
+        </div>
+        <span>هتلینگ</span>
+    </a>
 
-<a href="#hos" class="category-item">
-<div class="category-circle">
-<svg class="icon">
-<use href="images/icons.svg#icon-hospital"></use>
-</svg>
-</div>
-<span>هتلینگ</span>
-</a>
+    <a href="#gas" class="cat-item">
+        <div class="cat-icon">
+            <svg class="cat-svg">
+                <use href="images/icons.svg#icon-gas"></use>
+            </svg>
+        </div>
+        <span>گاز</span>
+    </a>
 
-<a href="#gas" class="category-item">
-<div class="category-circle">
-<svg class="icon">
-<use href="images/icons.svg#icon-gas"></use>
-</svg>
-</div>
-<span>گاز طبی</span>
-</a>
+    <a href="#lead" class="cat-item">
+        <div class="cat-icon">
+            <svg class="cat-svg">
+                <use href="images/icons.svg#icon-lead"></use>
+            </svg>
+        </div>
+        <span>سرب</span>
+    </a>
 
-<a href="#lead" class="category-item">
-<div class="category-circle">
-<svg class="icon">
-<use href="images/icons.svg#icon-lead"></use>
-</svg>
-</div>
-<span>سرب</span>
-</a>
-
-<a href="#spe" class="category-item">
-<div class="category-circle">
-<svg class="icon">
-<use href="images/icons.svg#icon-special"></use>
-</svg>
-</div>
-<span>سایر</span>
-</a>
-
-</div>
+    <a href="#special" class="cat-item">
+        <div class="cat-icon">
+            <svg class="cat-svg">
+                <use href="images/icons.svg#icon-special"></use>
+            </svg>
+        </div>
+        <span>سایر</span>
+    </a>
 
 </nav>
   
