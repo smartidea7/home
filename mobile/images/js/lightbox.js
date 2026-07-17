@@ -337,12 +337,38 @@ lightbox.addEventListener("touchend",(e)=>{
 
 });
 
-function updateTransform(){
+function clampPan() {
+
+    if (scale <= 1) {
+
+        translateX = 0;
+        translateY = 0;
+        return;
+
+    }
+
+function updateTransform() {
+
+    clampPan();
 
     lightboxImage.style.transform =
-    `translate(${translateX}px,${translateY}px) scale(${scale})`;
+        `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 
 }
+
+
+
+    const rect = lightboxImage.getBoundingClientRect();
+
+    const maxX = (rect.width * (scale - 1)) / 2;
+    const maxY = (rect.height * (scale - 1)) / 2;
+
+    translateX = Math.max(-maxX, Math.min(maxX, translateX));
+    translateY = Math.max(-maxY, Math.min(maxY, translateY));
+
+}
+
+
 
 const zoomLevels = [1, 1.5, 2, 3];
 
@@ -388,16 +414,18 @@ lightboxImage.addEventListener("mousedown",(e)=>{
 
 });
 
-window.addEventListener("mousemove",(e)=>{
+window.addEventListener("mousemove", (e) => {
 
-    if(!isDragging)return;
+    if (!isDragging) return;
 
-    translateX=e.clientX-startX;
-    translateY=e.clientY-startY;
+    translateX = e.clientX - startX;
+    translateY = e.clientY - startY;
 
     updateTransform();
 
 });
+
+
 
 window.addEventListener("mouseup",()=>{
 
