@@ -468,19 +468,14 @@ right:20px;
 
 .lightbox-prev{
 
-right:20px;
-
-top:50%;
+left:20px;
 
 }
 
 
-
 .lightbox-next{
 
-left:20px;
-
-top:50%;
+right:20px;
 
 }
 
@@ -1258,13 +1253,14 @@ document.addEventListener("keydown",function(e){
     if(e.key==="Escape")
         closeLightbox();
 
-  if(e.key==="ArrowRight")
-    showImage(currentIndex+1);
+if(e.key==="ArrowRight")
+    showImage(currentIndex-1);
 
 
 if(e.key==="ArrowLeft")
-    showImage(currentIndex-1);
+    showImage(currentIndex+1);
 
+    
 });
 
 
