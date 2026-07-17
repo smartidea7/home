@@ -1,148 +1,192 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<title>ایده هوشمند | Smart Idea</title>
+
+<title>
+ایده هوشمند | Smart Idea
+</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+
 <style>
-:root {
-  --bg: #fafafa;
-  --text: #111;
-  --muted: #777;
-  --accent: #e46f1f;
-  --border: #ddd;
+
+:root{
+
+--bg:#fafafa;
+--text:#111;
+--muted:#777;
+--accent:#e46f1f;
+--border:#ddd;
+
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Vazirmatn', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding-bottom: 0px; } 
-  body {
-  max-width: 480px;
-  margin: 0 auto;
+
+
+*{
+
+box-sizing:border-box;
+margin:0;
+padding:0;
+
 }
+
+
+
 html{
-    scroll-behavior:smooth;
+
+scroll-behavior:smooth;
+
 }
-.container { padding: 16px; }
-header { margin-bottom:25px; text-align:center; }
-.logo { width: 80px; max-width: 100%; margin-bottom:12px; }
-header h1 { font-size:1rem; font-weight:400; letter-spacing:-0.3px; }
-header h1 span { display:block; margin-top:4px; font-family:'Playfair Display', serif; font-size:0.8rem; color:#999; font-weight:400; letter-spacing:1px; }
-header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(--muted); }
-/* ===== Compact Header ===== */
+
+
+
+body{
+
+font-family:'Vazirmatn',sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
+max-width:480px;
+margin:auto;
+padding-bottom:70px;
+
+}
+
+
+
+.container{
+
+padding:16px;
+
+}
+
+
+
+/* HEADER */
+
 
 .compact-header{
 
 display:flex;
 align-items:center;
-gap:10px;
-
-padding:4px 0 6px;
-
-margin-bottom:6px;
-
-}
-
-.compact-header .logo{
-
-width:46px;
-
-margin:0;
-
-flex-shrink:0;
+gap:12px;
+margin-bottom:8px;
 
 }
 
 
 
+.logo{
 
-.gallery { display:flex; flex-direction:column; gap:24px; }
-/* ===== Category Navigation ===== */
+width:58px;
+height:auto;
+
+}
+
+
+
+.header-text h1{
+
+font-size:1rem;
+font-weight:600;
+
+}
+
+
+.header-text span{
+
+font-size:.6rem;
+color:#888;
+
+}
+
+
+
+
+/* CATEGORY MENU */
+
 
 .category-wrapper{
 
 position:sticky;
-
 top:0;
-
 z-index:999;
-
 background:#fafafa;
-
-padding:8px 0;
-
-margin-bottom:14px;
+padding:8px 0 12px;
 
 }
+
+
 
 .category-nav{
 
 display:flex;
-
-justify-content:space-between;
-
-align-items:flex-start;
-
-gap:6px;
+width:100%;
+border-bottom:1px solid #eee;
 
 }
 
+
+
 .cat-item{
 
+flex:1;
+
 display:flex;
-
 flex-direction:column;
-
 align-items:center;
 
-gap:2px;
+gap:3px;
 
 text-decoration:none;
 
 color:#222;
 
-font-size:.56rem;
+font-size:.55rem;
 
-font-weight:500;
-
-line-height:1.1;
+line-height:1.2;
 
 }
+
+
 
 .cat-icon{
 
 width:38px;
-
 height:38px;
-
-border:1.3px solid #222;
 
 border-radius:50%;
 
+border:1px solid #222;
+
 display:flex;
 
-justify-content:center;
-
 align-items:center;
+justify-content:center;
 
 background:#fff;
 
-transition:.25s;
-
 }
+
+
 
 .cat-svg{
 
 width:18px;
-
 height:18px;
 
 stroke:var(--accent);
-
 fill:none;
 
-stroke-width:1.7;
-
 }
+
+
 
 .cat-item.active{
 
@@ -150,244 +194,149 @@ color:var(--accent);
 
 }
 
+
 .cat-item.active .cat-icon{
-    background:var(--accent);
-    border-color:var(--accent);
+
+background:var(--accent);
+border-color:var(--accent);
+
 }
+
 
 .cat-item.active .cat-svg{
-    stroke:#fff;
-}
-.gallery-item h2 { font-size:0.95rem; font-weight:500; }
-.gallery-item h3 { font-size:0.75rem; color: var(--muted); margin:2px 0 8px; }
-.image-box { width:100%; padding-top:100%; position:relative; overflow:hidden; border-radius:6px; }
-  .hero-image-box {
-  width:100%;
-  aspect-ratio:2 / 1;
-  position:relative;
-  overflow:hidden;
-  border-radius:8px;
+
+stroke:#fff;
+
 }
 
-.hero-image-box img {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+
+
+
+/* PRODUCT SECTION */
+
+
+.product-section{
+
+margin-top:24px;
+
+scroll-margin-top:110px;
+
 }
-.image-box img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
-.gallery-item a { display:inline-block; margin-top:8px; font-size:0.8rem; color: var(--accent); text-decoration:none; font-weight:500; }
-.fade { opacity:0; transform:translateY(14px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.fade.show { opacity:1; transform:translateY(0); }
 
-.bottom-nav { position:fixed; bottom:0; left:0; right:0; height:56px; background:#fff; border-top:1px solid var(--border); display:flex; justify-content:space-around; align-items:center; z-index:1000; }
-.bottom-nav a { text-decoration:none; color:#222; font-size:0.65rem; display:flex; flex-direction:column; align-items:center; gap:3px; }
-.bottom-nav a:active { color: var(--accent); }
-.icon { width:18px; height:18px; stroke: var(--accent); fill:none; stroke-width:1.6; }
-.gallery-item a::after { content:''; display:block; width:20px; height:1px; background: var(--accent); margin-top:2px; }
-.footer { margin-top:24px; padding:24px 8px 8px; text-align:center; color:#888; font-size:0.7rem; }
-.footer .brand { font-size:0.8rem; font-weight:500; color:#666; margin-bottom:4px; }
-.footer .desc { font-size:0.7rem; line-height:1.6; color:#999; max-width:280px; margin:0 auto 6px; }
-.footer .copy { font-size:0.65rem; color:#aaa; }
-/* ===== Compact Header ===== */
 
-.compact-header{
+
+.section-title{
 
 display:flex;
+
 align-items:center;
-gap:10px;
 
-padding:2px 0;
+margin-bottom:14px;
 
-margin:0 0 4px 0;
+padding-bottom:8px;
 
-}
-
-.compact-header .logo{
-
-width:58px;
-
-height:auto;
-
-margin:0;
-
-flex-shrink:0;
+border-bottom:1px solid #eee;
 
 }
 
-.header-text{
 
-display:flex;
 
-flex-direction:column;
+.section-line{
 
-justify-content:center;
+width:4px;
 
-gap:0;
+height:34px;
 
-line-height:1;
+background:var(--accent);
+
+border-radius:3px;
+
+margin-left:10px;
 
 }
 
-.header-text h1{
+
+
+.section-info{
+
+flex:1;
+
+}
+
+
+
+.section-info h2{
 
 font-size:1rem;
 
 font-weight:600;
 
-margin:0;
+}
 
-line-height:1.2;
-padding:0;
+
+.section-info span{
+
+font-size:.7rem;
+
+color:#999;
 
 }
 
-.header-text span{
 
-font-size:.60rem;
 
-color:#888;
 
-margin:0;
+/* GRID */
 
-padding:0;
-
-line-height:1;
-
-letter-spacing:.4px;
-
-}
-
-/*========== Product Sections ==========*/
-
-.product-section{
-    margin-top:22px;
-    scroll-margin-top:120px;
-}
-
-.section-title{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:14px;
-
-    padding:0 2px 8px;
-
-    border-bottom:1px solid #ececec;
-
-}
-
-.section-title svg{
-
-    width:24px;
-
-    height:24px;
-
-    stroke:var(--accent);
-
-    flex:none;
-
-}
-
-.section-title h2{
-
-    font-size:1.05rem;
-
-    font-weight:600;
-
-    line-height:1.2;
-
-    margin:0;
-
-}
-
-.section-title span{
-
-    display:block;
-
-    margin-top:2px;
-
-    font-size:.70rem;
-
-    color:#999;
-
-    letter-spacing:.4px;
-
-}
 
 .product-grid{
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+grid-template-columns:repeat(3,1fr);
 
-    gap:8px;
+gap:8px;
 
 }
+
+
 
 .product-card{
 
-    position:relative;
+position:relative;
 
-    aspect-ratio:1/1;
+aspect-ratio:1;
 
-    background:#fff;
+background:white;
 
-    border:1px solid #ececec;
+border-radius:10px;
 
-    border-radius:10px;
+overflow:hidden;
 
-    overflow:hidden;
+border:1px solid #eee;
+
+cursor:pointer;
 
 }
-  
+
+
 
 .product-card img{
 
-    width:100%;
+width:100%;
 
-    height:100%;
+height:100%;
 
-    object-fit:contain;
+object-fit:contain;
 
-    object-position:center;
-
-    padding:6px;
-
-    display:block;
+padding:5px;
 
 }
 
-.product-card:active img{
-    transform:scale(1.03);
-}
 
-/* Caption */
 
-.product-caption{
-    display:none;
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:5px 6px;
-    font-size:.60rem;
-    color:#fff;
 
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.55),
-        rgba(0,0,0,0)
-    );
-}
+/* WATERMARK */
 
-/* Watermark */
 
 .product-card::after{
 
@@ -398,7 +347,8 @@ position:absolute;
 inset:0;
 
 background:url(images/watermark/watermark.png)
-center center / 60% no-repeat;
+
+center/60% no-repeat;
 
 opacity:.12;
 
@@ -406,40 +356,47 @@ pointer-events:none;
 
 }
 
-.section-info{
 
-    flex:1;
 
-}
+/* ANIMATION */
 
-.section-line{
 
-    width:4px;
+.fade{
 
-    height:34px;
+opacity:0;
 
-    background:var(--accent);
+transform:translateY(15px);
 
-    border-radius:3px;
-
-    margin-left:10px;
-
-    flex:none;
+transition:.6s;
 
 }
 
-/* ===== Lightbox ===== */
+
+.fade.show{
+
+opacity:1;
+
+transform:none;
+
+}
+
+
+
+/* LIGHTBOX */
+
 
 .lightbox{
 
 position:fixed;
+
 inset:0;
 
-background:rgba(0,0,0,.75);
+background:rgba(0,0,0,.82);
 
 display:none;
 
 justify-content:center;
+
 align-items:center;
 
 z-index:2000;
@@ -448,6 +405,8 @@ padding:20px;
 
 }
 
+
+
 .lightbox.active{
 
 display:flex;
@@ -455,55 +414,95 @@ display:flex;
 }
 
 
+
 .lightbox img{
 
 max-width:95%;
 
-max-height:85%;
+max-height:80%;
 
 object-fit:contain;
 
 border-radius:8px;
 
-background:#fff;
-
 }
 
 
-/* close button */
 
-.lightbox-close{
+/* buttons */
+
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
 
 position:absolute;
 
-top:20px;
+border:none;
 
-right:20px;
+background:white;
 
-width:38px;
+width:40px;
 
-height:38px;
+height:40px;
 
 border-radius:50%;
 
-background:#fff;
-
-color:#111;
-
 font-size:24px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
 
 cursor:pointer;
 
 }
 
 
-/* caption */
+
+.lightbox-close{
+
+top:20px;
+
+right:20px;
+
+}
+
+
+
+.lightbox-prev{
+
+left:20px;
+
+top:50%;
+
+}
+
+
+
+.lightbox-next{
+
+right:20px;
+
+top:50%;
+
+}
+
+
+
+.lightbox-counter{
+
+position:absolute;
+
+top:25px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+color:white;
+
+font-size:.8rem;
+
+}
+
+
 
 .lightbox-caption{
 
@@ -511,28 +510,109 @@ position:absolute;
 
 bottom:30px;
 
-left:20px;
+color:white;
 
-right:20px;
+font-size:.85rem;
 
 text-align:center;
 
-color:#fff;
+}
 
-font-size:.85rem;
+
+
+/* BOTTOM NAV */
+
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:56px;
+
+background:white;
+
+border-top:1px solid #ddd;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+z-index:1000;
+
+}
+
+
+
+.bottom-nav a{
+
+text-decoration:none;
+
+color:#222;
+
+font-size:.65rem;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+
+
+.icon{
+
+width:18px;
+
+height:18px;
+
+stroke:var(--accent);
+
+fill:none;
+
+}
+
+
+.footer{
+
+text-align:center;
+
+font-size:.65rem;
+
+color:#999;
+
+padding:20px;
 
 }
 
 
 
 </style>
+
+
 </head>
+
+
 <body>
+
 <div class="container">
+
+<!-- ================= Header ================= -->
 
 <header class="compact-header">
 
-    <img src="images/logo.png" alt="Smart Idea Logo" class="logo">
+    <img src="images/logo.png"
+         alt="Smart Idea Logo"
+         class="logo">
 
     <div class="header-text">
         <h1>محصولات تخصصی</h1>
@@ -540,62 +620,100 @@ font-size:.85rem;
     </div>
 
 </header>
+
+
+<!-- ================= Category Menu ================= -->
+
 <div class="category-wrapper">
+
 <nav class="category-nav">
 
-   <a href="#consumables"
+<a href="#consumables"
    class="cat-item active"
    data-target="consumables">
-        <div class="cat-icon">
-            <svg class="cat-svg">
-                <use href="images/icons.svg#icon-consumables"></use>
-            </svg>
-        </div>
-        <span>تجهیزات پزشکی مصرفی</span>
-    </a>
 
-    <a href="#hospital" class="cat-item" data-target="hospital">
-        <div class="cat-icon">
-            <svg class="cat-svg">
-                <use href="images/icons.svg#icon-hospital"></use>
-            </svg>
-        </div>
-        <span>هتلینگ بیمارستانی</span>
-    </a>
+    <div class="cat-icon">
+        <svg class="cat-svg">
+            <use href="images/icons.svg#icon-consumables"></use>
+        </svg>
+    </div>
 
-    <a href="#gas" class="cat-item" data-target="gas">
-        <div class="cat-icon">
-            <svg class="cat-svg">
-                <use href="images/icons.svg#icon-gas"></use>
-            </svg>
-        </div>
-        <span>گازهای طبی</span>
-    </a>
+    <span>مصرفی</span>
 
-    <a href="#lead" class="cat-item" data-target="lead">
-        <div class="cat-icon">
-            <svg class="cat-svg">
-                <use href="images/icons.svg#icon-lead"></use>
-            </svg>
-        </div>
-        <span>سرب</span>
-    </a>
+</a>
 
-    <a href="#special" class="cat-item" data-target="special">
-        <div class="cat-icon">
-            <svg class="cat-svg">
-                <use href="images/icons.svg#icon-special"></use>
-            </svg>
-        </div>
-        <span>سایر</span>
-    </a>
+
+
+<a href="#hospital"
+   class="cat-item"
+   data-target="hospital">
+
+    <div class="cat-icon">
+        <svg class="cat-svg">
+            <use href="images/icons.svg#icon-hospital"></use>
+        </svg>
+    </div>
+
+    <span>هتلینگ</span>
+
+</a>
+
+
+
+<a href="#gas"
+   class="cat-item"
+   data-target="gas">
+
+    <div class="cat-icon">
+        <svg class="cat-svg">
+            <use href="images/icons.svg#icon-gas"></use>
+        </svg>
+    </div>
+
+    <span>گازهای طبی</span>
+
+</a>
+
+
+
+<a href="#lead"
+   class="cat-item"
+   data-target="lead">
+
+    <div class="cat-icon">
+        <svg class="cat-svg">
+            <use href="images/icons.svg#icon-lead"></use>
+        </svg>
+    </div>
+
+    <span>سرب</span>
+
+</a>
+
+
+
+<a href="#special"
+   class="cat-item"
+   data-target="special">
+
+    <div class="cat-icon">
+        <svg class="cat-svg">
+            <use href="images/icons.svg#icon-special"></use>
+        </svg>
+    </div>
+
+    <span>سایر</span>
+
+</a>
 
 </nav>
+
 </div>
- 
-  
-  
-  
+
+
+
+<!-- ================= Products ================= -->
+
 <section
 class="gallery"
 id="productsContainer">
@@ -603,81 +721,181 @@ id="productsContainer">
 
 
 
+<!-- ================= Lightbox ================= -->
 
-<object type="image/svg+xml" data="icons.svg" style="display:none;"></object>
+<div id="lightbox" class="lightbox">
 
-<nav class="bottom-nav">
+<button class="lightbox-close">
 
-  <a href="index.html">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-home"></use>
+&times;
 
-    </svg>
-    خانه
-  </a>
+</button>
 
-  <a href="#products">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-products"></use>
-    </svg>
-    محصولات
-  </a>
 
-  <a href="#projects">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-projects"></use>
-    </svg>
-    پروژه‌ها
-  </a>
 
-  <a href="#contact">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-phone"></use>
-    </svg>
-    تماس
-  </a>
+<button class="lightbox-prev">
 
-  <a href="#about">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-user"></use>
-    </svg>
-    درباره ما
-  </a>
+&#10094;
 
-</nav>
-  
+</button>
 
-<footer class="footer">
-  
-  <p class="copy">© 2026 Smart Idea. All rights reserved.</p>
-</footer>
+
+
+<img
+id="lightboxImage"
+src=""
+alt="">
+
+
+
+<button class="lightbox-next">
+
+&#10095;
+
+</button>
+
+
+
+<div
+class="lightbox-counter"
+id="lightboxCounter">
 
 </div>
 
 
-  
 
+<div
+class="lightbox-caption"
+id="lightboxCaption">
+
+</div>
+
+</div>
+
+
+
+<!-- ================= Bottom Menu ================= -->
+
+<nav class="bottom-nav">
+
+<a href="index.html">
+
+<svg class="icon">
+
+<use href="images/icons.svg#icon-home"></use>
+
+</svg>
+
+خانه
+
+</a>
+
+
+
+<a href="products.html">
+
+<svg class="icon">
+
+<use href="images/icons.svg#icon-products"></use>
+
+</svg>
+
+محصولات
+
+</a>
+
+
+
+<a href="projects.html">
+
+<svg class="icon">
+
+<use href="images/icons.svg#icon-projects"></use>
+
+</svg>
+
+پروژه‌ها
+
+</a>
+
+
+
+<a href="contact.html">
+
+<svg class="icon">
+
+<use href="images/icons.svg#icon-phone"></use>
+
+</svg>
+
+تماس
+
+</a>
+
+
+
+<a href="about.html">
+
+<svg class="icon">
+
+<use href="images/icons.svg#icon-user"></use>
+
+</svg>
+
+درباره ما
+
+</a>
+
+</nav>
+
+
+
+<footer class="footer">
+
+<p class="copy">
+
+© 2026 Smart Idea. All rights reserved.
+
+</p>
+
+</footer>
+
+</div>
+
+<object
+type="image/svg+xml"
+data="images/icons.svg"
+style="display:none;">
+</object>
   
 <script>
-document.addEventListener('DOMContentLoaded', function(){
- const faders=document.querySelectorAll(".fade");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      }
+
+/*==================================================
+    Fade Animation
+==================================================*/
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
     });
-  }, { threshold: 0.2 });
-  faders.forEach(el => observer.observe(el));
 
-  
+},{
+    threshold:.15
 });
-</script>
 
- <script>
 
-const productCategories = [
+/*==================================================
+    Categories
+==================================================*/
+
+const productCategories=[
 
 {
 id:"consumables",
@@ -726,53 +944,68 @@ count:0
 
 ];
 
-</script>
 
-  
- <script>
-const container = document.getElementById("productsContainer");
+/*==================================================
+    Build Products
+==================================================*/
 
-productCategories.forEach(cat => {
+const container=document.getElementById("productsContainer");
 
-let html = `
+productCategories.forEach(cat=>{
+
+let html=`
 
 <section class="product-section fade" id="${cat.id}">
 
-    <div class="section-title">
+<div class="section-title">
 
-        <div class="section-line"></div>
+<div class="section-line"></div>
 
-        <div class="section-info">
-            <h2>${cat.title}</h2>
-            <span>${cat.en}</span>
-        </div>
+<div class="section-info">
 
-        <svg class="icon">
-            <use href="images/icons.svg#${cat.icon}"></use>
-        </svg>
+<h2>${cat.title}</h2>
 
-    </div>
+<span>${cat.en}</span>
 
-    <div class="product-grid">
+</div>
+
+<svg class="icon">
+
+<use href="images/icons.svg#${cat.icon}"></use>
+
+</svg>
+
+</div>
+
+<div class="product-grid">
 
 `;
 
-for(let i=1; i<=cat.count; i++){
+for(let i=1;i<=cat.count;i++){
 
-    const file = String(i).padStart(3,"0");
+const file=String(i).padStart(3,"0");
 
-    html += `
+html+=`
 
 <a class="product-card gallery-link"
-   href="images/originals/${cat.folder}/${file}.jpg"
-   data-category="${cat.folder}"
-   data-caption="">
 
-    <img
-        loading="lazy"
-        decoding="async"
-        src="images/originals/${cat.folder}/${file}.jpg"
-        alt="${cat.title}">
+href="images/originals/${cat.folder}/${file}.jpg"
+
+data-caption=""
+
+data-index="${i-1}"
+
+data-folder="${cat.folder}">
+
+<img
+
+loading="lazy"
+
+decoding="async"
+
+src="images/originals/${cat.folder}/${file}.jpg"
+
+alt="${cat.title}">
 
 </a>
 
@@ -780,197 +1013,242 @@ for(let i=1; i<=cat.count; i++){
 
 }
 
-html += `
+html+=`
 
-    </div>
+</div>
 
 </section>
 
 `;
 
-container.insertAdjacentHTML("beforeend", html);
+container.insertAdjacentHTML("beforeend",html);
 
 });
 
 
+/*==================================================
+    Fade Observer
+==================================================*/
 
-/* ---------- Scroll Spy ---------- */
+document
+.querySelectorAll(".fade")
+.forEach(item=>observer.observe(item));
 
-const sections = document.querySelectorAll(".product-section");
-const navItems = document.querySelectorAll(".cat-item");
 
-const sectionObserver = new IntersectionObserver((entries)=>{
+/*==================================================
+    Scroll Spy
+==================================================*/
 
-    entries.forEach(entry=>{
+const sections=document.querySelectorAll(".product-section");
 
-        if(!entry.isIntersecting) return;
+const navItems=document.querySelectorAll(".cat-item");
 
-        navItems.forEach(item=>item.classList.remove("active"));
+const sectionObserver=new IntersectionObserver((entries)=>{
 
-        const active =
-            document.querySelector(
-                `.cat-item[data-target="${entry.target.id}"]`
-            );
+entries.forEach(entry=>{
 
-        if(active) active.classList.add("active");
+if(!entry.isIntersecting)return;
 
-    });
+navItems.forEach(item=>item.classList.remove("active"));
+
+document
+.querySelector(`.cat-item[data-target="${entry.target.id}"]`)
+?.classList.add("active");
+
+});
 
 },{
-    threshold:0.35,
-    rootMargin:"-80px 0px -45% 0px"
+rootMargin:"-90px 0px -50% 0px",
+threshold:.25
 });
 
 sections.forEach(section=>{
-    sectionObserver.observe(section);
+
+sectionObserver.observe(section);
+
+});
+
+
+/*==================================================
+    Equal Width Navigation
+==================================================*/
+
+navItems.forEach(item=>{
+
+item.style.flex="1";
+
 });
 
 </script>
 
-<!-- ===== Lightbox ===== -->
-
-<div id="lightbox" class="lightbox">
-
-    <button class="lightbox-close">&times;</button>
-
-    <img id="lightboxImage" src="" alt="">
-
-    <div class="lightbox-counter"></div>
-
-    <button class="lightbox-prev">&#10094;</button>
-
-    <button class="lightbox-next">&#10095;</button>
-
-    <div class="lightbox-caption" id="lightboxCaption"></div>
-
-</div>
-
-  
 <script>
+
+/*==============================
+    LIGHTBOX
+==============================*/
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxCounter = document.getElementById("lightboxCounter");
 
-const galleryItems = document.querySelectorAll(".gallery-link");
+const btnPrev = document.querySelector(".lightbox-prev");
+const btnNext = document.querySelector(".lightbox-next");
+const btnClose = document.querySelector(".lightbox-close");
+
+let galleryItems = [];
 let currentIndex = 0;
 
-const prevBtn = document.querySelector(".lightbox-prev");
-const nextBtn = document.querySelector(".lightbox-next");
-const counter = document.querySelector(".lightbox-counter");
 
-let currentIndex = 0;
+/* ---------- Refresh Gallery ---------- */
 
-const prevBtn = document.querySelector(".lightbox-prev");
-const nextBtn = document.querySelector(".lightbox-next");
+function refreshGallery(){
 
+    galleryItems = [...document.querySelectorAll(".gallery-link")];
+
+}
+
+refreshGallery();
+
+
+/* ---------- Show Image ---------- */
+
+function showImage(index){
+
+    if(index<0)
+        index=galleryItems.length-1;
+
+    if(index>=galleryItems.length)
+        index=0;
+
+    currentIndex=index;
+
+    const item=galleryItems[currentIndex];
+
+    lightboxImage.src=item.href;
+
+    lightboxCaption.textContent =
+        item.dataset.caption || item.querySelector("img").alt;
+
+    lightboxCounter.textContent =
+        (currentIndex+1)+" / "+galleryItems.length;
+
+}
+
+
+/* ---------- Open ---------- */
 
 galleryItems.forEach((item,index)=>{
 
-item.addEventListener("click",function(e){
+    item.addEventListener("click",function(e){
 
-e.preventDefault();
+        e.preventDefault();
 
-currentIndex = index;
+        showImage(index);
 
-showImage();
+        lightbox.classList.add("active");
 
-});
+        document.body.style.overflow="hidden";
 
-});
-
-function showImage(){
-
-const item = galleryItems[currentIndex];
-
-lightboxImage.src = item.href;
-
-lightboxCaption.textContent =
-item.dataset.caption || "";
-
-counter.textContent =
-(currentIndex+1) + " / " + galleryItems.length;
-
-}
-
-nextBtn.onclick = ()=>{
-
-currentIndex++;
-
-if(currentIndex>=galleryItems.length){
-
-currentIndex=0;
-
-}
-
-showImage();
-
-};
-
-prevBtn.onclick = ()=>{
-
-currentIndex--;
-
-if(currentIndex<0){
-
-currentIndex=galleryItems.length-1;
-
-}
-
-showImage();
-
-};
-
-
-
-
-
-
-document.querySelector(".lightbox-close")
-.addEventListener("click",()=>{
-
-lightbox.classList.remove("active");
+    });
 
 });
 
 
+/* ---------- Close ---------- */
+
+function closeLightbox(){
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow="";
+
+}
+
+btnClose.addEventListener("click",closeLightbox);
+
+
+/* ---------- Background ---------- */
 
 lightbox.addEventListener("click",function(e){
 
-if(e.target === lightbox){
+    if(e.target===lightbox){
 
-lightbox.classList.remove("active");
+        closeLightbox();
 
-}
+    }
+
+});
+
+
+/* ---------- Next ---------- */
+
+btnNext.addEventListener("click",()=>{
+
+    showImage(currentIndex+1);
 
 });
 
 
-prevBtn.addEventListener("click",()=>{
+/* ---------- Prev ---------- */
 
-showImage(currentIndex-1);
+btnPrev.addEventListener("click",()=>{
 
-});
-
-nextBtn.addEventListener("click",()=>{
-
-showImage(currentIndex+1);
+    showImage(currentIndex-1);
 
 });
+
+
+/* ---------- Keyboard ---------- */
 
 document.addEventListener("keydown",function(e){
 
-if(e.key==="Escape"){
+    if(!lightbox.classList.contains("active"))
+        return;
 
-lightbox.classList.remove("active");
+    if(e.key==="Escape")
+        closeLightbox();
 
-}
+    if(e.key==="ArrowRight")
+        showImage(currentIndex-1);
+
+    if(e.key==="ArrowLeft")
+        showImage(currentIndex+1);
+
+});
+
+
+/* ---------- Swipe ---------- */
+
+let touchStartX=0;
+
+lightbox.addEventListener("touchstart",(e)=>{
+
+    touchStartX=e.changedTouches[0].clientX;
+
+});
+
+lightbox.addEventListener("touchend",(e)=>{
+
+    let touchEndX=e.changedTouches[0].clientX;
+
+    let diff=touchStartX-touchEndX;
+
+    if(Math.abs(diff)<50) return;
+
+    if(diff>0){
+
+        showImage(currentIndex+1);
+
+    }else{
+
+        showImage(currentIndex-1);
+
+    }
 
 });
 
 </script>
-
-
 
 
 
