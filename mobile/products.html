@@ -257,6 +257,118 @@ line-height:1;
 letter-spacing:.4px;
 
 }
+
+/*========== Product Sections ==========*/
+
+.product-section{
+    margin-top:22px;
+    scroll-margin-top:120px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.section-title svg{
+    width:22px;
+    height:22px;
+    stroke:var(--accent);
+    flex:none;
+}
+
+.section-title h2{
+    font-size:1rem;
+    font-weight:600;
+}
+
+.section-title span{
+    display:block;
+    font-size:.68rem;
+    color:#888;
+    direction:ltr;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+}
+
+.product-card{
+    position:relative;
+    aspect-ratio:1/1;
+    overflow:hidden;
+    border-radius:10px;
+    background:#eee;
+}
+
+.product-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.35s;
+}
+
+.product-card:active img{
+    transform:scale(1.03);
+}
+
+/* Caption */
+
+.product-caption{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:5px 6px;
+    font-size:.60rem;
+    color:#fff;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,0)
+    );
+}
+
+/* Watermark */
+
+.product-card::after{
+
+    content:"Smart Idea";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    color:#fff;
+
+    opacity:.09;
+
+    transform:rotate(-28deg);
+
+    pointer-events:none;
+
+    letter-spacing:2px;
+
+}
+
+
+
 </style>
 </head>
 <body>
