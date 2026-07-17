@@ -437,58 +437,94 @@ letter-spacing:.4px;
 </nav>
   
   
-<section class="gallery">
+<section
+class="gallery"
+id="productsContainer">
+</section>
 
-<section id="consumables" class="product-section fade">
+ <script>
+
+const container =
+document.getElementById("productsContainer");
+
+productCategories.forEach(cat=>{
+
+let html=`
+
+<section
+class="product-section fade"
+id="${cat.id}">
 
 <div class="section-title">
 
 <svg class="icon">
-<use href="images/icons.svg#icon-consumables"></use>
+
+<use href="images/icons.svg#${cat.icon}"></use>
+
 </svg>
 
 <div>
 
-<h2>
-تجهیزات پزشکی مصرفی
-</h2>
+<h2>${cat.title}</h2>
 
-<span>
-Medical Consumables
-</span>
+<span>${cat.en}</span>
 
 </div>
 
 </div>
-
 
 <div class="product-grid">
 
-<a href="images/originals/consumables/001.jpg" class="product-card">
+`;
+
+for(let i=1;i<=cat.count;i++){
+
+const file=String(i).padStart(3,"0");
+
+html+=`
+
+<a
+class="product-card gallery-link"
+
+href="images/originals/${cat.folder}/${file}.jpg"
+
+data-category="${cat.folder}"
+
+data-caption="">
 
 <img
-src="images/originals/consumables/001.jpg"
-alt="Medical Consumables">
+
+loading="lazy"
+
+decoding="async"
+
+src="images/originals/${cat.folder}/${file}.jpg"
+
+alt="${cat.title}">
 
 <div class="product-caption"></div>
 
 </a>
 
-<a href="images/originals/consumables/002.jpg" class="product-card">
+`;
 
-<img
-src="images/originals/consumables/002.jpg"
-alt="Medical Consumables">
+}
 
-<div class="product-caption"></div>
-
-</a>
+html+=`
 
 </div>
 
 </section>
 
-</section>
+`;
+
+container.insertAdjacentHTML("beforeend",html);
+
+});
+
+</script>
+
+
 
   
 
