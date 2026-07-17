@@ -709,6 +709,30 @@ container.insertAdjacentHTML("beforeend",html);
 
 });
 
+const sections = document.querySelectorAll(".product-section");
+const navItems = document.querySelectorAll(".cat-item");
+
+const sectionObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+navItems.forEach(item=>item.classList.remove("active"));
+
+document
+.querySelector(`.cat-item[data-target="${entry.target.id}"]`)
+?.classList.add("active");
+
+}
+
+});
+
+},{
+threshold:.35
+});
+sections.forEach(sec=>sectionObserver.observe(sec));
+
 </script>
 
   
