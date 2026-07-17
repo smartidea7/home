@@ -299,18 +299,20 @@ letter-spacing:.4px;
 
 .product-card{
     position:relative;
-    aspect-ratio:1/1;
+    aspect-ratio:4/5;
+    background:#fff;
     overflow:hidden;
     border-radius:10px;
-    background:#eee;
+    
 }
 
 .product-card img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
     transition:.35s;
+    padding:4px;
 }
 
 .product-card:active img{
