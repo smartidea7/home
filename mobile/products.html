@@ -425,6 +425,8 @@ object-fit:contain;
 
 border-radius:8px;
 
+transition:.3s;
+
 }
 
 
@@ -548,7 +550,42 @@ text-align:center;
 
 }
 
+.lightbox-zoom-in,
+.lightbox-zoom-out{
 
+position:absolute;
+
+bottom:80px;
+
+width:40px;
+
+height:40px;
+
+border-radius:50%;
+
+border:none;
+
+background:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+}
+
+
+.lightbox-zoom-in{
+
+right:70px;
+
+}
+
+
+.lightbox-zoom-out{
+
+right:20px;
+
+}
 
 /* BOTTOM NAV */
 
@@ -781,6 +818,15 @@ alt="">
 <small>بعدی</small>
 
 </button>
+
+ <button class="lightbox-zoom-in">
++
+</button>
+
+
+<button class="lightbox-zoom-out">
+−
+</button>   
 
 
 <img
@@ -1130,6 +1176,16 @@ const lightboxCounter = document.getElementById("lightboxCounter");
 const btnPrev = document.querySelector(".lightbox-prev");
 const btnNext = document.querySelector(".lightbox-next");
 const btnClose = document.querySelector(".lightbox-close");
+const btnZoomIn =
+document.querySelector(".lightbox-zoom-in");
+
+
+const btnZoomOut =
+document.querySelector(".lightbox-zoom-out");
+
+
+let zoomLevel = 1;
+
 
 let galleryItems = [];
 
@@ -1196,6 +1252,12 @@ function showImage(index){
 
 
     lightboxImage.src=item.href;
+    zoomLevel = 1;
+
+lightboxImage.style.transform =
+"scale("+zoomLevel+")";
+
+
 
 
   const imageName = item.href.split("/").pop();
@@ -1322,7 +1384,35 @@ if(e.key==="ArrowLeft")
     
 });
 
+btnZoomIn.addEventListener("click",()=>{
 
+zoomLevel += 0.2;
+
+
+if(zoomLevel>3)
+zoomLevel=3;
+
+
+lightboxImage.style.transform =
+"scale("+zoomLevel+")";
+
+});
+
+
+
+btnZoomOut.addEventListener("click",()=>{
+
+zoomLevel -= 0.2;
+
+
+if(zoomLevel<1)
+zoomLevel=1;
+
+
+lightboxImage.style.transform =
+"scale("+zoomLevel+")";
+
+});
 /* ---------- Swipe ---------- */
 
 let touchStartX=0;
