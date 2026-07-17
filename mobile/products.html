@@ -1104,9 +1104,25 @@ let currentFolder = "";
 
 /* ---------- Refresh Gallery ---------- */
 
+/* ---------- Build Galleries ---------- */
+
 function refreshGallery(){
 
-    galleryItems = [...document.querySelectorAll(".gallery-link")];
+    galleries = {};
+
+    document.querySelectorAll(".gallery-link").forEach(item=>{
+
+        const folder = item.dataset.folder;
+
+        if(!galleries[folder]){
+
+            galleries[folder] = [];
+
+        }
+
+        galleries[folder].push(item);
+
+    });
 
 }
 
