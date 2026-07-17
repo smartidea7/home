@@ -19,6 +19,16 @@ let activeGallery = [];
 let currentIndex = 0;
 
 let currentFolder = "";
+let scale = 1;
+
+let translateX = 0;
+let translateY = 0;
+
+let isDragging = false;
+
+let startX = 0;
+let startY = 0;
+
 
 
 
@@ -243,6 +253,12 @@ lightbox.addEventListener("click",function(e){
     if(e.target===lightbox){
 
         closeLightbox();
+        scale=1;
+
+translateX=0;
+translateY=0;
+
+updateTransform();
 
     }
 
@@ -332,4 +348,60 @@ lightbox.addEventListener("touchend",(e)=>{
     }
 
 });
+
+function updateTransform(){
+
+    lightboxImage.style.transform =
+    `translate(${translateX}px,${translateY}px) scale(${scale})`;
+
+}
+
+lightboxImage.addEventListener("dblclick",()=>{
+
+    if(scale===1){
+
+        scale=2;
+
+    }else{
+
+        scale=1;
+
+        translateX=0;
+        translateY=0;
+
+    }
+
+    updateTransform();
+
+});
+
+lightboxImage.addEventListener("mousedown",(e)=>{
+
+    if(scale===1)return;
+
+    isDragging=true;
+
+    startX=e.clientX-translateX;
+    startY=e.clientY-translateY;
+
+});
+
+window.addEventListener("mousemove",(e)=>{
+
+    if(!isDragging)return;
+
+    translateX=e.clientX-startX;
+    translateY=e.clientY-startY;
+
+    updateTransform();
+
+});
+
+window.addEventListener("mouseup",()=>{
+
+    isDragging=false;
+
+});
+
+
 
