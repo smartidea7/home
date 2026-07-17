@@ -1097,7 +1097,13 @@ const btnNext = document.querySelector(".lightbox-next");
 const btnClose = document.querySelector(".lightbox-close");
 
 let galleryItems = [];
+
+let activeGallery = [];
+
 let currentIndex = 0;
+
+let currentFolder = "";
+
 
 
 /* ---------- Refresh Gallery ---------- */
@@ -1159,21 +1165,38 @@ function showImage(index){
 
 /* ---------- Open ---------- */
 
-galleryItems.forEach((item,index)=>{
+galleryItems.forEach((item)=>{
 
     item.addEventListener("click",function(e){
 
         e.preventDefault();
 
-        showImage(index);
+
+        const folder = item.dataset.folder;
+
+
+        activeGallery = galleries[folder];
+
+
+        currentFolder = folder;
+
+
+        currentIndex = activeGallery.indexOf(item);
+
+
+        showImage(currentIndex);
+
 
         lightbox.classList.add("active");
 
+
         document.body.style.overflow="hidden";
+
 
     });
 
 });
+
 
 
 /* ---------- Close ---------- */
