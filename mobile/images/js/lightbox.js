@@ -4,6 +4,7 @@
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
+const lightboxLoader = document.querySelector(".lightbox-loader");
 const lightboxCaption = document.getElementById("lightboxCaption");
 const lightboxCounter = document.getElementById("lightboxCounter");
 
