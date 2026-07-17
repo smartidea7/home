@@ -853,28 +853,76 @@ const lightboxImage = document.getElementById("lightboxImage");
 const lightboxCaption = document.getElementById("lightboxCaption");
 
 const galleryItems = document.querySelectorAll(".gallery-link");
+let currentIndex = 0;
+
+const prevBtn = document.querySelector(".lightbox-prev");
+const nextBtn = document.querySelector(".lightbox-next");
+const counter = document.querySelector(".lightbox-counter");
+
+let currentIndex = 0;
+
+const prevBtn = document.querySelector(".lightbox-prev");
+const nextBtn = document.querySelector(".lightbox-next");
 
 
-galleryItems.forEach(item=>{
+galleryItems.forEach((item,index)=>{
 
 item.addEventListener("click",function(e){
 
 e.preventDefault();
 
+currentIndex = index;
 
-lightboxImage.src = this.href;
+showImage();
 
+});
+
+});
+
+function showImage(){
+
+const item = galleryItems[currentIndex];
+
+lightboxImage.src = item.href;
 
 lightboxCaption.textContent =
-this.dataset.caption || "";
+item.dataset.caption || "";
+
+counter.textContent =
+(currentIndex+1) + " / " + galleryItems.length;
+
+}
+
+nextBtn.onclick = ()=>{
+
+currentIndex++;
+
+if(currentIndex>=galleryItems.length){
+
+currentIndex=0;
+
+}
+
+showImage();
+
+};
+
+prevBtn.onclick = ()=>{
+
+currentIndex--;
+
+if(currentIndex<0){
+
+currentIndex=galleryItems.length-1;
+
+}
+
+showImage();
+
+};
 
 
-lightbox.classList.add("active");
 
-
-});
-
-});
 
 
 
@@ -898,6 +946,17 @@ lightbox.classList.remove("active");
 });
 
 
+prevBtn.addEventListener("click",()=>{
+
+showImage(currentIndex-1);
+
+});
+
+nextBtn.addEventListener("click",()=>{
+
+showImage(currentIndex+1);
+
+});
 
 document.addEventListener("keydown",function(e){
 
