@@ -1198,8 +1198,19 @@ function showImage(index){
     lightboxImage.src=item.href;
 
 
-   lightboxCaption.textContent =
-    item.dataset.caption || item.querySelector("img").alt;
+  const imageName = item.href.split("/").pop();
+
+
+const captionText =
+    (typeof captions !== "undefined" &&
+     captions[currentFolder] &&
+     captions[currentFolder][imageName])
+     ||
+     item.querySelector("img").alt;
+
+
+lightboxCaption.textContent = captionText;
+    
 
 
     lightboxCounter.textContent =
