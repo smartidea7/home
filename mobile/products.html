@@ -468,7 +468,7 @@ right:20px;
 
 .lightbox-prev{
 
-left:20px;
+right:20px;
 
 top:50%;
 
@@ -478,11 +478,12 @@ top:50%;
 
 .lightbox-next{
 
-right:20px;
+left:20px;
 
 top:50%;
 
 }
+
 
 
 
@@ -733,26 +734,19 @@ id="productsContainer">
 
 
 
-<button class="lightbox-prev">
+<button class="lightbox-prev" aria-label="Previous image">
+
+&#10095;
+
+</button>
+
+
+<button class="lightbox-next" aria-label="Next image">
 
 &#10094;
 
 </button>
 
-
-
-<img
-id="lightboxImage"
-src=""
-alt="">
-
-
-
-<button class="lightbox-next">
-
-&#10095;
-
-</button>
 
 
 
@@ -1264,11 +1258,12 @@ document.addEventListener("keydown",function(e){
     if(e.key==="Escape")
         closeLightbox();
 
-    if(e.key==="ArrowRight")
-        showImage(currentIndex-1);
+  if(e.key==="ArrowRight")
+    showImage(currentIndex+1);
 
-    if(e.key==="ArrowLeft")
-        showImage(currentIndex+1);
+
+if(e.key==="ArrowLeft")
+    showImage(currentIndex-1);
 
 });
 
