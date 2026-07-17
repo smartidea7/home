@@ -1,0 +1,282 @@
+<script>
+
+/*==============================
+    LIGHTBOX
+==============================*/
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxCounter = document.getElementById("lightboxCounter");
+
+const btnPrev = document.querySelector(".lightbox-prev");
+const btnNext = document.querySelector(".lightbox-next");
+const btnClose = document.querySelector(".lightbox-close");
+const btnZoomIn =
+document.querySelector(".lightbox-zoom-in");
+
+
+const btnZoomOut =
+document.querySelector(".lightbox-zoom-out");
+
+
+let zoomLevel = 1;
+
+
+let galleryItems = [];
+
+let activeGallery = [];
+
+let currentIndex = 0;
+
+let currentFolder = "";
+
+
+
+/* ---------- Refresh Gallery ---------- */
+
+function refreshGallery(){
+
+    galleryItems = [...document.querySelectorAll(".gallery-link")];
+
+}
+
+refreshGallery();
+
+/* ---------- Build Folder Galleries ---------- */
+
+const galleries = {};
+
+document.querySelectorAll(".gallery-link").forEach(item=>{
+
+    const folder = item.dataset.folder;
+
+    if(!galleries[folder]){
+
+        galleries[folder] = [];
+
+    }
+
+    galleries[folder].push(item);
+
+});
+
+
+
+
+
+/* ---------- Show Image ---------- */
+
+function showImage(index){
+
+    if(!activeGallery || activeGallery.length===0)
+        return;
+
+
+    if(index<0)
+        index=activeGallery.length-1;
+
+
+    if(index>=activeGallery.length)
+        index=0;
+
+
+    currentIndex=index;
+
+
+    const item=activeGallery[currentIndex];
+
+
+    lightboxImage.src=item.href;
+    zoomLevel = 1;
+
+lightboxImage.style.transform =
+"scale("+zoomLevel+")";
+
+
+
+
+  const imageName = item.href.split("/").pop();
+
+
+const captionText =
+    (typeof captions !== "undefined" &&
+     captions[currentFolder] &&
+     captions[currentFolder][imageName])
+     ||
+     item.querySelector("img").alt;
+
+console.log("Folder:", currentFolder);
+console.log("Image:", imageName);
+console.log("Caption:", captionText);
+lightboxCaption.textContent = captionText;
+    
+
+
+    lightboxCounter.textContent =
+        (currentIndex+1)+" / "+activeGallery.length;
+
+}
+
+
+
+/* ---------- Open ---------- */
+
+galleryItems.forEach((item)=>{
+
+    item.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+
+        const folder = item.dataset.folder;
+
+
+        activeGallery = galleries[folder];
+
+
+        currentFolder = folder;
+
+
+        currentIndex = activeGallery.indexOf(item);
+
+
+        showImage(currentIndex);
+
+
+        lightbox.classList.add("active");
+
+
+        document.body.style.overflow="hidden";
+
+
+    });
+
+});
+
+
+
+/* ---------- Close ---------- */
+
+function closeLightbox(){
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow="";
+
+}
+
+btnClose.addEventListener("click",closeLightbox);
+
+
+/* ---------- Background ---------- */
+
+lightbox.addEventListener("click",function(e){
+
+    if(e.target===lightbox){
+
+        closeLightbox();
+
+    }
+
+});
+
+
+/* ---------- Next ---------- */
+
+btnNext.addEventListener("click",()=>{
+
+    showImage(currentIndex+1);
+
+});
+
+
+/* ---------- Prev ---------- */
+
+btnPrev.addEventListener("click",()=>{
+
+    showImage(currentIndex-1);
+
+});
+
+
+/* ---------- Keyboard ---------- */
+
+document.addEventListener("keydown",function(e){
+
+    if(!lightbox.classList.contains("active"))
+        return;
+
+    if(e.key==="Escape")
+        closeLightbox();
+
+if(e.key==="ArrowRight")
+    showImage(currentIndex-1);
+
+
+if(e.key==="ArrowLeft")
+    showImage(currentIndex+1);
+
+    
+});
+
+btnZoomIn.addEventListener("click",()=>{
+
+zoomLevel += 0.2;
+
+
+if(zoomLevel>3)
+zoomLevel=3;
+
+
+lightboxImage.style.transform =
+"scale("+zoomLevel+")";
+
+});
+
+
+
+btnZoomOut.addEventListener("click",()=>{
+
+zoomLevel -= 0.2;
+
+
+if(zoomLevel<1)
+zoomLevel=1;
+
+
+lightboxImage.style.transform =
+"scale("+zoomLevel+")";
+
+});
+/* ---------- Swipe ---------- */
+
+let touchStartX=0;
+
+lightbox.addEventListener("touchstart",(e)=>{
+
+    touchStartX=e.changedTouches[0].clientX;
+
+});
+
+lightbox.addEventListener("touchend",(e)=>{
+
+    let touchEndX=e.changedTouches[0].clientX;
+
+    let diff=touchStartX-touchEndX;
+
+    if(Math.abs(diff)<50) return;
+
+    if(diff>0){
+
+        showImage(currentIndex+1);
+
+    }else{
+
+        showImage(currentIndex-1);
+
+    }
+
+});
+
+</script>
