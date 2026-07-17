@@ -393,26 +393,37 @@ inset:0;
 
 background:rgba(0,0,0,.82);
 
-display:none;
+display:flex;
 
 justify-content:center;
 
 align-items:center;
 
-z-index:2000;
-
 padding:20px;
 
+z-index:2000;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:
+opacity .25s ease,
+visibility .25s ease;
+
 }
+
 
 
 
 .lightbox.active{
 
-display:flex;
+opacity:1;
+
+visibility:visible;
 
 }
-
+    
 
 
 .lightbox img{
