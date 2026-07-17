@@ -1028,8 +1028,6 @@ html+=`
 
 href="images/originals/${cat.folder}/${file}.jpg"
 
-data-caption=""
-
 data-index="${i-1}"
 
 data-folder="${cat.folder}">
@@ -1200,8 +1198,13 @@ function showImage(index){
     lightboxImage.src=item.href;
 
 
-    lightboxCaption.textContent =
-        item.dataset.caption || item.querySelector("img").alt;
+   const imageName = item.href.split("/").pop();
+
+
+lightboxCaption.textContent =
+    captions[currentFolder]?.[imageName]
+    ||
+    item.querySelector("img").alt;
 
 
     lightboxCounter.textContent =
