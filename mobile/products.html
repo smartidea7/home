@@ -25,6 +25,68 @@ header { margin-bottom:25px; text-align:center; }
 header h1 { font-size:1rem; font-weight:400; letter-spacing:-0.3px; }
 header h1 span { display:block; margin-top:4px; font-family:'Playfair Display', serif; font-size:0.8rem; color:#999; font-weight:400; letter-spacing:1px; }
 header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(--muted); }
+/* ===== Compact Header ===== */
+
+.compact-header{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin-bottom:20px;
+    padding-bottom:14px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.compact-logo{
+
+    width:62px;
+    flex-shrink:0;
+
+}
+
+.compact-info{
+
+    flex:1;
+
+}
+
+.compact-info h1{
+
+    font-size:.92rem;
+    font-weight:600;
+    line-height:1.5;
+    margin:0;
+
+}
+
+.compact-info span{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:.62rem;
+
+    color:#888;
+
+    letter-spacing:.6px;
+
+    direction:ltr;
+
+}
+
+.compact-info p{
+
+    margin-top:8px;
+
+    font-size:.68rem;
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+}
 .gallery { display:flex; flex-direction:column; gap:24px; }
 .gallery-item h2 { font-size:0.95rem; font-weight:500; }
 .gallery-item h3 { font-size:0.75rem; color: var(--muted); margin:2px 0 8px; }
@@ -64,19 +126,29 @@ header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(-
 <body>
 <div class="container">
 
-  <header>
-  <img src="images/logo.png" alt="Smart Idea Logo" class="logo">
+<header class="compact-header">
 
-  <h1>
-    *ایده هوشمند*
-بازرگانی | طراحی | مهندسی
-    <span>Smart Idea | Trading, Design & Engineering Group</span>
-  </h1>
+    <img
+        src="images/logo.png"
+        alt="Smart Idea"
+        class="compact-logo">
 
-  <p>
-    *تامین تجهیزات تخصصی*
-طراحی و اجرای فضاهای متمایز
-  </p>
+    <div class="compact-info">
+
+        <h1>
+            محصولات
+        </h1>
+
+        <span>
+            Smart Idea | Products
+        </span>
+
+        <p>
+            تأمین و توزیع تجهیزات تخصصی پزشکی، بیمارستانی و مهندسی
+        </p>
+
+    </div>
+
 </header>
 
   
