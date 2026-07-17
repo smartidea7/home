@@ -12,16 +12,6 @@ const lightboxCounter = document.getElementById("lightboxCounter");
 const btnPrev = document.querySelector(".lightbox-prev");
 const btnNext = document.querySelector(".lightbox-next");
 const btnClose = document.querySelector(".lightbox-close");
-const btnZoomIn =
-document.querySelector(".lightbox-zoom-in");
-
-
-const btnZoomOut =
-document.querySelector(".lightbox-zoom-out");
-
-
-let zoomLevel = 1;
-
 
 let galleryItems = [];
 
@@ -86,14 +76,9 @@ function showImage(index){
 
     const item=activeGallery[currentIndex];
 
-
+   lightbox.classList.add("loading");
+   lightboxImage.style.opacity="0";
     lightboxImage.src=item.href;
-    zoomLevel = 1;
-
-lightboxImage.style.transform =
-"scale("+zoomLevel+")";
-
-
 
 
   const imageName = item.href.split("/").pop();
@@ -115,6 +100,31 @@ lightboxCaption.textContent = captionText;
 
     lightboxCounter.textContent =
         (currentIndex+1)+" / "+activeGallery.length;
+   preloadAdjacentImages();
+
+   function preloadAdjacentImages(){
+
+    if(activeGallery.length < 2) return;
+
+    const prev =
+        activeGallery[
+            (currentIndex - 1 + activeGallery.length) % activeGallery.length
+        ];
+
+    const next =
+        activeGallery[
+            (currentIndex + 1) % activeGallery.length
+        ];
+
+    [prev, next].forEach(item => {
+
+        const img = new Image();
+
+        img.src = item.href;
+
+    });
+
+}
 
 }
 
@@ -220,36 +230,23 @@ if(e.key==="ArrowLeft")
     
 });
 
-btnZoomIn.addEventListener("click",()=>{
 
-zoomLevel += 0.2;
-
-
-if(zoomLevel>3)
-zoomLevel=3;
-
-
-lightboxImage.style.transform =
-"scale("+zoomLevel+")";
-
-});
-
-
-
-btnZoomOut.addEventListener("click",()=>{
-
-zoomLevel -= 0.2;
-
-
-if(zoomLevel<1)
-zoomLevel=1;
-
-
-lightboxImage.style.transform =
-"scale("+zoomLevel+")";
-
-});
 /* ---------- Swipe ---------- */
+   lightboxImage.addEventListener("load",()=>{
+
+    lightbox.classList.remove("loading");
+
+    lightboxImage.style.opacity="1";
+
+});
+
+lightboxImage.addEventListener("error",()=>{
+
+    lightbox.classList.remove("loading");
+
+    lightboxImage.src="images/no-image.png";
+
+});
 
 let touchStartX=0;
 
