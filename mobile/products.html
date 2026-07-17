@@ -298,21 +298,38 @@ letter-spacing:.4px;
 }
 
 .product-card{
-    position:relative;
-    aspect-ratio:4/5;
-    background:#fff;
-    overflow:hidden;
-    border-radius:10px;
-    
+
+aspect-ratio:1/1;
+
+background:#fff;
+
+border:1px solid #ececec;
+
+border-radius:10px;
+
+overflow:hidden;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 }
+  
 
 .product-card img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-    transition:.35s;
-    padding:4px;
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+padding:8px;
+
+background:#fff;
+
 }
 
 .product-card:active img{
@@ -341,31 +358,18 @@ letter-spacing:.4px;
 
 .product-card::after{
 
-    content:"Smart Idea";
+content:"";
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
+inset:0;
 
-    display:flex;
+background:url(images/watermark/watermark.png)
+center center / 60% no-repeat;
 
-    justify-content:center;
+opacity:.12;
 
-    align-items:center;
-
-    font-size:.82rem;
-
-    font-weight:600;
-
-    color:#fff;
-
-    opacity:.09;
-
-    transform:rotate(-28deg);
-
-    pointer-events:none;
-
-    letter-spacing:2px;
+pointer-events:none;
 
 }
 
@@ -506,7 +510,7 @@ id="productsContainer">
   
 <script>
 document.addEventListener('DOMContentLoaded', function(){
- 
+ const faders=document.querySelectorAll(".fade");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(entry.isIntersecting) {
