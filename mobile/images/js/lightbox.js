@@ -344,24 +344,38 @@ function updateTransform(){
 
 }
 
-lightboxImage.addEventListener("dblclick",()=>{
+const zoomLevels = [1, 1.5, 2, 3];
 
-    if(scale===1){
+function resetTransform() {
 
-        scale=2;
-
-    }else{
-
-        scale=1;
-
-        translateX=0;
-        translateY=0;
-
-    }
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
 
     updateTransform();
 
-});
+}
+
+function nextZoomLevel() {
+
+    const index = zoomLevels.indexOf(scale);
+
+    if (index === zoomLevels.length - 1) {
+
+        resetTransform();
+        return;
+
+    }
+
+    scale = zoomLevels[index + 1];
+
+    updateTransform();
+
+}
+
+lightboxImage.addEventListener("dblclick", nextZoomLevel);
+
+
 
 lightboxImage.addEventListener("mousedown",(e)=>{
 
@@ -390,6 +404,36 @@ window.addEventListener("mouseup",()=>{
     isDragging=false;
 
 });
+/* ---------- Mouse Wheel Zoom ---------- */
+
+lightbox.addEventListener("wheel", (e) => {
+
+    if (!lightbox.classList.contains("active"))
+        return;
+
+    e.preventDefault();
+
+    if (e.deltaY < 0) {
+
+        scale = Math.min(scale + 0.25, 3);
+
+    } else {
+
+        scale = Math.max(scale - 0.25, 1);
+
+        if (scale === 1) {
+
+            translateX = 0;
+            translateY = 0;
+
+        }
+
+    }
+
+    updateTransform();
+
+}, { passive: false });
+
 
 
 
