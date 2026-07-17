@@ -1,5 +1,3 @@
-<script>
-
 /*==============================
     LIGHTBOX
 ==============================*/
@@ -276,4 +274,3 @@ lightbox.addEventListener("touchend",(e)=>{
 
 });
 
-</script>
