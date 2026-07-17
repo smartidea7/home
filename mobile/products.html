@@ -1096,10 +1096,8 @@ const btnPrev = document.querySelector(".lightbox-prev");
 const btnNext = document.querySelector(".lightbox-next");
 const btnClose = document.querySelector(".lightbox-close");
 
-let galleries = {};
-let activeGallery = [];
+let galleryItems = [];
 let currentIndex = 0;
-let currentFolder = "";
 
 
 /* ---------- Refresh Gallery ---------- */
@@ -1111,6 +1109,25 @@ function refreshGallery(){
 }
 
 refreshGallery();
+
+/* ---------- Build Folder Galleries ---------- */
+
+const galleries = {};
+
+document.querySelectorAll(".gallery-link").forEach(item=>{
+
+    const folder = item.dataset.folder;
+
+    if(!galleries[folder]){
+
+        galleries[folder] = [];
+
+    }
+
+    galleries[folder].push(item);
+
+});
+
 
 
 
