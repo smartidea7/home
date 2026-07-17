@@ -453,7 +453,35 @@ font-size:24px;
 cursor:pointer;
 
 }
+.lightbox-prev,
+.lightbox-next{
 
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:0;
+
+}
+
+
+.lightbox-prev small,
+.lightbox-next small{
+
+font-size:9px;
+font-family:'Vazirmatn',sans-serif;
+line-height:1;
+
+}
+
+
+.lightbox-prev .arrow,
+.lightbox-next .arrow{
+
+font-size:20px;
+line-height:1;
+
+}
 
 
 .lightbox-close{
@@ -735,7 +763,7 @@ id="productsContainer">
 
 <button class="lightbox-prev">
 
-<span class="arrow">&#10095;</span>
+<span class="arrow">&#10094;</span>
 <small>قبلی</small>
 
 </button>
@@ -749,7 +777,7 @@ alt="">
 
 <button class="lightbox-next">
 
-<span class="arrow">&#10094;</span>
+<span class="arrow">&#10095;</span>
 <small>بعدی</small>
 
 </button>
