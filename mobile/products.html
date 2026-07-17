@@ -442,6 +442,134 @@ class="gallery"
 id="productsContainer">
 </section>
 
+
+
+
+<object type="image/svg+xml" data="icons.svg" style="display:none;"></object>
+
+<nav class="bottom-nav">
+
+  <a href="index.html">
+    <svg class="icon">
+      <use href="images/icons.svg#icon-home"></use>
+
+    </svg>
+    خانه
+  </a>
+
+  <a href="#products">
+    <svg class="icon">
+      <use href="images/icons.svg#icon-products"></use>
+    </svg>
+    محصولات
+  </a>
+
+  <a href="#projects">
+    <svg class="icon">
+      <use href="images/icons.svg#icon-projects"></use>
+    </svg>
+    پروژه‌ها
+  </a>
+
+  <a href="#contact">
+    <svg class="icon">
+      <use href="images/icons.svg#icon-phone"></use>
+    </svg>
+    تماس
+  </a>
+
+  <a href="#about">
+    <svg class="icon">
+      <use href="images/icons.svg#icon-user"></use>
+    </svg>
+    درباره ما
+  </a>
+
+</nav>
+  
+
+<footer class="footer">
+  
+  <p class="copy">© 2026 Smart Idea. All rights reserved.</p>
+</footer>
+
+</div>
+
+
+  
+
+  
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const faders = document.querySelectorAll('.fade');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  faders.forEach(el => observer.observe(el));
+
+  
+});
+</script>
+
+ <script>
+
+const productCategories = [
+
+{
+id:"consumables",
+title:"تجهیزات پزشکی مصرفی",
+en:"Medical Consumables",
+icon:"icon-consumables",
+folder:"consumables",
+count:2
+},
+
+{
+id:"hospital",
+title:"ترالی و تجهیزات هتلینگ بیمارستانی",
+en:"Hospital Equipment",
+icon:"icon-hospital",
+folder:"hospital",
+count:2
+},
+
+{
+id:"gas",
+title:"کنسول و تجهیزات گازهای طبی",
+en:"Medical Gas Systems",
+icon:"icon-gas",
+folder:"gas",
+count:2
+},
+
+{
+id:"lead",
+title:"سرب و تجهیزات حفاظتی",
+en:"Lead Shielding Materials",
+icon:"icon-lead",
+folder:"lead",
+count:2
+},
+
+{
+id:"special",
+title:"سایر کالاهای تخصصی",
+en:"Specialized Products",
+icon:"icon-special",
+folder:"special",
+count:2
+}
+
+];
+
+</script>
+
+  
  <script>
 
 const container =
@@ -524,133 +652,7 @@ container.insertAdjacentHTML("beforeend",html);
 
 </script>
 
-
-
   
-
-
-<object type="image/svg+xml" data="icons.svg" style="display:none;"></object>
-
-<nav class="bottom-nav">
-
-  <a href="index.html">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-home"></use>
-
-    </svg>
-    خانه
-  </a>
-
-  <a href="#products">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-products"></use>
-    </svg>
-    محصولات
-  </a>
-
-  <a href="#projects">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-projects"></use>
-    </svg>
-    پروژه‌ها
-  </a>
-
-  <a href="#contact">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-phone"></use>
-    </svg>
-    تماس
-  </a>
-
-  <a href="#about">
-    <svg class="icon">
-      <use href="images/icons.svg#icon-user"></use>
-    </svg>
-    درباره ما
-  </a>
-
-</nav>
-  
-
-<footer class="footer">
-  
-  <p class="copy">© 2026 Smart Idea. All rights reserved.</p>
-</footer>
-
-</div>
-
-<script>
-
-const productCategories = [
-
-{
-id:"consumables",
-title:"تجهیزات پزشکی مصرفی",
-en:"Medical Consumables",
-icon:"icon-consumables",
-folder:"consumables",
-count:2
-},
-
-{
-id:"hospital",
-title:"ترالی و تجهیزات هتلینگ بیمارستانی",
-en:"Hospital Equipment",
-icon:"icon-hospital",
-folder:"hospital",
-count:2
-},
-
-{
-id:"gas",
-title:"کنسول و تجهیزات گازهای طبی",
-en:"Medical Gas Systems",
-icon:"icon-gas",
-folder:"gas",
-count:2
-},
-
-{
-id:"lead",
-title:"سرب و تجهیزات حفاظتی",
-en:"Lead Shielding Materials",
-icon:"icon-lead",
-folder:"lead",
-count:2
-},
-
-{
-id:"special",
-title:"سایر کالاهای تخصصی",
-en:"Specialized Products",
-icon:"icon-special",
-folder:"special",
-count:2
-}
-
-];
-
-</script>
-
-  
-
-  
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const faders = document.querySelectorAll('.fade');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  faders.forEach(el => observer.observe(el));
-
-  
-});
-</script>
 
 </body>
 </html>
