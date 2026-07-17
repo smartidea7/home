@@ -1304,7 +1304,8 @@ function showImage(index){
 
     const item=activeGallery[currentIndex];
 
-
+   lightbox.classList.add("loading");
+   lightboxImage.style.opacity="0";
     lightboxImage.src=item.href;
 
 
@@ -1459,6 +1460,21 @@ if(e.key==="ArrowLeft")
 
 
 /* ---------- Swipe ---------- */
+   lightboxImage.addEventListener("load",()=>{
+
+    lightbox.classList.remove("loading");
+
+    lightboxImage.style.opacity="1";
+
+});
+
+lightboxImage.addEventListener("error",()=>{
+
+    lightbox.classList.remove("loading");
+
+    lightboxImage.src="images/no-image.png";
+
+});
 
 let touchStartX=0;
 
