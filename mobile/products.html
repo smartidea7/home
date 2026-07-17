@@ -1096,8 +1096,10 @@ const btnPrev = document.querySelector(".lightbox-prev");
 const btnNext = document.querySelector(".lightbox-next");
 const btnClose = document.querySelector(".lightbox-close");
 
-let galleryItems = [];
+let galleries = {};
+let activeGallery = [];
 let currentIndex = 0;
+let currentFolder = "";
 
 
 /* ---------- Refresh Gallery ---------- */
