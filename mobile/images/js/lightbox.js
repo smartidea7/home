@@ -54,7 +54,13 @@ document.querySelectorAll(".gallery-link").forEach(item=>{
 
 
 /* ---------- Show Image ---------- */
+function preloadImage(src){
 
+    const img = new Image();
+
+    img.src = src;
+
+}
 function showImage(index){
 
     if(!activeGallery || activeGallery.length===0)
@@ -98,6 +104,20 @@ lightboxCaption.textContent = captionText;
 
     lightboxCounter.textContent =
         (currentIndex+1)+" / "+activeGallery.length;
+const nextItem =
+activeGallery[(currentIndex+1)%activeGallery.length];
+
+const prevItem =
+activeGallery[
+(currentIndex-1+activeGallery.length)
+%activeGallery.length
+];
+
+preloadImage(nextItem.href);
+
+preloadImage(prevItem.href);
+    
+    
    preloadAdjacentImages();
 
    function preloadAdjacentImages(){
