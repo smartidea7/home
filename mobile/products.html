@@ -239,6 +239,69 @@ header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(-
 .footer .brand { font-size:0.8rem; font-weight:500; color:#666; margin-bottom:4px; }
 .footer .desc { font-size:0.7rem; line-height:1.6; color:#999; max-width:280px; margin:0 auto 6px; }
 .footer .copy { font-size:0.65rem; color:#aaa; }
+/* ===== Compact Header ===== */
+
+.compact-header{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:8px 0 14px;
+
+margin-bottom:14px;
+
+}
+
+.compact-header .logo{
+
+width:58px;
+
+height:auto;
+
+margin:0;
+
+flex-shrink:0;
+
+}
+
+.header-text{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+}
+
+.header-text h1{
+
+font-size:1rem;
+
+font-weight:600;
+
+margin:0;
+
+line-height:1.2;
+
+}
+
+.header-text span{
+
+font-size:.65rem;
+
+color:#888;
+
+letter-spacing:.8px;
+
+direction:ltr;
+
+line-height:1.2;
+
+}
 </style>
 </head>
 <body>
@@ -246,25 +309,11 @@ header p { max-width: 320px; margin: 8px auto 0; font-size:0.85rem; color: var(-
 
 <header class="compact-header">
 
-    <img
-        src="images/logo.png"
-        alt="Smart Idea"
-        class="compact-logo">
+    <img src="images/logo.png" alt="Smart Idea Logo" class="logo">
 
-    <div class="compact-info">
-
-        <h1>
-            محصولات
-        </h1>
-
-        <span>
-            Smart Idea | Products
-        </span>
-
-        <p>
-            تأمین و توزیع تجهیزات تخصصی پزشکی، بیمارستانی و مهندسی
-        </p>
-
+    <div class="header-text">
+        <h1>محصولات تخصصی</h1>
+        <span>Specialized Products</span>
     </div>
 
 </header>
