@@ -266,29 +266,57 @@ letter-spacing:.4px;
 }
 
 .section-title{
+
     display:flex;
+
     align-items:center;
-    gap:10px;
-    margin-bottom:12px;
+
+    justify-content:space-between;
+
+    margin-bottom:14px;
+
+    padding:0 2px 8px;
+
+    border-bottom:1px solid #ececec;
+
 }
 
 .section-title svg{
-    width:22px;
-    height:22px;
+
+    width:24px;
+
+    height:24px;
+
     stroke:var(--accent);
+
     flex:none;
+
 }
 
 .section-title h2{
-    font-size:1rem;
+
+    font-size:1.05rem;
+
     font-weight:600;
+
+    line-height:1.2;
+
+    margin:0;
+
 }
 
 .section-title span{
+
     display:block;
-    font-size:.68rem;
-    color:#888;
-    direction:ltr;
+
+    margin-top:2px;
+
+    font-size:.70rem;
+
+    color:#999;
+
+    letter-spacing:.4px;
+
 }
 
 .product-grid{
@@ -376,7 +404,27 @@ pointer-events:none;
 
 }
 
+.section-info{
 
+    flex:1;
+
+}
+
+.section-line{
+
+    width:4px;
+
+    height:34px;
+
+    background:var(--accent);
+
+    border-radius:3px;
+
+    margin-left:10px;
+
+    flex:none;
+
+}
 
 </style>
 </head>
@@ -597,13 +645,9 @@ id="${cat.id}">
 
 <div class="section-title">
 
-<svg class="icon">
+<div class="section-line"></div>
 
-<use href="images/icons.svg#${cat.icon}"></use>
-
-</svg>
-
-<div>
+<div class="section-info">
 
 <h2>${cat.title}</h2>
 
@@ -611,7 +655,14 @@ id="${cat.id}">
 
 </div>
 
+<svg class="icon">
+
+<use href="images/icons.svg#${cat.icon}"></use>
+
+</svg>
+
 </div>
+
 
 <div class="product-grid">
 
