@@ -29,6 +29,35 @@ let isDragging = false;
 let startX = 0;
 let startY = 0;
 
+/* ---------- Loading Helpers ---------- */
+
+function startLoading() {
+
+    lightbox.classList.add("loading");
+    lightboxLoader.style.display = "block";
+    lightboxImage.style.opacity = "0";
+
+}
+
+function finishLoading() {
+
+    lightbox.classList.remove("loading");
+    lightboxLoader.style.display = "none";
+    lightboxImage.style.opacity = "1";
+
+}
+
+function imageError() {
+
+    finishLoading();
+
+    lightboxImage.src = "images/no-image.png";
+
+    lightboxCaption.textContent =
+        "تصویر در دسترس نیست";
+
+}
+
 
 
 
@@ -96,38 +125,12 @@ function showImage(index){
 
 }
 
-   lightbox.classList.add("loading");
-   lightboxImage.style.opacity="0";
-   lightbox.classList.add("loading");
+  startLoading();
 
-lightboxLoader.style.display = "block";
-
-lightboxImage.style.opacity = "0";
-
-lightboxImage.onload = function(){
-
-    lightbox.classList.remove("loading");
-
-    lightboxLoader.style.display = "none";
-
-    lightboxImage.style.opacity = "1";
-
-};
-
-lightboxImage.onerror = function(){
-
-    lightbox.classList.remove("loading");
-
-    lightboxLoader.style.display = "none";
-
-    lightboxImage.style.opacity = "1";
-
-    lightboxImage.src = "images/no-image.png";
-
-    lightboxCaption.textContent =
-    "تصویر در دسترس نیست";
-
-};
+lightboxImage.onload = finishLoading;
+    
+lightboxImage.onerror = imageError;
+    
 
 lightboxImage.src = item.href;
 
@@ -305,21 +308,6 @@ if(e.key==="ArrowLeft")
 
 
 /* ---------- Swipe ---------- */
-   lightboxImage.addEventListener("load",()=>{
-
-    lightbox.classList.remove("loading");
-
-    lightboxImage.style.opacity="1";
-
-});
-
-lightboxImage.addEventListener("error",()=>{
-
-    lightbox.classList.remove("loading");
-
-    lightboxImage.src="images/no-image.png";
-
-});
 
 let touchStartX=0;
 
