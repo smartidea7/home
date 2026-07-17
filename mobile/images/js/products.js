@@ -1,3 +1,5 @@
+<script>
+
 /*==================================================
     Fade Animation
 ==================================================*/
@@ -19,58 +21,6 @@ const observer = new IntersectionObserver((entries)=>{
 });
 
 
-/*==================================================
-    Categories
-==================================================*/
-
-const productCategories=[
-
-{
-id:"consumables",
-title:"تجهیزات پزشکی مصرفی",
-en:"Medical Consumables",
-icon:"icon-consumables",
-folder:"consumables",
-count:3
-},
-
-{
-id:"hospital",
-title:"ترالی و تجهیزات هتلینگ بیمارستانی",
-en:"Hospital Equipment",
-icon:"icon-hospital",
-folder:"hospital",
-count:2
-},
-
-{
-id:"gas",
-title:"کنسول و تجهیزات گازهای طبی",
-en:"Medical Gas Systems",
-icon:"icon-gas",
-folder:"gas",
-count:2
-},
-
-{
-id:"lead",
-title:"سرب و تجهیزات حفاظتی",
-en:"Lead Shielding Materials",
-icon:"icon-lead",
-folder:"lead",
-count:2
-},
-
-{
-id:"special",
-title:"سایر کالاهای تخصصی",
-en:"Specialized Products",
-icon:"icon-special",
-folder:"special",
-count:0
-}
-
-];
 
 
 /*==================================================
@@ -205,3 +155,4 @@ item.style.flex="1";
 
 });
 
+</script>
