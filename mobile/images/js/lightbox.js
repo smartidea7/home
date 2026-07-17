@@ -347,17 +347,6 @@ function clampPan() {
 
     }
 
-function updateTransform() {
-
-    clampPan();
-
-    lightboxImage.style.transform =
-        `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-
-}
-
-
-
     const rect = lightboxImage.getBoundingClientRect();
 
     const maxX = (rect.width * (scale - 1)) / 2;
@@ -365,6 +354,15 @@ function updateTransform() {
 
     translateX = Math.max(-maxX, Math.min(maxX, translateX));
     translateY = Math.max(-maxY, Math.min(maxY, translateY));
+
+}
+
+function updateTransform() {
+
+    clampPan();
+
+    lightboxImage.style.transform =
+        `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 
 }
 
