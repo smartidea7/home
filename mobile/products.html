@@ -382,172 +382,289 @@ transform:none;
 
 
 
-/* LIGHTBOX */
-
+/* ===========================
+   LIGHTBOX v2
+=========================== */
 
 .lightbox{
 
 position:fixed;
-
 inset:0;
 
-background:rgba(0,0,0,.82);
-
-display:none;
-
+display:flex;
 justify-content:center;
-
 align-items:center;
 
-z-index:2000;
+background:rgba(0,0,0,.88);
 
-padding:20px;
+opacity:0;
+visibility:hidden;
+
+transition:.25s;
+
+z-index:3000;
+
+overflow:hidden;
 
 }
-
-
 
 .lightbox.active{
 
-display:flex;
+opacity:1;
+visibility:visible;
 
 }
 
+/* ---------- Stage ---------- */
 
+.lightbox-stage{
 
-.lightbox img{
+position:relative;
 
-max-width:95%;
+display:flex;
+justify-content:center;
+align-items:center;
 
-max-height:80%;
+max-width:92vw;
+max-height:82vh;
+
+overflow:hidden;
+
+}
+
+/* ---------- Image ---------- */
+
+#lightboxImage{
+
+display:block;
+
+max-width:92vw;
+max-height:82vh;
 
 object-fit:contain;
 
-border-radius:8px;
+border-radius:10px;
+
+transition:
+transform .25s,
+opacity .25s;
+
+position:relative;
+
+z-index:2;
 
 }
 
+/* ---------- Watermark ---------- */
 
+.lightbox-watermark{
 
-/* buttons */
+position:absolute;
 
+inset:0;
 
-.lightbox-close,
+pointer-events:none;
+
+background-image:
+url("images/watermark/watermark.png");
+
+background-size:220px;
+
+background-repeat:repeat;
+
+background-position:center;
+
+opacity:.08;
+
+z-index:3;
+
+}
+
+/* ---------- Loader ---------- */
+
+.lightbox-loader{
+
+position:absolute;
+
+width:38px;
+height:38px;
+
+border:3px solid rgba(255,255,255,.15);
+
+border-top-color:white;
+
+border-radius:50%;
+
+animation:spin .8s linear infinite;
+
+display:none;
+
+z-index:4;
+
+}
+
+.lightbox.loading
+.lightbox-loader{
+
+display:block;
+
+}
+
+@keyframes spin{
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ---------- Close ---------- */
+
+.lightbox-close{
+
+position:absolute;
+
+top:22px;
+right:22px;
+
+background:none;
+
+border:none;
+
+color:white;
+
+font-size:34px;
+
+cursor:pointer;
+
+z-index:20;
+
+opacity:.75;
+
+transition:.2s;
+
+}
+
+.lightbox-close:hover{
+
+opacity:1;
+
+}
+
+/* ---------- Prev / Next ---------- */
+
 .lightbox-prev,
 .lightbox-next{
 
 position:absolute;
 
+top:50%;
+
+transform:translateY(-50%);
+
+background:none;
+
 border:none;
 
-background:white;
-
-width:40px;
-
-height:40px;
-
-border-radius:50%;
-
-font-size:24px;
+color:white;
 
 cursor:pointer;
 
-}
-.lightbox-prev,
-.lightbox-next{
+font-size:42px;
 
 display:flex;
+
 flex-direction:column;
+
 align-items:center;
-justify-content:center;
-gap:0;
+
+gap:6px;
+
+opacity:.7;
+
+transition:.2s;
+
+z-index:20;
 
 }
-
-
-.lightbox-prev small,
-.lightbox-next small{
-
-font-size:9px;
-font-family:'Vazirmatn',sans-serif;
-line-height:1;
-
-}
-
-
-.lightbox-prev .arrow,
-.lightbox-next .arrow{
-
-font-size:20px;
-line-height:1;
-
-}
-
-
-.lightbox-close{
-
-top:20px;
-
-right:20px;
-
-}
-
-
 
 .lightbox-prev{
 
-right:20px;
-
-top:50%;
+right:18px;
 
 }
-
-
 
 .lightbox-next{
 
-left:20px;
-
-top:50%;
+left:18px;
 
 }
-    
 
+.lightbox-prev:hover,
+.lightbox-next:hover{
 
+opacity:1;
 
+}
+
+.lightbox-prev span,
+.lightbox-next span{
+
+font-size:.65rem;
+
+font-family:Vazirmatn;
+
+}
+
+/* ---------- Counter ---------- */
 
 .lightbox-counter{
 
 position:absolute;
 
-top:25px;
+top:24px;
 
 left:50%;
 
 transform:translateX(-50%);
 
+font-size:.8rem;
+
 color:white;
 
-font-size:.8rem;
+opacity:.8;
+
+z-index:20;
 
 }
 
-
+/* ---------- Caption ---------- */
 
 .lightbox-caption{
 
 position:absolute;
 
-bottom:30px;
+bottom:22px;
 
-color:white;
+left:50%;
 
-font-size:.85rem;
+transform:translateX(-50%);
+
+width:90%;
 
 text-align:center;
 
-}
+color:white;
 
+font-size:.9rem;
+
+line-height:1.8;
+
+z-index:20;
+
+}
 
 
 /* BOTTOM NAV */
