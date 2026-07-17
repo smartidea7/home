@@ -356,6 +356,24 @@ pointer-events:none;
 
 }
 
+.lightbox-watermark{
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+background:
+url("images/watermark/watermark.png")
+center center / 45% no-repeat;
+
+opacity:.10;
+
+z-index:2;
+
+}
+    
 
 
 /* ANIMATION */
@@ -387,7 +405,7 @@ transform:none;
 
 .lightbox{
 
-position:fixed;
+
 
 inset:0;
 
@@ -401,7 +419,8 @@ align-items:center;
 
 padding:20px;
 
-z-index:2000;
+position:relative;
+z-index:1;
 
 opacity:0;
 
@@ -462,6 +481,7 @@ border-radius:50%;
 font-size:24px;
 
 cursor:pointer;
+z-index:3;
 
 }
 .lightbox-prev,
@@ -784,6 +804,7 @@ id="productsContainer">
 id="lightboxImage"
 src=""
 alt="">
+<div class="lightbox-watermark"></div>
 
 
 <button class="lightbox-next">
