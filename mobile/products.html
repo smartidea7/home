@@ -418,7 +418,12 @@ overflow:hidden;
 #lightboxImage{
 
 display:block;
-
+   
+opacity:1;
+transition:
+opacity .25s,
+transform .25s;
+   
 max-width:92vw;
 max-height:82vh;
 
@@ -426,9 +431,7 @@ object-fit:contain;
 
 border-radius:10px;
 
-transition:
-transform .25s,
-opacity .25s;
+
 
 position:relative;
 
