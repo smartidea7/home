@@ -1142,25 +1142,36 @@ document.querySelectorAll(".gallery-link").forEach(item=>{
 
 function showImage(index){
 
-    if(index<0)
-        index=galleryItems.length-1;
+    if(!activeGallery || activeGallery.length===0)
+        return;
 
-    if(index>=galleryItems.length)
+
+    if(index<0)
+        index=activeGallery.length-1;
+
+
+    if(index>=activeGallery.length)
         index=0;
+
 
     currentIndex=index;
 
-    const item=galleryItems[currentIndex];
+
+    const item=activeGallery[currentIndex];
+
 
     lightboxImage.src=item.href;
+
 
     lightboxCaption.textContent =
         item.dataset.caption || item.querySelector("img").alt;
 
+
     lightboxCounter.textContent =
-        (currentIndex+1)+" / "+galleryItems.length;
+        (currentIndex+1)+" / "+activeGallery.length;
 
 }
+
 
 
 /* ---------- Open ---------- */
