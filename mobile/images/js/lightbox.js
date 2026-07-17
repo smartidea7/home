@@ -83,7 +83,35 @@ function showImage(index){
 
    lightbox.classList.add("loading");
    lightboxImage.style.opacity="0";
-    lightboxImage.src=item.href;
+   lightbox.classList.add("loading");
+
+lightboxLoader.style.display = "block";
+
+lightboxImage.style.opacity = "0";
+
+lightboxImage.onload = function(){
+
+    lightbox.classList.remove("loading");
+
+    lightboxLoader.style.display = "none";
+
+    lightboxImage.style.opacity = "1";
+
+};
+
+lightboxImage.onerror = function(){
+
+    lightbox.classList.remove("loading");
+
+    lightboxLoader.style.display = "none";
+
+    lightboxImage.style.opacity = "1";
+
+};
+
+lightboxImage.src = item.href;
+
+
 
 
   const imageName = item.href.split("/").pop();
