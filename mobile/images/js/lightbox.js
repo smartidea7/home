@@ -80,6 +80,11 @@ function showImage(index){
 
 
     const item=activeGallery[currentIndex];
+    if(lightboxImage.src.endsWith(item.href.split("/").pop())){
+
+    return;
+
+}
 
    lightbox.classList.add("loading");
    lightboxImage.style.opacity="0";
@@ -106,6 +111,11 @@ lightboxImage.onerror = function(){
     lightboxLoader.style.display = "none";
 
     lightboxImage.style.opacity = "1";
+
+    lightboxImage.src = "images/no-image.png";
+
+    lightboxCaption.textContent =
+    "تصویر در دسترس نیست";
 
 };
 
