@@ -28,7 +28,7 @@ desc:"کنسول و تجهیزات گازهای پزشکی.",
 folder:"../mobile/images/originals/gas/",
 link:"products.html#gas",
 icon:"icon-gas",
-count:14
+count:9
 },
 
 {
