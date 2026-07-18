@@ -131,52 +131,38 @@ observer.observe(el)
 );
 
 
+/*==================================================
+    Scroll Spy
+==================================================*/
 
+const sections = document.querySelectorAll(".product-section");
+const navItems = document.querySelectorAll(".cat-item");
 
-/* Scroll Spy */
+function updateActiveMenu() {
 
+    const scrollPos = window.scrollY + 140;
 
-const sections =
-document.querySelectorAll(".product-section");
+    let currentId = sections[0]?.id;
 
+    sections.forEach(section => {
 
-const navItems =
-document.querySelectorAll(".cat-item");
+        if (scrollPos >= section.offsetTop) {
+            currentId = section.id;
+        }
 
+    });
 
+    navItems.forEach(item => {
 
-const sectionObserver =
-new IntersectionObserver((entries)=>{
+        item.classList.toggle(
+            "active",
+            item.dataset.target === currentId
+        );
 
+    });
 
-entries.forEach(entry=>{
+}
 
+window.addEventListener("scroll", updateActiveMenu);
 
-if(!entry.isIntersecting)
-return;
-
-
-navItems.forEach(item=>
-item.classList.remove("active")
-);
-
-
-document
-.querySelector(
-`.cat-item[data-target="${entry.target.id}"]`
-)
-?.classList.add("active");
-
-
-});
-
-
-},{
-rootMargin:"-90px 0px -50% 0px"
-});
-
-
-
-sections.forEach(section=>
-sectionObserver.observe(section)
-);
+updateActiveMenu();
