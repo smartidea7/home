@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Idea</title>
+<title>Smart Idea | Desktop</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="desktop.css">
 
@@ -16,37 +16,30 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<header class="top-header">
 
-<header class="header">
-
-<div class="container header-inner">
-
-<div class="brand">
+<div class="header-left">
 
 <img src="images/logo.png" class="logo">
 
-<div>
+<div class="brand">
 
 <h1>Smart Idea</h1>
 
 <p>
-Trading • Design • Engineering
+گروه بازرگانی، طراحی و مهندسی
 </p>
 
 </div>
 
 </div>
 
-
 <nav class="top-nav">
 
-<div class="container">
-
-<a href="#top">
+<a href="#home">
 
 <svg class="icon">
-<use href="images/icons.svg#icon-home"></use>
+<use href="icons.svg#icon-home"></use>
 </svg>
 
 خانه
@@ -56,7 +49,7 @@ Trading • Design • Engineering
 <a href="#products">
 
 <svg class="icon">
-<use href="images/icons.svg#icon-products"></use>
+<use href="icons.svg#icon-products"></use>
 </svg>
 
 محصولات
@@ -66,104 +59,371 @@ Trading • Design • Engineering
 <a href="#projects">
 
 <svg class="icon">
-<use href="images/icons.svg#icon-projects"></use>
+<use href="icons.svg#icon-projects"></use>
 </svg>
 
 پروژه‌ها
-
-</a>
-
-<a href="#contact">
-
-<svg class="icon">
-<use href="images/icons.svg#icon-phone"></use>
-</svg>
-
-تماس
 
 </a>
 
 <a href="#about">
 
 <svg class="icon">
-<use href="images/icons.svg#icon-user"></use>
+<use href="icons.svg#icon-user"></use>
 </svg>
 
 درباره ما
 
 </a>
 
-</div>
+<a href="#contact">
+
+<svg class="icon">
+<use href="icons.svg#icon-phone"></use>
+</svg>
+
+تماس
+
+</a>
 
 </nav>
-
-</div>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
 
-<section id="home" class="hero">
+<main id="home">
 
-<div class="container hero-grid">
+<section class="hero-grid">
 
-<a href="products.html" class="hero-card">
+<a href="#products" class="hero-card">
 
 <img src="images/products.jpg">
 
 </a>
 
-<a href="projects.html" class="hero-card">
+<a href="#projects" class="hero-card">
 
 <img src="images/projects.jpg">
 
 </a>
 
-</div>
-
 </section>
 
 
-<!-- ================= PRODUCTS ================= -->
+
+
 
 <section id="products" class="section">
 
-<div class="container">
+<div class="section-header">
 
-<h2 class="section-title">
+<h2>محصولات</h2>
 
-محصولات
+<span>Products</span>
 
-</h2>
+</div>
+<div class="category">
 
-<div class="products-grid">
+<div class="category-title">
 
-<!-- بعداً کارت‌ها -->
+<h3>تجهیزات پزشکی مصرفی</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/con/1.jpg">
+<img src="images/con/2.jpg">
+<img src="images/con/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/con/4.jpg">
+<img src="images/con/5.jpg">
+<img src="images/con/6.jpg">
+
+</div>
+
+</div>
+<div class="category">
+
+<div class="category-title">
+
+<h3>تجهیزات بیمارستانی</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/hos/1.jpg">
+<img src="images/hos/2.jpg">
+<img src="images/hos/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/hos/4.jpg">
+<img src="images/hos/5.jpg">
+<img src="images/hos/6.jpg">
+
+</div>
+
+</div>
+<div class="category">
+
+<div class="category-title">
+
+<h3>گازهای طبی</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/gas/1.jpg">
+<img src="images/gas/2.jpg">
+<img src="images/gas/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/gas/4.jpg">
+<img src="images/gas/5.jpg">
+<img src="images/gas/6.jpg">
+
+</div>
+
+</div>
+<div class="category">
+
+<div class="category-title">
+
+<h3>محافظت پرتویی</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/lead/1.jpg">
+<img src="images/lead/2.jpg">
+<img src="images/lead/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/lead/4.jpg">
+<img src="images/lead/5.jpg">
+<img src="images/lead/6.jpg">
+
+</div>
+
+</div>
+<div class="category">
+
+<div class="category-title">
+
+<h3>سایر تجهیزات</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/spe/1.jpg">
+<img src="images/spe/2.jpg">
+<img src="images/spe/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/spe/4.jpg">
+<img src="images/spe/5.jpg">
+<img src="images/spe/6.jpg">
 
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- ================= PROJECTS ================= -->
 
 <section id="projects" class="section">
 
-<div class="container">
+<div class="section-header">
 
-<h2 class="section-title">
+<h2>پروژه‌ها</h2>
 
-پروژه‌ها
+<span>Projects</span>
 
-</h2>
+</div>
 
-<div class="projects-grid">
 
-<!-- بعداً -->
+<!-- Interior -->
+
+<div class="category">
+
+<div class="category-title">
+
+<h3>دکوراسیون داخلی</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/interior/1.jpg">
+<img src="images/interior/2.jpg">
+<img src="images/interior/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/interior/4.jpg">
+<img src="images/interior/5.jpg">
+<img src="images/interior/6.jpg">
+
+</div>
+
+</div>
+
+
+<!-- Office -->
+
+<div class="category">
+
+<div class="category-title">
+
+<h3>فضاهای اداری</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/office/1.jpg">
+<img src="images/office/2.jpg">
+<img src="images/office/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/office/4.jpg">
+<img src="images/office/5.jpg">
+<img src="images/office/6.jpg">
+
+</div>
+
+</div>
+
+
+<!-- Kitchen -->
+
+<div class="category">
+
+<div class="category-title">
+
+<h3>آشپزخانه</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/kitchen/1.jpg">
+<img src="images/kitchen/2.jpg">
+<img src="images/kitchen/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/kitchen/4.jpg">
+<img src="images/kitchen/5.jpg">
+<img src="images/kitchen/6.jpg">
+
+</div>
+
+</div>
+
+
+<!-- Exhibition -->
+
+<div class="category">
+
+<div class="category-title">
+
+<h3>غرفه نمایشگاهی</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/exhibition/1.jpg">
+<img src="images/exhibition/2.jpg">
+<img src="images/exhibition/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/exhibition/4.jpg">
+<img src="images/exhibition/5.jpg">
+<img src="images/exhibition/6.jpg">
+
+</div>
+
+</div>
+
+
+<!-- Camper -->
+
+<div class="category">
+
+<div class="category-title">
+
+<h3>کلینیک سیار</h3>
+
+<button class="toggle">+</button>
+
+</div>
+
+<div class="gallery">
+
+<img src="images/camper/1.jpg">
+<img src="images/camper/2.jpg">
+<img src="images/camper/3.jpg">
+
+</div>
+
+<div class="gallery more">
+
+<img src="images/camper/4.jpg">
+<img src="images/camper/5.jpg">
+<img src="images/camper/6.jpg">
 
 </div>
 
@@ -175,15 +435,41 @@ Trading • Design • Engineering
 
 <!-- ================= ABOUT ================= -->
 
-<section id="about" class="section">
+<section id="about" class="about-section">
 
-<div class="container">
+<div class="section-header">
 
-<h2 class="section-title">
+<h2>درباره ما</h2>
 
-درباره ما
+<span>About Smart Idea</span>
 
-</h2>
+</div>
+
+<div class="about-box">
+
+<img src="images/about.jpg" class="about-image">
+
+<div class="about-text">
+
+<p>
+
+Smart Idea مجموعه‌ای تخصصی در حوزه طراحی، اجرای پروژه‌های مهندسی و تأمین تجهیزات تخصصی است.
+
+</p>
+
+<p>
+
+تمرکز ما بر کیفیت، طراحی مینیمال، اجرای حرفه‌ای و ارائه راهکارهای مهندسی متناسب با نیاز هر پروژه است.
+
+</p>
+
+<a href="about.html" class="more-btn">
+
+مشاهده صفحه درباره ما
+
+</a>
+
+</div>
 
 </div>
 
@@ -193,15 +479,29 @@ Trading • Design • Engineering
 
 <!-- ================= CONTACT ================= -->
 
-<section id="contact" class="section">
+<section id="contact" class="contact-section">
 
-<div class="container">
+<div class="section-header">
 
-<h2 class="section-title">
+<h2>تماس با ما</h2>
 
-تماس با ما
+<span>Contact</span>
 
-</h2>
+</div>
+
+<div class="contact-box">
+
+<p>
+
+برای دریافت اطلاعات بیشتر یا ثبت درخواست پروژه، از صفحه تماس استفاده کنید.
+
+</p>
+
+<a href="contact.html" class="contact-btn">
+
+ورود به صفحه تماس
+
+</a>
 
 </div>
 
@@ -209,11 +509,53 @@ Trading • Design • Engineering
 
 
 
-<footer>
+<footer class="footer">
+
+<p>
 
 © 2026 Smart Idea
 
+</p>
+
 </footer>
+
+
+
+<!-- ================= LIGHTBOX ================= -->
+
+<div class="lightbox">
+
+<button class="lightbox-close">
+
+×
+
+</button>
+
+<button class="lightbox-prev">
+
+❮
+
+</button>
+
+<button class="lightbox-next">
+
+❯
+
+</button>
+
+<div class="lightbox-stage">
+
+<img id="lightboxImage">
+
+<div class="lightbox-watermark"></div>
+
+</div>
+
+<div class="lightbox-caption"></div>
+
+</div>
+
+
 
 <script src="desktop.js"></script>
 
