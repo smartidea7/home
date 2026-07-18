@@ -19,7 +19,7 @@ desc:"ترالی‌ها و تجهیزات هتلینگ بیمارستانی.",
 folder:"../mobile/images/originals/hospital/",
 link:"products.html#hospital",
 icon:"icon-hospital",
-count:18
+count:20
 },
 
 {
