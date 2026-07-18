@@ -54,4 +54,12 @@ folder:"camper",
 count:6
 }
 
+{
+id:"other",
+title:"طراحی و ساخت پروژه ها و محصولات تخصصی",
+en:"Design and manufacture of specialized projects and products",
+icon:"icon-other",
+folder:"other",
+count:6
+}
 ];
