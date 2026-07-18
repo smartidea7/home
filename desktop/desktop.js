@@ -503,6 +503,15 @@ startX=e.touches[0].clientX;
 
 });
 
+if(lightbox){
+
+lightbox.addEventListener("touchstart",e=>{
+
+startX=e.touches[0].clientX;
+
+});
+
+
 lightbox.addEventListener("touchend",e=>{
 
 let endX=e.changedTouches[0].clientX;
@@ -510,6 +519,7 @@ let endX=e.changedTouches[0].clientX;
 let diff=startX-endX;
 
 if(Math.abs(diff)<40) return;
+
 
 if(diff>0)
 
@@ -520,6 +530,8 @@ else
 prevImage();
 
 });
+
+}
 
 /*=====================================================
 CONTACT FORM (Google Sheet)
