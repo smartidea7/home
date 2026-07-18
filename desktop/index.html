@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="fa" dir="rtl">
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Smart Idea</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="desktop.css">
 
@@ -22,43 +16,104 @@
 
 <body>
 
-<header class="top-header">
+<!-- ================= HEADER ================= -->
 
-<div class="header-inner">
+<header class="header">
+
+<div class="container header-inner">
 
 <div class="brand">
 
-<img src="images/logo.png" class="desktop-logo">
+<img src="images/logo.png" class="logo">
 
-<div class="brand-text">
+<div>
 
-<h1>
-
-گروه بازرگانی، طراحی و مهندسی ایده هوشمند
-
-</h1>
+<h1>Smart Idea</h1>
 
 <p>
-
-Smart Idea | Trading • Design • Engineering
-
+Trading • Design • Engineering
 </p>
 
 </div>
 
 </div>
 
-<nav class="desktop-nav">
 
-<a href="#home">خانه</a>
+<nav class="top-nav">
 
-<a href="#products">محصولات</a>
+<a href="#home" class="active">
 
-<a href="#projects">پروژه‌ها</a>
+<div class="nav-icon">
 
-<a href="#about">درباره ما</a>
+<svg class="icon">
+<use href="images/icons.svg#icon-home"></use>
+</svg>
 
-<a href="#contact">تماس</a>
+</div>
+
+<span>خانه</span>
+
+</a>
+
+
+<a href="#products">
+
+<div class="nav-icon">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-products"></use>
+</svg>
+
+</div>
+
+<span>محصولات</span>
+
+</a>
+
+
+<a href="#projects">
+
+<div class="nav-icon">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-projects"></use>
+</svg>
+
+</div>
+
+<span>پروژه‌ها</span>
+
+</a>
+
+
+<a href="#about">
+
+<div class="nav-icon">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-user"></use>
+</svg>
+
+</div>
+
+<span>درباره ما</span>
+
+</a>
+
+
+<a href="#contact">
+
+<div class="nav-icon">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-phone"></use>
+</svg>
+
+</div>
+
+<span>تماس</span>
+
+</a>
 
 </nav>
 
@@ -67,14 +122,11 @@ Smart Idea | Trading • Design • Engineering
 </header>
 
 
-
-
-
-<main>
+<!-- ================= HERO ================= -->
 
 <section id="home" class="hero">
 
-<div class="hero-grid">
+<div class="container hero-grid">
 
 <a href="products.html" class="hero-card">
 
@@ -93,40 +145,95 @@ Smart Idea | Trading • Design • Engineering
 </section>
 
 
+<!-- ================= PRODUCTS ================= -->
 
+<section id="products" class="section">
 
+<div class="container">
 
+<h2 class="section-title">
 
+محصولات
 
-<section id="products">
+</h2>
 
-</section>
+<div class="products-grid">
 
+<!-- بعداً کارت‌ها -->
 
+</div>
 
-
-
-<section id="projects">
-
-</section>
-
-
-
-
-
-<section id="about">
+</div>
 
 </section>
 
 
 
+<!-- ================= PROJECTS ================= -->
 
+<section id="projects" class="section">
 
-<section id="contact">
+<div class="container">
+
+<h2 class="section-title">
+
+پروژه‌ها
+
+</h2>
+
+<div class="projects-grid">
+
+<!-- بعداً -->
+
+</div>
+
+</div>
 
 </section>
 
-</main>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+درباره ما
+
+</h2>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+تماس با ما
+
+</h2>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+© 2026 Smart Idea
+
+</footer>
 
 <script src="desktop.js"></script>
 
