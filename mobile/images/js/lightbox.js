@@ -116,11 +116,7 @@ function showImage(index){
 
 
     currentIndex=index;
-    scale = 1;
-translateX = 0;
-translateY = 0;
-updateTransform();
-
+    setZoom(1);
 
     const item=activeGallery[currentIndex];
     if(lightboxImage.src.endsWith(item.href.split("/").pop())){
@@ -263,13 +259,7 @@ lightbox.addEventListener("click",function(e){
     if(e.target===lightbox){
 
         closeLightbox();
-        scale=1;
-
-translateX=0;
-translateY=0;
-
-updateTransform();
-
+       setZoom(1);
     }
 
 });
@@ -479,6 +469,20 @@ lightbox.addEventListener("wheel", (e) => {
 }, { passive: false });
 
 lightboxImage.draggable = false;
+
+document.addEventListener("dragstart", e => {
+    e.preventDefault();
+});
+
+lightbox.addEventListener("contextmenu", e => {
+    e.preventDefault();
+});
+
+lightbox.addEventListener("contextmenu", e => {
+    e.preventDefault();
+});
+
+
 
 
 
