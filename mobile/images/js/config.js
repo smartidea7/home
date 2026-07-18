@@ -11,7 +11,7 @@ title:"تجهیزات پزشکی مصرفی",
 en:"Medical Consumables",
 icon:"icon-consumables",
 folder:"consumables",
-count:3
+count:46
 },
 
 {
