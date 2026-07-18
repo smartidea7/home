@@ -152,26 +152,11 @@ count:9
 ];
 
 
-buildGallery(
-PRODUCTS,
-"products-container"
-);
+function buildGallery(data,target){
 
-buildGallery(
-PROJECTS,
-"projects-container"
-);
+const container=document.getElementById(target);
 
-
-/*==================================================
-BUILD GALLERY
-==================================================*/
-
-function buildGallery(data, containerId){
-
-const container=document.getElementById(containerId);
-
-data.forEach((cat,index)=>{
+data.forEach((item,index)=>{
 
 let html=`
 
@@ -185,7 +170,7 @@ let html=`
 
 <svg class="icon">
 
-<use href="../mobile/images/icons.svg#${cat.icon}"></use>
+<use href="../mobile/images/icons.svg#${item.icon}"></use>
 
 </svg>
 
@@ -193,17 +178,19 @@ let html=`
 
 <div>
 
-<h3>${cat.title}</h3>
+<h3>${item.title}</h3>
 
-<p>${cat.desc}</p>
+<p>${item.desc}</p>
 
 </div>
 
 </div>
 
 <button
+
 class="more-btn"
-data-target="gallery-${containerId}-${index}">
+
+data-gallery="${target}-${index}">
 
 نمایش بیشتر +
 
@@ -211,40 +198,47 @@ data-target="gallery-${containerId}-${index}">
 
 </div>
 
+
+
 <div
+
 class="gallery"
-id="gallery-${containerId}-${index}">
+
+id="${target}-${index}"
+
+data-group="${target}-${index}">
 
 `;
 
-for(let i=1;i<=cat.count;i++){
 
-const hidden=i>3 ? "hidden":"";
+
+for(let i=1;i<=item.count;i++){
 
 html+=`
 
 <div
-class="thumb ${hidden}"
 
-data-group="${containerId}-${index}"
+class="thumb ${i>3?'hidden':''}"
 
-data-index="${i-1}"
+data-src="${item.folder}${i}.jpg"
 
-data-src="${cat.folder}${i}.jpg">
+data-group="${target}-${index}">
 
 <img
 
 loading="lazy"
 
-src="${cat.folder}${i}.jpg"
+src="${item.folder}${i}.jpg"
 
-alt="${cat.title} ${i}">
+alt="">
 
 </div>
 
 `;
 
 }
+
+
 
 html+=`
 
@@ -254,42 +248,21 @@ html+=`
 
 `;
 
-container.insertAdjacentHTML("beforeend",html);
+container.insertAdjacentHTML(
+
+"beforeend",
+
+html
+
+);
 
 });
 
 }
 
 
-/*==================================================
-SHOW MORE
-==================================================*/
 
-document.addEventListener("click",e=>{
 
-if(!e.target.classList.contains("more-btn")) return;
-
-const gallery=document.getElementById(
-
-e.target.dataset.target
-
-);
-
-gallery
-
-.querySelectorAll(".hidden")
-
-.forEach(img=>{
-
-img.classList.remove("hidden");
-
-img.classList.add("show");
-
-});
-
-e.target.remove();
-
-});
 
 
 buildGallery(
@@ -300,6 +273,8 @@ PRODUCTS,
 
 );
 
+
+
 buildGallery(
 
 PROJECTS,
@@ -309,26 +284,64 @@ PROJECTS,
 );
 
 
-/*==================================================
+
+
+
+/*====================================================*/
+
+document.addEventListener("click",e=>{
+
+if(!e.target.classList.contains("more-btn"))
+
+return;
+
+const gallery=document.getElementById(
+
+e.target.dataset.gallery
+
+);
+
+gallery
+
+.querySelectorAll(".hidden")
+
+.forEach(el=>{
+
+el.classList.remove("hidden");
+
+});
+
+e.target.remove();
+
+});
+
+
+/*=====================================================
 LIGHTBOX
-==================================================*/
+=====================================================*/
 
 const lightbox=document.getElementById("lightbox");
 const lightboxImage=document.getElementById("lightboxImage");
 const counter=document.getElementById("counter");
 
-let currentGroup=[];
+const closeBtn=document.getElementById("closeBtn");
+const prevBtn=document.getElementById("prevBtn");
+const nextBtn=document.getElementById("nextBtn");
+
+let currentImages=[];
 let currentIndex=0;
+
+/* ---------- باز کردن ---------- */
 
 document.addEventListener("click",function(e){
 
 const thumb=e.target.closest(".thumb");
 
-if(!thumb)return;
+if(!thumb) return;
 
 const group=thumb.dataset.group;
 
-currentGroup=[
+currentImages=[
 
 ...document.querySelectorAll(
 
@@ -338,11 +351,13 @@ currentGroup=[
 
 ];
 
-currentIndex=currentGroup.indexOf(thumb);
+currentIndex=currentImages.indexOf(thumb);
 
 openLightbox();
 
 });
+
+/* ---------- */
 
 function openLightbox(){
 
@@ -352,17 +367,7 @@ showImage();
 
 }
 
-function showImage(){
-
-const item=currentGroup[currentIndex];
-
-lightboxImage.src=item.dataset.src;
-
-counter.textContent=
-
-(currentIndex+1)+" / "+currentGroup.length;
-
-}
+/* ---------- */
 
 function closeLightbox(){
 
@@ -370,11 +375,47 @@ lightbox.classList.remove("active");
 
 }
 
+/* ---------- */
+
+function showImage(){
+
+const img=currentImages[currentIndex];
+
+lightboxImage.src=img.dataset.src;
+
+counter.innerHTML=
+
+(currentIndex+1)+" / "+currentImages.length;
+
+/* preload */
+
+preload(currentIndex-1);
+
+preload(currentIndex+1);
+
+}
+
+/* ---------- */
+
+function preload(i){
+
+if(i<0) return;
+
+if(i>=currentImages.length) return;
+
+const image=new Image();
+
+image.src=currentImages[i].dataset.src;
+
+}
+
+/* ---------- */
+
 function nextImage(){
 
 currentIndex++;
 
-if(currentIndex>=currentGroup.length)
+if(currentIndex>=currentImages.length)
 
 currentIndex=0;
 
@@ -382,29 +423,29 @@ showImage();
 
 }
 
+/* ---------- */
+
 function prevImage(){
 
 currentIndex--;
 
 if(currentIndex<0)
 
-currentIndex=currentGroup.length-1;
+currentIndex=currentImages.length-1;
 
 showImage();
 
 }
 
-document
-.getElementById("nextBtn")
-.onclick=nextImage;
+/* ---------- */
 
-document
-.getElementById("prevBtn")
-.onclick=prevImage;
+nextBtn.onclick=nextImage;
 
-document
-.getElementById("closeBtn")
-.onclick=closeLightbox;
+prevBtn.onclick=prevImage;
+
+closeBtn.onclick=closeLightbox;
+
+/* ---------- */
 
 lightbox.onclick=function(e){
 
@@ -414,19 +455,112 @@ closeLightbox();
 
 };
 
+/* ---------- Keyboard ---------- */
 
 document.addEventListener("keydown",function(e){
 
-if(!lightbox.classList.contains("active")) return;
+if(!lightbox.classList.contains("active"))
 
-if(e.key==="ArrowRight") prevImage();
+return;
 
-if(e.key==="ArrowLeft") nextImage();
+switch(e.key){
 
-if(e.key==="Escape") closeLightbox();
+case"Escape":
+
+closeLightbox();
+
+break;
+
+case"ArrowRight":
+
+prevImage();
+
+break;
+
+case"ArrowLeft":
+
+nextImage();
+
+break;
+
+}
 
 });
 
+/* ---------- Touch ---------- */
+
+let startX=0;
+
+lightbox.addEventListener("touchstart",e=>{
+
+startX=e.touches[0].clientX;
+
+});
+
+lightbox.addEventListener("touchend",e=>{
+
+let endX=e.changedTouches[0].clientX;
+
+let diff=startX-endX;
+
+if(Math.abs(diff)<40) return;
+
+if(diff>0)
+
+nextImage();
+
+else
+
+prevImage();
+
+});
+
+/*=====================================================
+CONTACT FORM (Google Sheet)
+=====================================================*/
+
+const form=document.getElementById("contactForm");
+
+if(form){
+
+form.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const status=document.getElementById("status");
+
+status.innerHTML="در حال ارسال...";
+
+try{
+
+const res=await fetch(form.action,{
+
+method:"POST",
+
+body:new FormData(form)
+
+});
+
+const txt=await res.text();
+
+status.innerHTML="✅ پیام با موفقیت ارسال شد.";
+
+form.reset();
+
+}catch(err){
+
+status.innerHTML="❌ خطا در ارسال پیام";
+
+}
+
+});
+
+}
+
+
+/*=====================================================
+SCROLL ANIMATION
+=====================================================*/
 
 const observer=new IntersectionObserver(entries=>{
 
@@ -443,86 +577,123 @@ observer.unobserve(entry.target);
 });
 
 },{
-threshold:.15
+
+threshold:.12
+
 });
 
-document
-.querySelectorAll(".fade")
-.forEach(el=>observer.observe(el));
+document.querySelectorAll(".fade").forEach(el=>{
+
+observer.observe(el);
+
+});
 
 
-const form=document.getElementById("contactForm");
+/*=====================================================
+SMOOTH MENU
+=====================================================*/
 
-if(form){
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
 
-form.addEventListener("submit",async function(e){
+link.addEventListener("click",function(e){
+
+const id=this.getAttribute("href");
+
+if(id==="#" || id.length<2)return;
+
+const target=document.querySelector(id);
+
+if(!target)return;
 
 e.preventDefault();
 
-const mobile=form.mobile.value;
+window.scrollTo({
 
-const message=form.message.value;
+top:target.offsetTop-95,
 
-const status=document.getElementById("status");
+behavior:"smooth"
 
-status.innerHTML="در حال ارسال...";
+});
 
-try{
+});
 
-await fetch(
+});
 
-form.action,
 
-{
+/*=====================================================
+HEADER SHADOW
+=====================================================*/
 
-method:"POST",
+const header=document.querySelector(".top-header");
 
-body:new FormData(form)
+window.addEventListener("scroll",()=>{
 
-}
+if(window.scrollY>40)
 
-);
+header.classList.add("shadow");
 
-status.innerHTML="✅ پیام با موفقیت ارسال شد.";
+else
 
-form.reset();
+header.classList.remove("shadow");
 
-}catch(err){
+});
 
-status.innerHTML="❌ ارسال انجام نشد.";
+
+/*=====================================================
+LAZY LOAD IMAGE
+=====================================================*/
+
+const lazyImages=document.querySelectorAll("img[loading='lazy']");
+
+const lazyObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+const img=entry.target;
+
+img.src=img.dataset.src || img.src;
+
+lazyObserver.unobserve(img);
 
 }
 
 });
 
-}
+});
+
+lazyImages.forEach(img=>{
+
+lazyObserver.observe(img);
+
+});
 
 
-function preload(index){
+/*=====================================================
+PRELOAD HERO
+=====================================================*/
+
+[
+"../mobile/images/products.jpg",
+"../mobile/images/projects.jpg",
+"../mobile/images/about.jpg"
+].forEach(src=>{
 
 const img=new Image();
 
-img.src=currentGroup[index].dataset.src;
+img.src=src;
 
-}
+});
 
-function showImage(){
 
-const item=currentGroup[currentIndex];
+/*=====================================================
+INIT
+=====================================================*/
 
-lightboxImage.src=item.dataset.src;
+console.log("Smart Idea Desktop Ready");
 
-counter.innerHTML=(currentIndex+1)+" / "+currentGroup.length;
 
-if(currentIndex>0)
-
-preload(currentIndex-1);
-
-if(currentIndex<currentGroup.length-1)
-
-preload(currentIndex+1);
-
-}
 
 
 
