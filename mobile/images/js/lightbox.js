@@ -122,15 +122,15 @@ function showImage(index){
         index=0;
 
 
-    currentIndex=index;
-    setZoom(1);
+   currentIndex = index;
 
-    const item=activeGallery[currentIndex];
-    if(lightboxImage.src.endsWith(item.href.split("/").pop())){
+const item = activeGallery[currentIndex];
 
+if(lightboxImage.src.endsWith(item.href.split("/").pop())){
     return;
-
 }
+
+setZoom(1);
 
   startLoading();
 
@@ -251,9 +251,11 @@ function closeLightbox(){
 
     document.body.style.overflow = "";
 
-   closeLightbox();
+    setZoom(1);
 
 }
+
+
 
 
 btnClose.addEventListener("click",closeLightbox);
@@ -313,7 +315,7 @@ if(e.key==="ArrowLeft")
 
 /* ---------- Swipe ---------- */
 
-let touchStartX=0;
+
 
 lightbox.addEventListener("touchstart", (e) => {
 
@@ -513,10 +515,6 @@ lightbox.addEventListener("wheel", (e) => {
 lightboxImage.draggable = false;
 
 document.addEventListener("dragstart", e => {
-    e.preventDefault();
-});
-
-lightbox.addEventListener("contextmenu", e => {
     e.preventDefault();
 });
 
