@@ -434,13 +434,22 @@ showImage();
 
 /* ---------- */
 
-nextBtn.onclick=nextImage;
+if(nextBtn){
+    nextBtn.onclick=nextImage;
+}
 
-prevBtn.onclick=prevImage;
+if(prevBtn){
+    prevBtn.onclick=prevImage;
+}
 
-closeBtn.onclick=closeLightbox;
+if(closeBtn){
+    closeBtn.onclick=closeLightbox;
+}
+
 
 /* ---------- */
+
+if(lightbox){
 
 lightbox.onclick=function(e){
 
@@ -449,6 +458,8 @@ if(e.target===lightbox)
 closeLightbox();
 
 };
+
+}
 
 /* ---------- Keyboard ---------- */
 
