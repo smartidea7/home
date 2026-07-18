@@ -71,9 +71,9 @@ count:14
 
 {
 
-title:"فضاهای اداری",
+title:"دکوراسیون اداری",
 
-desc:"دفاتر و فضاهای تجاری.",
+desc:"دکور دفتر و فضاهای تجاری",
 
 folder:"../mobile/images/projects/office/",
 
@@ -81,7 +81,7 @@ link:"projects.html#office",
 
 icon:"icon-office",
 
-count:16
+count:12
 
 },
 
