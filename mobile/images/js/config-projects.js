@@ -24,7 +24,7 @@ title:"دکوراسیون آشپزخانه",
 en:"Kitchen Decoration",
 icon:"icon-kitchen",
 folder:"kitchen",
-count:4
+count:26
 },
 
 {
