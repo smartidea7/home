@@ -32,12 +32,12 @@ count:9
 },
 
 {
-title:"حفاظت پرتویی",
-desc:"سرب کوبی و تجهیزات حفاظت اشعه.",
+title:"سرب",
+desc:"شمش سرب و رول سرب خلوص 99.99.",
 folder:"../mobile/images/originals/lead/",
 link:"products.html#lead",
 icon:"icon-lead",
-count:12
+count:4
 },
 
 {
