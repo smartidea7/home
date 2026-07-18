@@ -87,9 +87,9 @@ count:12
 
 {
 
-title:"آشپزخانه",
+title:"دکوراسیون آشپزخانه",
 
-desc:"طراحی آشپزخانه مدرن.",
+desc:"طراحی و اجرای دکور آشپزخانه .",
 
 folder:"../mobile/images/projects/kitchen/",
 
