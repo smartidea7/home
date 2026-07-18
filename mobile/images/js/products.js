@@ -114,34 +114,37 @@ document
     Scroll Spy
 ==================================================*/
 
-const sections=document.querySelectorAll(".product-section");
+const sections = document.querySelectorAll(".product-section");
+const navItems = document.querySelectorAll(".cat-item");
 
-const navItems=document.querySelectorAll(".cat-item");
+function updateActiveMenu() {
 
-const sectionObserver=new IntersectionObserver((entries)=>{
+    const scrollPos = window.scrollY + 140;
 
-entries.forEach(entry=>{
+    let currentId = sections[0]?.id;
 
-if(!entry.isIntersecting)return;
+    sections.forEach(section => {
 
-navItems.forEach(item=>item.classList.remove("active"));
+        if (scrollPos >= section.offsetTop) {
+            currentId = section.id;
+        }
 
-document
-.querySelector(`.cat-item[data-target="${entry.target.id}"]`)
-?.classList.add("active");
+    });
 
-});
+    navItems.forEach(item => {
 
-},{
-rootMargin:"-90px 0px -50% 0px",
-threshold:.25
-});
+        item.classList.toggle(
+            "active",
+            item.dataset.target === currentId
+        );
 
-sections.forEach(section=>{
+    });
 
-sectionObserver.observe(section);
+}
 
-});
+window.addEventListener("scroll", updateActiveMenu);
+
+updateActiveMenu();
 
 
 /*==================================================
