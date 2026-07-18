@@ -14,7 +14,7 @@ count:46
 },
 
 {
-title:"تجهیزات هتلینگ",
+title:"تجهیزات هتلینگ بیمارستانی",
 desc:"ترالی‌ها و تجهیزات هتلینگ بیمارستانی.",
 folder:"../mobile/images/originals/hospital/",
 link:"products.html#hospital",
@@ -97,7 +97,7 @@ link:"projects.html#kitchen",
 
 icon:"icon-kitchen",
 
-count:20
+count:26
 
 },
 
