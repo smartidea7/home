@@ -61,5 +61,5 @@ en:"Design and manufacture of specialized projects and products",
 icon:"icon-other",
 folder:"other",
 count:3
-},
+}
 ];
