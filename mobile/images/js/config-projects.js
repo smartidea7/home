@@ -11,7 +11,7 @@ count:14
 
 {
 id:"office",
-title:"دکوراسیون اداری",
+title:" دکوراسیون اداری و فروشگاهی",
 en:"Office Decoration",
 icon:"icon-office",
 folder:"office",
@@ -33,7 +33,7 @@ title:"دکوراسیون نمایشگاه",
 en:"Exhibition Decoration",
 icon:"icon-exhibition",
 folder:"exhibition",
-count:3
+count:10
 },
 
 {
