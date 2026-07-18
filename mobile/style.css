@@ -712,15 +712,25 @@ align-items:center;
 
 
 
-.icon{
+.bottom-nav .icon{
 
-width:18px;
+width:22px;
+height:22px;
 
-height:18px;
+color:#666;
 
-stroke:var(--accent);
+transition:.25s;
 
-fill:none;
+}
+
+.bottom-nav a.active{
+
+color:var(--accent);
+
+}
+.bottom-nav a.active .icon{
+
+color:var(--accent);
 
 }
 
