@@ -116,6 +116,10 @@ function showImage(index){
 
 
     currentIndex=index;
+    scale = 1;
+translateX = 0;
+translateY = 0;
+updateTransform();
 
 
     const item=activeGallery[currentIndex];
@@ -242,9 +246,12 @@ function closeLightbox(){
 
     lightbox.classList.remove("active");
 
-    document.body.style.overflow="";
+    document.body.style.overflow = "";
+
+   closeLightbox();
 
 }
+
 
 btnClose.addEventListener("click",closeLightbox);
 
@@ -470,6 +477,8 @@ lightbox.addEventListener("wheel", (e) => {
     
 
 }, { passive: false });
+
+lightboxImage.draggable = false;
 
 
 
