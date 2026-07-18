@@ -214,22 +214,18 @@ data-group="${target}-${index}">
 
 for(let i=1;i<=item.count;i++){
 
+const file = String(i).padStart(3,'0');
+
 html+=`
 
 <div
-
 class="thumb ${i>3?'hidden':''}"
-
-data-src="${item.folder}${i}.jpg"
-
+data-src="${item.folder}${file}.jpg"
 data-group="${target}-${index}">
 
 <img
-
 loading="lazy"
-
-src="${item.folder}${i}.jpg"
-
+src="${item.folder}${file}.jpg"
 alt="">
 
 </div>
@@ -237,7 +233,6 @@ alt="">
 `;
 
 }
-
 
 
 html+=`
