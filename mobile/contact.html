@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>درباره ما | Smart Idea</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= HEADER ================= -->
+
+<header class="compact-header about-header">
+
+<img src="images/logo.png"
+class="about-logo"
+alt="Smart Idea">
+
+<div class="header-text">
+
+<h1>درباره ما</h1>
+
+<span>About Smart Idea</span>
+
+</div>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="about-hero">
+
+<img src="images/about.jpg"
+alt="Smart Idea">
+
+</section>
+
+
+
+<section class="about-section">
+
+<div class="section-title">
+
+<div class="section-line"></div>
+
+<div class="section-info">
+
+<h2>اطلاعات تماس</h2>
+
+<span>Contact Information</span>
+
+</div>
+
+<svg class="icon">
+<use href="images/icons.svg#icon-phone"></use>
+</svg>
+
+</div>
+
+<div class="about-card">
+
+<div class="about-card-header">
+
+<div>
+
+<h3>تماس با Smart Idea</h3>
+
+<p class="about-caption">
+
+تلفن:
+0912 XXX XXXX
+
+<br>
+
+ایمیل:
+info@smartidea.ir
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="about-section">
+
+<div class="section-title">
+
+<div class="section-line"></div>
+
+<div class="section-info">
+
+<h2>ارسال پیام</h2>
+
+<span>Send Message</span>
+
+</div>
+
+<svg class="icon">
+<use href="images/icons.svg#icon-user"></use>
+</svg>
+
+</div>
+
+<form id="contactForm" class="contact-form">
+
+<input
+type="tel"
+id="mobile"
+placeholder="شماره موبایل"
+required>
+
+<textarea
+id="message"
+rows="5"
+placeholder="پیام شما..."
+required></textarea>
+
+<button id="sendBtn" type="submit">
+
+ارسال پیام
+
+</button>
+
+<p id="status"></p>
+
+</form>
+
+</section>
+
+
+
+
+<!-- ================= BOTTOM MENU ================= -->
+
+<nav class="bottom-nav">
+
+<a href="index.html">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-home"></use>
+</svg>
+
+خانه
+
+</a>
+
+<a href="products.html">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-products"></use>
+</svg>
+
+محصولات
+
+</a>
+
+<a href="projects.html">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-projects"></use>
+</svg>
+
+پروژه‌ها
+
+</a>
+
+<a href="contact.html">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-phone"></use>
+</svg>
+
+تماس
+
+</a>
+
+<a href="about.html" class="active">
+
+<svg class="icon">
+<use href="images/icons.svg#icon-user"></use>
+</svg>
+
+درباره ما
+
+</a>
+
+</nav>
+
+
+
+<footer class="footer">
+
+<p>
+
+© 2026 Smart Idea. All rights reserved.
+
+</p>
+
+</footer>
+
+</div>
+
+<script>
+
+const form=document.getElementById("contactForm");
+
+form.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const btn=document.getElementById("sendBtn");
+const status=document.getElementById("status");
+
+btn.disabled=true;
+btn.innerHTML="در حال ارسال...";
+
+const mobile=document.getElementById("mobile").value.trim();
+const message=document.getElementById("message").value.trim();
+
+if(!/^09\d{9}$/.test(mobile)){
+
+status.style.color="#d32f2f";
+status.innerHTML="شماره موبایل صحیح نیست.";
+
+btn.disabled=false;
+btn.innerHTML="ارسال پیام";
+
+return;
+
+}
+
+try{
+
+await fetch("https://script.google.com/macros/s/AKfycbxbCFFoh_0Cgf3jMqPDFujPXTo2lswPJOEQQzGWR1X_J44gJInxZeAFXmlvr53Gq7EaYQ/exec",{
+
+method:"POST",
+
+body:JSON.stringify({
+
+mobile:mobile,
+
+message:message
+
+})
+
+});
+
+status.style.color="#2e7d32";
+status.innerHTML="پیام شما با موفقیت ثبت شد.";
+
+form.reset();
+
+}
+
+catch(err){
+
+status.style.color="#d32f2f";
+status.innerHTML="خطا در ارسال. دوباره تلاش کنید.";
+
+}
+
+btn.disabled=false;
+btn.innerHTML="ارسال پیام";
+
+});
+
+</script>
+
+</body>
+
+</html>
