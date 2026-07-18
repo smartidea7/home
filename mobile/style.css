@@ -142,34 +142,43 @@ line-height:1.2;
 
 .cat-icon{
 
-width:42px;
-height:42px;
+width:46px;
+height:46px;
 
 border-radius:50%;
 
-border:1.8px solid #444;
-
 display:flex;
-
-align-items:center;
 justify-content:center;
+align-items:center;
+
+border:2px solid #bdbdbd;
 
 background:#fff;
 
+transition:.25s;
+
 }
+
 
 
 
 .cat-svg{
 
-width:20px;
-height:20px;
+width:23px;
+height:23px;
 
-stroke:currentColor;
-stroke-width:1.9;   
-fill:none;
+color:#666;
+
+transition:.25s;
 
 }
+
+.cat-item.active{
+
+color:var(--accent);
+
+}
+
 
 .cat-item .cat-svg{
 
@@ -187,18 +196,18 @@ color:var(--accent);
 
 
 .cat-item.active .cat-icon{
-background:#fff;
 
-border:2px solid var(--accent);
+border-color:var(--accent);
 
+box-shadow:0 0 0 3px rgba(228,111,31,.15);
 
 }
+
 
 
 .cat-item.active .cat-svg{
 
 color:var(--accent);
-
 
 }
 
