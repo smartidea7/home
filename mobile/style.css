@@ -856,3 +856,107 @@ line-height:1.9;
 color:#999;
 
 }
+
+/* =========================
+   ABOUT CARDS
+========================= */
+
+
+.about-card{
+
+background:#fff;
+
+border:1px solid #eee;
+
+border-radius:14px;
+
+padding:14px;
+
+margin-bottom:14px;
+
+transition:.25s;
+
+}
+
+
+.about-card:hover{
+
+box-shadow:0 6px 18px rgba(0,0,0,.05);
+
+}
+
+
+
+.about-card-header{
+
+display:flex;
+
+align-items:flex-start;
+
+gap:12px;
+
+}
+
+
+
+.about-card-header .icon{
+
+width:28px;
+
+height:28px;
+
+flex-shrink:0;
+
+stroke:var(--accent);
+
+margin-top:3px;
+
+}
+
+
+
+.about-card-header h3{
+
+font-size:.85rem;
+
+font-weight:700;
+
+color:#222;
+
+margin-bottom:6px;
+
+}
+
+
+
+.about-caption{
+
+font-size:.72rem;
+
+line-height:2;
+
+color:#999;
+
+margin:0;
+
+text-align:justify;
+
+}
+
+
+
+.about-caption a{
+
+display:inline-block;
+
+margin-top:8px;
+
+font-size:.7rem;
+
+font-weight:600;
+
+color:var(--accent);
+
+text-decoration:none;
+
+}
