@@ -58,7 +58,7 @@ count:6
 id:"other",
 title:"طراحی و ساخت پروژه ها و محصولات تخصصی",
 en:"Design and manufacture of specialized projects and products",
-icon:"icon-other",
+icon:"icon-special",
 folder:"other",
 count:3
 }
