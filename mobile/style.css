@@ -173,17 +173,7 @@ transition:.25s;
 
 width:22px;
 height:22px;
-
 color:var(--accent);
-
-fill:none;
-
-stroke:currentColor;
-
-stroke-width:2;
-
-stroke-linecap:round;
-stroke-linejoin:round;
 
 }
 
@@ -218,18 +208,7 @@ stroke:#fff;
 
 width:22px;
 height:22px;
-
-display:block;
-
-fill:none;
-
-stroke:var(--accent);
-
-stroke-width:2;
-
-stroke-linecap:round;
-
-stroke-linejoin:round;
+color:var(--accent);
 
 }
 
@@ -238,18 +217,8 @@ stroke-linejoin:round;
 
 width:22px;
 height:22px;
-
-display:block;
-
-fill:none;
-
-stroke:var(--accent);
-
-stroke-width:2;
-
-stroke-linecap:round;
-
-stroke-linejoin:round;
+color:var(--accent);
+}
 
 }
 
