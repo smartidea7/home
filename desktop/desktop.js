@@ -40,31 +40,37 @@ const projectCategories=[
 id:"interior",
 title:"دکوراسیون داخلی",
 desc:"Interior Design",
-folder:"images/interior/"
+folder:"../mobile/images/projects/interior/"
 },
 {
 id:"office",
 title:"فضاهای اداری",
 desc:"Office Design",
-folder:"images/office/"
+folder:"../mobile/images/projects/office/"
 },
 {
 id:"kitchen",
 title:"آشپزخانه",
 desc:"Kitchen",
-folder:"images/kitchen/"
+folder:"../mobile/images/projects/kitchen/"
 },
 {
 id:"exhibition",
 title:"غرفه نمایشگاهی",
 desc:"Exhibition",
-folder:"images/exhibition/"
+folder:"../mobile/images/projects/exhibition/"
 },
 {
 id:"camper",
 title:"کلینیک سیار",
 desc:"Mobile Clinic",
-folder:"images/camper/"
+folder:"../mobile/images/projects/camper/"
+},
+{
+id:"other",
+title:"سایر",
+desc:"Mobile Clinic",
+folder:"../mobile/images/projects/other/"
 }
 ];
 
