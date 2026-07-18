@@ -38,7 +38,7 @@ title:"سرب و تجهیزات حفاظتی",
 en:"Lead Shielding Materials",
 icon:"icon-lead",
 folder:"lead",
-count:2
+count:4
 },
 
 {
