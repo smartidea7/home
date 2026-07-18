@@ -208,7 +208,7 @@ border-color:var(--accent);
 
 .cat-item.active .cat-svg{
 
-color:#fff;
+stroke:#fff !important;
 
 }
 
@@ -734,7 +734,7 @@ transition:.25s;
 .bottom-nav a.active{
 
 color:var(--accent);
-
+stroke:var(--accent) !important;
 }
 
 
@@ -749,7 +749,7 @@ stroke:currentColor;
 stroke-width:1.9;
 stroke-linecap:round;
 stroke-linejoin:round;
-
+stroke:var(--accent) !important;
 color:var(--accent);
 
 }
