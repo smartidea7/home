@@ -6,7 +6,7 @@ title:"دکوراسیون داخلی",
 en:"Interior Decoration",
 icon:"icon-interior",
 folder:"interior",
-count:5
+count:14
 },
 
 {
