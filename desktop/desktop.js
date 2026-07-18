@@ -739,6 +739,52 @@ INIT
 console.log("Smart Idea Desktop Ready");
 
 
+/*=====================================================
+PROTECT CONTENT
+=====================================================*/
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+});
+
+
+document.addEventListener("selectstart", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("keydown",function(e){
+
+// Ctrl + S
+if(e.ctrlKey && e.key==="s"){
+    e.preventDefault();
+}
+
+// Ctrl + U
+if(e.ctrlKey && e.key==="u"){
+    e.preventDefault();
+}
+
+// F12
+if(e.key==="F12"){
+    e.preventDefault();
+}
+
+// Print Screen
+if(e.key==="PrintScreen"){
+
+    navigator.clipboard.writeText("");
+
+    alert("Screenshot disabled");
+
+}
+
+});
+
 
 
 
