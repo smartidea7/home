@@ -176,7 +176,8 @@ height:22px;
 
 fill:none;
 color:var(--accent);
-stroke:currentColor;
+stroke-color:var(--accent);;
+
 stroke-width:1.9;
 stroke-linecap:round;
 stroke-linejoin:round;
