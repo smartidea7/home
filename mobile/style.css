@@ -174,15 +174,19 @@ transition:.25s;
 width:22px;
 height:22px;
 
-fill:none;
 color:var(--accent);
-stroke-color:var(--accent);;
-border-color:var(--accent);
-stroke-width:1.9;
+
+fill:none;
+
+stroke:currentColor;
+
+stroke-width:2;
+
 stroke-linecap:round;
 stroke-linejoin:round;
 
 }
+
 
 
 
@@ -204,11 +208,29 @@ border-color:var(--accent);
 
 .cat-item.active .cat-svg{
 
-stroke:#fff;
+color:#fff;
 
 }
 
 
+.cat-svg,
+.icon{
+
+width:22px;
+height:22px;
+
+display:block;
+
+fill:none;
+
+stroke:currentColor;
+
+stroke-width:2;
+
+stroke-linecap:round;
+stroke-linejoin:round;
+
+}
 
 
 /* PRODUCT SECTION */
@@ -695,7 +717,7 @@ z-index:1000;
 
 text-decoration:none;
 
-color:#444;
+color:#555;
 
 font-size:.70rem;
 font-weight:600;
@@ -709,7 +731,11 @@ transition:.25s;
 
 }
 
+.bottom-nav a.active{
 
+color:var(--accent);
+
+}
 
 
 .icon{
