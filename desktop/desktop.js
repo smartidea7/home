@@ -7,31 +7,31 @@ const productCategories = [
 id:"con",
 title:"تجهیزات پزشکی مصرفی",
 desc:"Medical Consumables",
-folder:"images/con/"
+folder:"../mobile/images/originals/consumables/"
 },
 {
 id:"hos",
 title:"تجهیزات هتلینگ بیمارستانی",
 desc:"Hospital Equipment",
-folder:"images/hos/"
+folder:"../mobile/images/originals/hospital/"
 },
 {
 id:"gas",
 title:"کنسول و گازهای طبی",
 desc:"Medical Gas Systems",
-folder:"images/gas/"
+folder:"../mobile/images/originals/gas/"
 },
 {
 id:"lead",
 title:"حفاظت پرتویی",
 desc:"Lead Shielding",
-folder:"images/lead/"
+folder:"../mobile/images/originals/lead/"
 },
 {
 id:"spe",
 title:"تجهیزات تخصصی",
 desc:"Special Products",
-folder:"images/spe/"
+folder:"../mobile/images/originals/spe/"
 }
 ];
 
