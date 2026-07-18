@@ -514,43 +514,70 @@ prevImage();
 CONTACT FORM (Google Sheet)
 =====================================================*/
 
-const form=document.getElementById("contactForm");
 
-if(form){
+
+const form=document.getElementById("contactForm");
 
 form.addEventListener("submit",async function(e){
 
 e.preventDefault();
 
+const btn=document.getElementById("sendBtn");
 const status=document.getElementById("status");
 
-status.innerHTML="در حال ارسال...";
+btn.disabled=true;
+btn.innerHTML="در حال ارسال...";
+
+const mobile=document.getElementById("mobile").value.trim();
+const message=document.getElementById("message").value.trim();
+
+if(!/^09\d{9}$/.test(mobile)){
+
+status.style.color="#d32f2f";
+status.innerHTML="شماره موبایل صحیح نیست.";
+
+btn.disabled=false;
+btn.innerHTML="ارسال پیام";
+
+return;
+
+}
 
 try{
 
-const res=await fetch(form.action,{
+await fetch("https://script.google.com/macros/s/AKfycbxbCFFoh_0Cgf3jMqPDFujPXTo2lswPJOEQQzGWR1X_J44gJInxZeAFXmlvr53Gq7EaYQ/exec",{
 
 method:"POST",
 
-body:new FormData(form)
+body:JSON.stringify({
+
+mobile:mobile,
+
+message:message
+
+})
 
 });
 
-const txt=await res.text();
-
-status.innerHTML="✅ پیام با موفقیت ارسال شد.";
+status.style.color="#2e7d32";
+status.innerHTML="پیام شما با موفقیت ثبت شد.";
 
 form.reset();
 
-}catch(err){
+}
 
-status.innerHTML="❌ خطا در ارسال پیام";
+catch(err){
+
+status.style.color="#d32f2f";
+status.innerHTML="خطا در ارسال. دوباره تلاش کنید.";
 
 }
+
+btn.disabled=false;
+btn.innerHTML="ارسال پیام";
 
 });
 
-}
 
 
 /*=====================================================
