@@ -176,7 +176,7 @@ height:22px;
 
 fill:none;
 
-stroke:currentColor;
+stroke:var(--accent);
 stroke-width:1.9;
 stroke-linecap:round;
 stroke-linejoin:round;
