@@ -99,113 +99,75 @@ color:#8c8c8c;
 }
 
 
-/* ==========================
-   MENU
-========================== */
+/* ===========================
+   TOP NAVIGATION
+=========================== */
 
 .top-nav{
 
+position:sticky;
+top:0;
+z-index:1000;
+
+background:#fff;
+
+border-bottom:1px solid #ececec;
+
+}
+
+.top-nav .container{
+
 display:flex;
-
-gap:18px;
-
+justify-content:center;
 align-items:center;
+gap:40px;
+
+height:64px;
 
 }
 
 .top-nav a{
 
 display:flex;
-
+flex-direction:column;
 align-items:center;
+justify-content:center;
 
-gap:10px;
+gap:5px;
 
 text-decoration:none;
 
-color:#666;
+color:#555;
 
-font-size:.82rem;
-
+font-size:.72rem;
 font-weight:600;
 
 transition:.25s;
 
 }
 
-.nav-icon{
-
-width:44px;
-height:44px;
-
-border-radius:50%;
-
-border:2px solid #555;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:#fff;
-
-transition:.25s;
-
-}
-
-.icon{
-
-width:22px;
-
-height:22px;
-
-stroke:#e46f1f;
-
-fill:none;
-
-stroke-width:1.8;
-
-}
-
-
-/* ---------- Hover ---------- */
-
 .top-nav a:hover{
 
-color:#e46f1f;
+color:var(--accent);
 
 }
-
-.top-nav a:hover .nav-icon{
-
-border-color:#e46f1f;
-
-}
-
-
-/* ---------- Active ---------- */
 
 .top-nav a.active{
 
-color:#e46f1f;
+color:var(--accent);
 
 }
 
-.top-nav a.active .nav-icon{
+.top-nav .icon{
 
-background:#e46f1f;
+width:22px;
+height:22px;
 
-border-color:#e46f1f;
-
-}
-
-.top-nav a.active .icon{
-
-stroke:#fff;
+stroke:var(--accent);
+fill:none;
+stroke-width:1.7;
 
 }
-
 
 /* ==========================
  HERO
