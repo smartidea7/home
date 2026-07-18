@@ -28,6 +28,13 @@ let isDragging = false;
 
 let startX = 0;
 let startY = 0;
+let touchStartX = 0;
+let touchStartY = 0;
+
+let lastTouchX = 0;
+let lastTouchY = 0;
+
+let isTouchDragging = false;
 
 /* ---------- Loading Helpers ---------- */
 
@@ -308,27 +315,62 @@ if(e.key==="ArrowLeft")
 
 let touchStartX=0;
 
-lightbox.addEventListener("touchstart",(e)=>{
+lightbox.addEventListener("touchstart", (e) => {
 
-    touchStartX=e.changedTouches[0].clientX;
+    const touch = e.touches[0];
 
-});
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
 
-lightbox.addEventListener("touchend",(e)=>{
+    lastTouchX = touch.clientX;
+    lastTouchY = touch.clientY;
 
-    let touchEndX=e.changedTouches[0].clientX;
+    isTouchDragging = scale > 1;
 
-    let diff=touchStartX-touchEndX;
+}, { passive: true });
 
-    if(Math.abs(diff)<50) return;
+lightbox.addEventListener("touchmove", (e) => {
 
-    if(diff>0){
+    if (!isTouchDragging) return;
 
-        showImage(currentIndex+1);
+    const touch = e.touches[0];
 
-    }else{
+    translateX += touch.clientX - lastTouchX;
+    translateY += touch.clientY - lastTouchY;
 
-        showImage(currentIndex-1);
+    lastTouchX = touch.clientX;
+    lastTouchY = touch.clientY;
+
+    updateTransform();
+
+    e.preventDefault();
+
+}, { passive: false });
+
+
+
+lightbox.addEventListener("touchend", (e) => {
+
+    if (isTouchDragging) {
+
+        isTouchDragging = false;
+        return;
+
+    }
+
+    const touchEndX = e.changedTouches[0].clientX;
+
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) < 50) return;
+
+    if (diff > 0) {
+
+        showImage(currentIndex + 1);
+
+    } else {
+
+        showImage(currentIndex - 1);
 
     }
 
