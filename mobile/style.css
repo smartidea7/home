@@ -208,12 +208,32 @@ border-color:var(--accent);
 
 .cat-item.active .cat-svg{
 
-stroke:#fff !important;
+color:#fff;
+stroke:#fff;
 
 }
 
 
-.cat-svg,
+.cat-svg{
+
+width:22px;
+height:22px;
+
+display:block;
+
+fill:none;
+
+stroke:var(--accent);
+
+stroke-width:2;
+
+stroke-linecap:round;
+
+stroke-linejoin:round;
+
+}
+
+
 .icon{
 
 width:22px;
@@ -223,11 +243,12 @@ display:block;
 
 fill:none;
 
-stroke:currentColor;
+stroke:var(--accent);
 
 stroke-width:2;
 
 stroke-linecap:round;
+
 stroke-linejoin:round;
 
 }
@@ -580,7 +601,7 @@ background:none;
 
 border:none;
 
-color:var(--accent);
+color:var(--accent) !important;
 
 cursor:pointer;
 
@@ -738,21 +759,7 @@ stroke:var(--accent) !important;
 }
 
 
-.icon{
 
-width:22px;
-height:22px;
-
-fill:none;
-
-stroke:currentColor;
-stroke-width:1.9;
-stroke-linecap:round;
-stroke-linejoin:round;
-stroke:var(--accent) !important;
-color:var(--accent);
-
-}
 
 
 .footer{
