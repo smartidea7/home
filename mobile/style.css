@@ -929,3 +929,98 @@ padding-bottom:20px;
 }
 
 
+
+/* ===========================
+   ABOUT PAGE
+=========================== */
+
+/* فقط لوگوی صفحه About */
+
+.about-logo{
+
+width:105px;
+height:auto;
+
+display:block;
+
+margin:0 auto 20px;
+
+}
+
+
+/* توضیحات هر دسته */
+
+.category-desc{
+
+margin:8px 0 26px;
+
+padding-right:14px;
+
+border-right:3px solid #ececec;
+
+}
+
+
+/* عنوان */
+
+.desc-title{
+
+margin:0 0 6px;
+
+font-size:.84rem;
+
+font-weight:700;
+
+line-height:1.7;
+
+color:#222;
+
+}
+
+
+/* متن */
+
+.desc-text{
+
+margin:0;
+
+font-size:.72rem;
+
+font-weight:400;
+
+line-height:2;
+
+color:#8d8d8d;
+
+}
+
+
+/* لینک */
+
+.desc-link{
+
+display:inline-flex;
+
+align-items:center;
+
+margin-top:10px;
+
+font-size:.72rem;
+
+font-weight:600;
+
+color:var(--accent);
+
+text-decoration:none;
+
+transition:.25s;
+
+}
+
+.desc-link:hover{
+
+opacity:.75;
+
+padding-right:4px;
+
+}
