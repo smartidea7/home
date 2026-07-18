@@ -29,7 +29,7 @@ title:"کنسول و تجهیزات گازهای طبی",
 en:"Medical Gas Systems",
 icon:"icon-gas",
 folder:"gas",
-count:2
+count:9
 },
 
 {
