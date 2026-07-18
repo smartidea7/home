@@ -46,7 +46,7 @@ desc:"تجهیزات سفارشی پروژه‌های مهندسی.",
 folder:"../mobile/images/originals/special/",
 link:"products.html#special",
 icon:"icon-special",
-count:9
+count:0
 }
 
 ];
