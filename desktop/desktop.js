@@ -73,7 +73,7 @@ count:14
 
 title:"دکوراسیون اداری",
 
-desc:"دکور دفتر و فضاهای تجاری",
+desc:"دکور دفتر و فضاهای اداری",
 
 folder:"../mobile/images/projects/office/",
 
