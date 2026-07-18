@@ -71,9 +71,9 @@ count:14
 
 {
 
-title:"دکوراسیون اداری",
+title:"دکوراسیون اداری و فروشگاهی",
 
-desc:"دکور دفتر و فضاهای اداری",
+desc:"دکور دفتر و فضاهای اداری و تجاری",
 
 folder:"../mobile/images/projects/office/",
 
@@ -103,9 +103,9 @@ count:26
 
 {
 
-title:"غرفه نمایشگاهی",
+title:"دکور نمایشگاهی",
 
-desc:"نمایشگاه و غرفه.",
+desc:"نمایشگاه و غرفه سازی.",
 
 folder:"../mobile/images/projects/exhibition/",
 
@@ -113,7 +113,7 @@ link:"projects.html#exhibition",
 
 icon:"icon-exhibition",
 
-count:14
+count:10
 
 },
 
