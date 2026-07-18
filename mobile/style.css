@@ -129,7 +129,7 @@ gap:3px;
 
 text-decoration:none;
 
-color:#222;
+color:#444;
 
 font-size:.68rem;
 font-weight:500;
@@ -165,9 +165,15 @@ background:#fff;
 width:20px;
 height:20px;
 
-stroke:var(--accent);
+stroke:currentColor;
 stroke-width:1.9;   
 fill:none;
+
+}
+
+.cat-item .cat-svg{
+
+color:inherit;
 
 }
 
@@ -191,7 +197,8 @@ border:2px solid var(--accent);
 
 .cat-item.active .cat-svg{
 
-stroke:var(--accent);
+color:var(--accent);
+
 
 }
 
