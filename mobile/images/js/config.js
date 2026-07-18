@@ -20,7 +20,7 @@ title:"ترالی و تجهیزات هتلینگ بیمارستانی",
 en:"Hospital Equipment",
 icon:"icon-hospital",
 folder:"hospital",
-count:2
+count:20
 },
 
 {
