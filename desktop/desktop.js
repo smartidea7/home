@@ -117,6 +117,22 @@ count:10
 
 },
 
+ {
+
+title:"اجرای پروژه های ایزولاسیون اشعه",
+
+desc:"سرب‌کوبی، طراحی و ساخت درب های سربی.",
+
+folder:"../mobile/images/projects/lead/",
+
+link:"projects.html#lead",
+
+icon:"icon-lead",
+
+count:14
+
+},  
+
 {
 
 title:"کلینیک سیار",
