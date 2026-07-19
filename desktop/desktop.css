@@ -685,6 +685,39 @@ box-shadow:0 4px 14px rgba(0,0,0,.04);
 
 }
 
+.about-hero{
+
+width:100%;
+
+height:240px;
+
+border-radius:14px;
+
+overflow:hidden;
+
+margin:18px 0 24px;
+
+background:#eee;
+
+}
+
+
+
+.about-hero img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+object-position:center;
+
+display:block;
+
+}
+
+
 /* ===================================================
 CONTACT
 ===================================================*/
