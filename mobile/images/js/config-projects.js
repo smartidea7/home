@@ -60,6 +60,6 @@ title:"طراحی و ساخت پروژه ها و محصولات تخصصی",
 en:"Design and manufacture of specialized projects and products",
 icon:"icon-special",
 folder:"other",
-count:3
+count:11
 }
 ];
