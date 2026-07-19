@@ -135,9 +135,9 @@ count:10
 
 {
 
-title:"سایر",
+title:"سایر پروژه های تخصصی",
 
-desc:"سایر پروژه ها.",
+desc:"سایر پروژه های طراحی و ساخت.",
 
 folder:"../mobile/images/projects/other/",
 
