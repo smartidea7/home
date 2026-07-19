@@ -6,7 +6,7 @@ const PRODUCTS = [
 
 {
 title:"تجهیزات پزشکی مصرفی",
-desc:"تجهیزات مصرفی بیمارستانی و کلینیکی مطابق استانداردهای روز.",
+desc:"تجهیزات مصرفی بیمارستانی و کلینیکی .",
 folder:"../mobile/images/originals/consumables/",
 link:"products.html#consumables",
 icon:"icon-consumables",
@@ -57,7 +57,7 @@ const PROJECTS=[
 
 title:"دکوراسیون داخلی",
 
-desc:"طراحی و اجرای پروژه‌های داخلی.",
+desc:"طراحی و اجرای پروژه‌های دکوراسیون داخلی.",
 
 folder:"../mobile/images/projects/interior/",
 
@@ -73,7 +73,7 @@ count:23
 
 title:"دکوراسیون اداری و فروشگاهی",
 
-desc:"دکور دفتر و فضاهای اداری و تجاری",
+desc:"دکوراسیون دفتر و فضاهای اداری و تجاری",
 
 folder:"../mobile/images/projects/office/",
 
@@ -157,9 +157,9 @@ desc:"سایر پروژه های طراحی و ساخت.",
 
 folder:"../mobile/images/projects/other/",
 
-link:"projects.html#camper",
+link:"projects.html#other",
 
-icon:"icon-other",
+icon:"icon-special",
 
 count:11
 
