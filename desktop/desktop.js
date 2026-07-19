@@ -65,7 +65,7 @@ link:"projects.html#interior",
 
 icon:"icon-interior",
 
-count:18
+count:23
 
 },
 
@@ -121,7 +121,7 @@ count:10
 
 title:"کلینیک سیار",
 
-desc:"خودروهای تخصصی پزشکی.",
+desc:"کلینیک سیار و کمپر مسافرتی",
 
 folder:"../mobile/images/projects/camper/",
 
@@ -129,7 +129,7 @@ link:"projects.html#camper",
 
 icon:"icon-camper",
 
-count:18
+count:10
 
 },
 
