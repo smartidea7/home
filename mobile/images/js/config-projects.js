@@ -6,7 +6,7 @@ title:"دکوراسیون داخلی",
 en:"Interior Decoration",
 icon:"icon-interior",
 folder:"interior",
-count:14
+count:18
 },
 
 {
@@ -38,7 +38,7 @@ count:10
 
 {
 id:"lead",
-title:"سرب‌کوبی، طراحی و ساخت درب های سربی و ایزولاسیون اشعه",
+title:"سرب‌کوبی، طراحی و ساخت درب های سربی",
 en:"Lead Shielding",
 icon:"icon-lead",
 folder:"lead",
