@@ -65,7 +65,7 @@ link:"projects.html#interior",
 
 icon:"icon-interior",
 
-count:14
+count:18
 
 },
 
