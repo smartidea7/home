@@ -145,7 +145,7 @@ link:"projects.html#camper",
 
 icon:"icon-other",
 
-count:9
+count:11
 
 }
 
