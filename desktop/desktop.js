@@ -15,7 +15,7 @@ count:46
 
 {
 title:"تجهیزات هتلینگ بیمارستانی",
-desc:"ترالی‌ها و تجهیزات هتلینگ بیمارستانی.",
+desc:"انواع ترالی  و تجهیزات هتلینگ بیمارستانی.",
 folder:"../mobile/images/originals/hospital/",
 link:"products.html#hospital",
 icon:"icon-hospital",
@@ -105,7 +105,7 @@ count:26
 
 title:"دکور نمایشگاهی",
 
-desc:"نمایشگاه و غرفه سازی.",
+desc:"دکور نمایشگاه و غرفه سازی.",
 
 folder:"../mobile/images/projects/exhibition/",
 
@@ -135,9 +135,9 @@ count:14
 
 {
 
-title:"کلینیک سیار",
+title:"کلینیک سیار پزشکی و کمپرهای مسافرتی",
 
-desc:"کلینیک سیار و کمپر مسافرتی",
+desc:"طراحی و اجرای کلینیک سیار پزشکی و کمپر مسافرتی",
 
 folder:"../mobile/images/projects/camper/",
 
