@@ -6,7 +6,7 @@ title:"دکوراسیون داخلی",
 en:"Interior Decoration",
 icon:"icon-interior",
 folder:"interior",
-count:18
+count:23
 },
 
 {
@@ -42,7 +42,7 @@ title:"سرب‌کوبی، طراحی و ساخت درب های سربی",
 en:"Lead Shielding",
 icon:"icon-lead",
 folder:"lead",
-count:4
+count:14
 },
 
 {
@@ -51,7 +51,7 @@ title:"کلینیک سیار پزشکی و کمپرهای مسافرتی",
 en:"Mobile Clinic & Camper",
 icon:"icon-camper",
 folder:"camper",
-count:6
+count:10
 },
 
 {
