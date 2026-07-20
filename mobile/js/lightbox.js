@@ -326,29 +326,38 @@ if(e.key==="ArrowLeft")
 
 
 
-lightbox.addEventListener("touchstart",e=>{
-
-if(e.touches.length===2){
-
-isPinching=true;
-
-initialDistance=getDistance(e.touches);
-
-initialScale=scale;
-
-return;
-
-}
+/* ---------- Touch Zoom + Drag + Swipe ---------- */
 
 
-touchStartX=e.touches[0].clientX;
-touchStartY=e.touches[0].clientY;
-
-lastTouchX=touchStartX;
-lastTouchY=touchStartY;
+lightbox.addEventListener("touchstart", (e)=>{
 
 
-isTouchDragging=scale>1;
+    if(e.touches.length === 2){
+
+        isPinching = true;
+
+        initialDistance =
+        getDistance(e.touches);
+
+        initialScale = scale;
+
+        return;
+
+    }
+
+
+    const touch = e.touches[0];
+
+
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+
+
+    lastTouchX = touch.clientX;
+    lastTouchY = touch.clientY;
+
+
+    isTouchDragging = scale > 1;
 
 
 },{passive:true});
@@ -356,44 +365,74 @@ isTouchDragging=scale>1;
 
 
 
-lightbox.addEventListener("touchmove",e=>{
+
+lightbox.addEventListener("touchmove",(e)=>{
 
 
-if(e.touches.length===2){
+    /* Pinch Zoom */
 
-const distance=getDistance(e.touches);
-
-const newScale=
-initialScale*
-(distance/initialDistance);
+    if(e.touches.length === 2){
 
 
-setZoom(newScale);
+        const distance =
+        getDistance(e.touches);
 
-return;
 
-}
+        const newScale =
+        initialScale *
+        (distance / initialDistance);
 
 
 
-if(isTouchDragging){
-
-const touch=e.touches[0];
-
-
-translateX+=touch.clientX-lastTouchX;
-
-translateY+=touch.clientY-lastTouchY;
+        setZoom(
+            Math.min(MAX_SCALE,newScale)
+        );
 
 
-lastTouchX=touch.clientX;
-lastTouchY=touch.clientY;
+        e.preventDefault();
+
+        return;
+
+    }
 
 
-updateTransform();
 
 
-}
+    /* Drag Zoom */
+
+    if(isTouchDragging){
+
+
+        const touch =
+        e.touches[0];
+
+
+        translateX +=
+        touch.clientX -
+        lastTouchX;
+
+
+        translateY +=
+        touch.clientY -
+        lastTouchY;
+
+
+
+        lastTouchX =
+        touch.clientX;
+
+
+        lastTouchY =
+        touch.clientY;
+
+
+
+        updateTransform();
+
+
+        e.preventDefault();
+
+    }
 
 
 },{passive:false});
@@ -402,51 +441,67 @@ updateTransform();
 
 
 
-lightbox.addEventListener("touchend",e=>{
 
 
-if(isPinching){
-
-isPinching=false;
-
-return;
-
-}
+lightbox.addEventListener("touchend",(e)=>{
 
 
+    if(isPinching){
 
-if(isTouchDragging){
+        isPinching=false;
 
-isTouchDragging=false;
+        return;
 
-return;
-
-}
+    }
 
 
 
-if(scale!==1)return;
+    if(isTouchDragging){
+
+        isTouchDragging=false;
+
+        return;
+
+    }
 
 
-const endX=e.changedTouches[0].clientX;
 
-const diff=
-touchStartX-endX;
+    // Swipe فقط در حالت عادی
 
-
-if(Math.abs(diff)<50)return;
+    if(scale !== 1)
+        return;
 
 
-if(diff>0)
 
-showImage(currentIndex+1);
+    const endX =
+    e.changedTouches[0].clientX;
 
-else
 
-showImage(currentIndex-1);
+
+    const diff =
+    touchStartX - endX;
+
+
+
+    if(Math.abs(diff)<50)
+        return;
+
+
+
+    if(diff>0){
+
+        showImage(currentIndex+1);
+
+    }
+    else{
+
+        showImage(currentIndex-1);
+
+    }
 
 
 });
+
 
 
 function clampPan() {
