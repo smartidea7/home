@@ -444,7 +444,27 @@ lightbox.addEventListener("touchmove",(e)=>{
 
 
 lightbox.addEventListener("touchend",(e)=>{
+const now = Date.now();
 
+if(now - lastTap < 300){
+
+    if(scale >= MAX_SCALE){
+
+        setZoom(MIN_SCALE);
+
+    }else{
+
+        zoomIn();
+
+    }
+
+    lastTap = 0;
+
+    return;
+
+}
+
+lastTap = now;
 
     if(isPinching){
 
