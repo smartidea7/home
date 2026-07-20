@@ -1400,5 +1400,57 @@ color:var(--accent);
 
 }
 
+.zoom-guide{
+
+position:absolute;
+
+bottom:70px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:rgba(0,0,0,.65);
+
+color:white;
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-size:.75rem;
+
+white-space:nowrap;
+
+opacity:0;
+
+z-index:50;
+
+animation:guideShow 4s ease forwards;
+
+}
+
+
+
+@keyframes guideShow{
+
+0%{
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+80%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+}
+
+}
+
 
 
