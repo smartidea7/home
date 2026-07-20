@@ -231,14 +231,19 @@ section.querySelectorAll(".hidden-image");
 const opened=
 btn.classList.toggle("open");
 
-hidden.forEach(img=>{
+hidden.forEach((img,index)=>{
+
+setTimeout(()=>{
 
 img.classList.toggle(
 "show-image",
 opened
 );
 
+}, index * 40);
+
 });
+    
 
 btn.querySelector("span").textContent=
 opened
