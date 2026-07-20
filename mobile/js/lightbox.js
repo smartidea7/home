@@ -76,25 +76,27 @@ function refreshGallery(){
 
 }
 
-refreshGallery();
+function buildGalleryMap(){
 
-/* ---------- Build Folder Galleries ---------- */
+galleryItems=[
+...document.querySelectorAll(".gallery-link")
+];
 
-const galleries = {};
+Object.keys(galleries).forEach(key=>delete galleries[key]);
 
-document.querySelectorAll(".gallery-link").forEach(item=>{
+galleryItems.forEach(item=>{
 
-    const folder = item.dataset.folder;
+const folder=item.dataset.folder;
 
-    if(!galleries[folder]){
-
-        galleries[folder] = [];
-
-    }
-
-    galleries[folder].push(item);
+(galleries[folder]??=[]).push(item);
 
 });
+
+}
+
+const galleries={};
+
+buildGalleryMap();
 
 
 
@@ -209,37 +211,32 @@ preloadImage(prevItem.href);
 
 /* ---------- Open ---------- */
 
-galleryItems.forEach((item)=>{
+document.addEventListener("click",e=>{
 
-    item.addEventListener("click",function(e){
+const item=e.target.closest(".gallery-link");
 
-        e.preventDefault();
+if(!item)return;
 
+e.preventDefault();
 
-        const folder = item.dataset.folder;
+buildGalleryMap();
 
+const folder=item.dataset.folder;
 
-        activeGallery = galleries[folder];
+activeGallery=galleries[folder];
 
+currentFolder=folder;
 
-        currentFolder = folder;
+currentIndex=activeGallery.indexOf(item);
 
+showImage(currentIndex);
 
-        currentIndex = activeGallery.indexOf(item);
+lightbox.classList.add("active");
 
-
-        showImage(currentIndex);
-
-
-        lightbox.classList.add("active");
-
-
-        document.body.style.overflow="hidden";
-
-
-    });
+document.body.style.overflow="hidden";
 
 });
+
 
 
 
