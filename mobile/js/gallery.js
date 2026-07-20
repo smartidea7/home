@@ -122,22 +122,14 @@ id="${cat.id}">
 
 <div class="section-title">
 
+
 <div class="section-line"></div>
 
 <div class="section-info">
 
 <h2>${cat.title}</h2>
-<p class="section-description">
-${cat.description}
-</p>
 
 <span>${cat.en}</span>
-
-<p class="section-description">
-
-${cat.description}
-
-</p>
 
 </div>
 
@@ -148,6 +140,11 @@ ${cat.description}
 </svg>
 
 </div>
+<p class="section-description">
+
+${cat.description}
+
+</p>
 
 <div class="product-grid">
 
