@@ -179,6 +179,10 @@ buildMenu();
 
 buildGallery();
 
+document.dispatchEvent(
+new Event("galleryUpdated")
+);
+
                           /*==================================================
     Fade Animation
 ==================================================*/
