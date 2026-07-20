@@ -161,11 +161,7 @@ data-target="${cat.id}">
 
 <span>نمایش بیشتر</span>
 
-<svg class="icon">
-
-<use href="images/icons.svg#icon-arrow-down"></use>
-
-</svg>
+<span class="more-icon">+</span>
 
 </button>
 
