@@ -135,8 +135,8 @@ text-decoration:none;
 
 color:#555;
 
-font-size:.68rem;
-font-weight:600;
+font-size:.75rem;
+font-weight:500;
 line-height:1.35;
 
 transition:.25s;
@@ -148,12 +148,12 @@ transition:.25s;
 
 .cat-icon{
 
-width:46px;
-height:46px;
+width:48px;
+height:48px;
 
 border-radius:50%;
 
-border:2px solid #444;
+border:1.2px solid #444;
 
 display:flex;
 
@@ -169,9 +169,9 @@ background:#fff;
 
 .cat-svg{
 
-width:22px;
-height:22px;
-   stroke-width:1.7;
+width:26px;
+height:26px;
+   stroke-width:1;
 
 stroke:var(--accent);
 fill:none;
@@ -190,7 +190,7 @@ color:var(--accent);
 .cat-item.active .cat-icon{
 background:#fff;
 
-border:2px solid var(--accent);
+border:1.2px solid var(--accent);
 
 border-color:var(--accent);
 
