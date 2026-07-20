@@ -711,12 +711,12 @@ transition:.25s;
 
 .icon{
 
-width:25px;
+width:24px;
 
-height:25px;
+height:24px;
 
 stroke:var(--accent);
- stroke-width:1;
+ stroke-width:1.1;
 fill:none;
 
 }
