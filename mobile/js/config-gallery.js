@@ -19,7 +19,12 @@ icon:"icon-consumables",
 folder:"consumables",
 count:46,
 description:"تأمین تجهیزات پزشکی مصرفی تخصصی برای مراکز درمانی، بیمارستان‌ها و پروژه‌های سلامت.",
-captions:{}
+captions:["111",
+"",
+"333"
+
+    
+    ]
 },
 
 {
@@ -31,7 +36,7 @@ icon:"icon-hospital",
 folder:"hospital",
 count:20,
 description:"طراحی و تأمین تجهیزات هتلینگ بیمارستانی با تمرکز بر کیفیت ساخت، دوام و عملکرد.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -43,7 +48,7 @@ icon:"icon-gas",
 folder:"gas",
 count:9,
 description:"تجهیزات و سیستم‌های گاز طبی مورد استفاده در مراکز درمانی.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -55,7 +60,7 @@ icon:"icon-lead",
 folder:"lead",
 count:4,
 description:"راهکارهای حفاظت پرتویی شامل ورق سرب و تجهیزات تخصصی.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -67,7 +72,7 @@ icon:"icon-special",
 folder:"special",
 count:0,
 description:"محصولات تخصصی و سفارشی متناسب با نیاز پروژه‌ها.",
-captions:{}
+captions:[           ]
 }
 
 ]
@@ -89,7 +94,7 @@ icon:"icon-interior",
 folder:"interior",
 count:23,
 description:"طراحی و اجرای فضاهای داخلی با ترکیب زیبایی، عملکرد و هویت بصری.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -101,7 +106,7 @@ icon:"icon-office",
 folder:"office",
 count:23,
 description:"طراحی فضاهای اداری و تجاری متناسب با هویت برند.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -113,7 +118,7 @@ icon:"icon-kitchen",
 folder:"kitchen",
 count:26,
 description:"طراحی و اجرای آشپزخانه‌های مدرن با توجه به زیبایی و کارایی.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -125,7 +130,7 @@ icon:"icon-exhibition",
 folder:"exhibition",
 count:10,
 description:"طراحی و اجرای غرفه‌های نمایشگاهی برای معرفی حرفه‌ای برند.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -137,7 +142,7 @@ icon:"icon-lead",
 folder:"lead",
 count:14,
 description:"طراحی و اجرای حفاظت پرتویی و فضاهای تصویربرداری پزشکی.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -149,7 +154,7 @@ icon:"icon-camper",
 folder:"camper",
 count:10,
 description:"طراحی و تبدیل خودروها و سازه‌های متحرک به فضاهای درمانی و کاربردی.",
-captions:{}
+captions:[           ]
 },
 
 {
@@ -161,7 +166,7 @@ icon:"icon-special",
 folder:"other",
 count:11,
 description:"طراحی و ساخت راهکارهای اختصاصی متناسب با نیاز هر پروژه.",
-captions:{}
+captions:[           ]
 }
 
     ]
