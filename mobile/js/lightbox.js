@@ -4,6 +4,7 @@
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
+const imageWrapper = document.querySelector(".lightbox-image-wrapper");
 const lightboxLoader = document.querySelector(".lightbox-loader");
 const lightboxCaption = document.getElementById("lightboxCaption");
 const lightboxCounter = document.getElementById("lightboxCounter");
@@ -388,7 +389,7 @@ function clampPan() {
 
     }
 
-    const rect = lightboxImage.getBoundingClientRect();
+   const rect = imageWrapper.getBoundingClientRect();
 
     const maxX = (rect.width * (scale - 1)) / 2;
     const maxY = (rect.height * (scale - 1)) / 2;
@@ -402,11 +403,12 @@ function updateTransform() {
 
     clampPan();
 
-    lightboxImage.style.transform =
+    if(!imageWrapper) return;
+
+    imageWrapper.style.transform =
         `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 
 }
-
 
 
 /* ---------- Zoom Engine ---------- */
@@ -418,6 +420,19 @@ const STEP = 0.5;
 function setZoom(newScale) {
 
     scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
+
+
+    if(imageWrapper){
+
+        imageWrapper.style.transition =
+        scale===1
+        ?
+        "transform .25s ease"
+        :
+        "none";
+
+    }
+
 
     if (scale === MIN_SCALE) {
 
@@ -442,8 +457,7 @@ function zoomOut() {
 
 }
 
-lightboxImage.addEventListener("dblclick", () => {
-
+imageWrapper.addEventListener("mousedown",(e)=>{
     if (scale >= MAX_SCALE) {
 
         setZoom(MIN_SCALE);
