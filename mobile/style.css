@@ -694,7 +694,7 @@ text-decoration:none;
 color:#555;
 
 font-size:.80rem;
-font-weight:600;
+font-weight:400;
 
 display:flex;
 
@@ -716,7 +716,7 @@ width:25px;
 height:25px;
 
 stroke:var(--accent);
- stroke-width:1.5;
+ stroke-width:1;
 fill:none;
 
 }
