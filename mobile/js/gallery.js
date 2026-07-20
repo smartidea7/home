@@ -1,551 +1,52 @@
 /*==================================================
-    Smart Idea
-    Gallery Engine
+    Smart Idea Gallery Engine v2
 ==================================================*/
-
 
 document.addEventListener("DOMContentLoaded",()=>{
 
+const page=document.body.dataset.gallery;
 
-/*==================================================
-    Detect Page
-==================================================*/
+if(!page)return;
 
+const config=galleryConfig[page];
 
-const pageType =
-document.body.dataset.gallery;
+if(!config)return;
 
-
-if(!pageType) return;
-
-
-
-const container =
-document.getElementById(
-pageType==="products"
+const container=document.getElementById(
+page==="products"
 ?
 "productsContainer"
 :
 "projectsContainer"
 );
 
+const menu=document.querySelector(".category-nav");
 
-const menu =
-document.querySelector(".category-nav");
+if(!container||!menu)return;
 
+const categories=config.categories;
 
-
-if(!container || !menu) return;
-
-
-
-const data =
-galleryConfig[pageType];
-
-
-
-if(!data) return;
-
-
-
-const categories =
-data.categories;
-
-
-
-const basePath =
-data.path;
-
+const basePath=config.path;
 
 
 /*==================================================
-    Build Category Menu
-==================================================*/
-
-
-function buildMenu(){
-
-
-let html="";
-
-
-categories.forEach((cat,index)=>{
-
-
-html += `
-
-
-<a
-
-href="#${cat.id}"
-
-class="cat-item ${index===0?"active":""}"
-
-data-target="${cat.id}"
-
-
->
-
-
-<div class="cat-icon">
-
-
-<svg class="cat-svg">
-
-<use href="images/icons.svg#${cat.icon}"></use>
-
-</svg>
-
-
-</div>
-
-
-<span>
-
-${cat.menu}
-
-</span>
-
-
-</a>
-
-
-`;
-
-
-
-});
-
-
-menu.innerHTML=html;
-
-
-}
-
-
-
-
-buildMenu();
-
-
-
-
-/*==================================================
-    Build Gallery
-==================================================*/
-
-
-function buildGallery(){
-
-
-
-let html="";
-
-
-
-categories.forEach(cat=>{
-
-
-if(cat.count===0) return;
-
-
-
-html += `
-
-
-<section
-
-class="product-section gallery-section fade"
-
-id="${cat.id}"
-
->
-
-
-<div class="section-title">
-
-
-<div class="section-line"></div>
-
-
-
-<div class="section-info">
-
-
-<h2>
-
-${cat.title}
-
-</h2>
-
-
-<span>
-
-${cat.en}
-
-</span>
-
-
-<p class="section-description">
-
-${cat.description || ""}
-
-</p>
-
-
-</div>
-
-
-
-<svg class="icon">
-
-
-<use href="images/icons.svg#${cat.icon}"></use>
-
-
-</svg>
-
-
-</div>
-
-
-
-<div class="product-grid">
-
-
-`;
-
-
-
-for(
-let i=1;
-i<=cat.count;
-i++
-){
-
-
-const file =
-String(i).padStart(3,"0")+".jpg";
-
-
-
-const hidden =
-i>9
-?
-"hidden-image"
-:
-"";
-
-
-
-const caption =
-cat.captions?.[file]
-||
-cat.title;
-
-
-
-html += `
-
-
-
-<a
-
-class="product-card gallery-link ${hidden}"
-
-href="${basePath}${cat.folder}/${file}"
-
-
-data-folder="${cat.folder}"
-
-data-index="${i-1}"
-
-data-caption="${caption}"
-
->
-
-
-<img
-
-
-src="${basePath}${cat.folder}/${file}"
-
-alt="${caption}"
-
-loading="lazy"
-
-decoding="async"
-
-
->
-
-
-</a>
-
-
-
-`;
-
-}
-
-
-
-html += `
-
-
-</div>
-
-
-${cat.count>9?
-
-
-`
-
-<button
-
-class="show-more"
-
-data-target="${cat.id}"
-
->
-
-+ نمایش همه تصاویر
-
-</button>
-
-
-`
-:""}
-
-
-
-</section>
-
-
-
-`;
-
-
-
-});
-
-
-
-container.innerHTML=html;
-
-
-}
-
-
-
-buildGallery();
-
-
-
-
-/*==================================================
-    Show More Button
-==================================================*/
-
-
-document.addEventListener(
-"click",
-e=>{
-
-
-if(
-!e.target.classList.contains("show-more")
-)
-return;
-
-
-
-const id =
-e.target.dataset.target;
-
-
-
-const section =
-document.getElementById(id);
-
-
-
-const hidden =
-section.querySelectorAll(
-".hidden-image"
-);
-
-
-
-hidden.forEach(img=>{
-
-img.classList.toggle("show-image");
-
-});
-
-
-
-e.target.classList.toggle("open");
-
-
-
-e.target.textContent =
-e.target.classList.contains("open")
-?
-"- بستن تصاویر"
-:
-"+ نمایش همه تصاویر";
-
-
-
-});
-
-
-
-
-/*==================================================
-    Fade Animation
-==================================================*/
-
-
-const observer =
-new IntersectionObserver(
-(entries)=>{
-
-
-entries.forEach(entry=>{
-
-
-if(entry.isIntersecting){
-
-
-entry.target.classList.add("show");
-
-
-}
-
-
-});
-
-
-},
-{
-threshold:.15
-}
-);
-
-
-
-document
-.querySelectorAll(".fade")
-.forEach(el=>
-observer.observe(el)
-);
-
-
-
-
-/*==================================================
-    Scroll Spy
-==================================================*/
-
-
-const sections =
-document.querySelectorAll(
-".gallery-section"
-);
-
-
-const navItems =
-document.querySelectorAll(
-".cat-item"
-);
-
-
-
-function updateActiveMenu(){
-
-
-const scrollPos =
-window.scrollY + 150;
-
-
-
-let current =
-sections[0]?.id;
-
-
-
-sections.forEach(section=>{
-
-
-if(
-scrollPos >= section.offsetTop
-){
-
-current=section.id;
-
-}
-
-
-});
-
-
-
-navItems.forEach(item=>{
-
-
-item.classList.toggle(
-
-"active",
-
-item.dataset.target===current
-
-);
-
-
-});
-
-
-
-}
-
-
-
-window.addEventListener(
-"scroll",
-updateActiveMenu
-);
-
-
-
-updateActiveMenu();
-
-
-
-});
-
-/*==================================================
-    Build Category Menu
+    Build Menu
 ==================================================*/
 
 function buildMenu(){
 
-let html="";
+menu.innerHTML=categories.map((cat,index)=>`
 
-categories.forEach((cat,index)=>{
-
-html+=`
-
-<a
-href="#${cat.id}"
+<a href="#${cat.id}"
 class="cat-item ${index===0?"active":""}"
 data-target="${cat.id}">
 
 <div class="cat-icon">
 
 <svg class="cat-svg">
+
 <use href="images/icons.svg#${cat.icon}"></use>
+
 </svg>
 
 </div>
@@ -554,15 +55,10 @@ data-target="${cat.id}">
 
 </a>
 
-`;
-
-});
-
-menu.innerHTML=html;
+`).join("");
 
 }
 
-buildMenu();
 
 /*==================================================
     Build Gallery
@@ -570,13 +66,56 @@ buildMenu();
 
 function buildGallery(){
 
-let html="";
+container.innerHTML=categories.map(cat=>{
 
-categories.forEach(cat=>{
+if(cat.count===0)return"";
 
-if(cat.count<=0)return;
+let cards="";
 
-html+=`
+for(let i=1;i<=cat.count;i++){
+
+const file=String(i).padStart(3,"0")+".jpg";
+
+const hidden=i>9?" hidden-image":"";
+
+const caption=
+cat.captions?.[i-1]
+||
+cat.title;
+
+cards+=`
+
+<a
+
+class="product-card gallery-link${hidden}"
+
+href="${basePath}${cat.folder}/${file}"
+
+data-folder="${cat.folder}"
+
+data-index="${i-1}"
+
+data-caption="${caption}">
+
+<img
+
+loading="lazy"
+
+decoding="async"
+
+src="${basePath}${cat.folder}/${file}"
+
+alt="${caption}"
+
+draggable="false">
+
+</a>
+
+`;
+
+}
+
+                                   return`
 
 <section
 class="product-section fade"
@@ -610,112 +149,41 @@ ${cat.description}
 
 <div class="product-grid">
 
-`;
-
-for(let i=1;i<=cat.count;i++){
-
-const file=
-String(i).padStart(3,"0")+".jpg";
-
-const hidden=i>9?"hidden-image":"";
-
-const caption=
-cat.captions[file]||cat.title;
-
-html+=`
-
-<a
-class="product-card gallery-link ${hidden}"
-
-href="${basePath}${cat.folder}/${file}"
-
-data-folder="${cat.folder}"
-
-data-index="${i-1}"
-
-data-caption="${caption}">
-
-<img
-
-loading="lazy"
-
-decoding="async"
-
-src="${basePath}${cat.folder}/${file}"
-
-alt="${caption}">
-
-</a>
-
-`;
-
-}
-
-html+=`
+${cards}
 
 </div>
 
-${cat.count>9?
-
-`
+${cat.count>9?`
 
 <button
 class="show-more"
 data-target="${cat.id}">
 
-نمایش بیشتر
+<span>نمایش بیشتر</span>
+
+<svg class="icon">
+
+<use href="images/icons.svg#icon-arrow-down"></use>
+
+</svg>
 
 </button>
 
-`
-
-:""}
+`:""}
 
 </section>
 
 `;
 
-});
-
-container.innerHTML=html;
+}).join("");
 
 }
 
+buildMenu();
+
 buildGallery();
 
-/*==================================================
-    Show More
-==================================================*/
-
-document.addEventListener("click",e=>{
-
-const btn=e.target.closest(".show-more");
-
-if(!btn)return;
-
-const section=document.getElementById(btn.dataset.target);
-
-if(!section)return;
-
-const images=section.querySelectorAll(".hidden-image");
-
-const opened=btn.classList.toggle("open");
-
-images.forEach(img=>{
-
-img.classList.toggle("show-image",opened);
-
-});
-
-btn.textContent=opened
-?
-"بستن تصاویر"
-:
-"نمایش بیشتر";
-
-});
-
-/*==================================================
+                          /*==================================================
     Fade Animation
 ==================================================*/
 
@@ -739,7 +207,47 @@ document
 .querySelectorAll(".fade")
 .forEach(item=>observer.observe(item));
 
-/*==================================================
+                          /*==================================================
+    Show More
+==================================================*/
+
+document.addEventListener("click",e=>{
+
+const btn=e.target.closest(".show-more");
+
+if(!btn)return;
+
+const section=document.getElementById(
+btn.dataset.target
+);
+
+if(!section)return;
+
+const hidden=
+section.querySelectorAll(".hidden-image");
+
+const opened=
+btn.classList.toggle("open");
+
+hidden.forEach(img=>{
+
+img.classList.toggle(
+"show-image",
+opened
+);
+
+});
+
+btn.querySelector("span").textContent=
+opened
+?
+"بستن تصاویر"
+:
+"نمایش بیشتر";
+
+});
+
+                          /*==================================================
     Scroll Spy
 ==================================================*/
 
@@ -788,7 +296,7 @@ updateActiveMenu,
 
 updateActiveMenu();
 
-/*==================================================
+                          /*==================================================
     Center Active Menu
 ==================================================*/
 
@@ -801,10 +309,8 @@ const active=menu.querySelector(
 if(!active)return;
 
 const left=
-active.offsetLeft
--
-(menu.clientWidth/2)
-+
+active.offsetLeft-
+(menu.clientWidth/2)+
 (active.clientWidth/2);
 
 menu.scrollTo({
@@ -817,8 +323,8 @@ behavior:"smooth"
 
 }
 
-/*==================================================
-    Category Menu Click
+                          /*==================================================
+    Menu Click
 ==================================================*/
 
 menu.addEventListener("click",e=>{
@@ -845,13 +351,13 @@ behavior:"smooth"
 
 });
 
-/*==================================================
-    Horizontal Wheel Scroll
+                          /*==================================================
+    Horizontal Scroll
 ==================================================*/
 
 menu.addEventListener("wheel",e=>{
 
-if(Math.abs(e.deltaY)<=Math.abs(e.deltaX)) return;
+if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
 
 e.preventDefault();
 
@@ -861,17 +367,19 @@ menu.scrollLeft+=e.deltaY;
 passive:false
 });
 
+
 /*==================================================
-    Touch Swipe Menu
+    Touch Drag
 ==================================================*/
 
-let startX=0;
-let scrollStart=0;
+let touchX=0;
+let startScroll=0;
 
 menu.addEventListener("touchstart",e=>{
 
-startX=e.touches[0].clientX;
-scrollStart=menu.scrollLeft;
+touchX=e.touches[0].clientX;
+
+startScroll=menu.scrollLeft;
 
 },{
 passive:true
@@ -879,46 +387,42 @@ passive:true
 
 menu.addEventListener("touchmove",e=>{
 
-const x=e.touches[0].clientX;
+const move=e.touches[0].clientX;
 
 menu.scrollLeft=
-scrollStart-(x-startX);
+startScroll-(move-touchX);
 
 },{
 passive:true
 });
 
+
 /*==================================================
-    Keyboard Navigation
+    Keyboard
 ==================================================*/
 
 document.addEventListener("keydown",e=>{
 
-if(e.key!=="ArrowLeft" && e.key!=="ArrowRight") return;
+if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
 
-const activeIndex=navItems.findIndex(item=>
+const current=navItems.findIndex(item=>
 item.classList.contains("active")
 );
 
-if(activeIndex===-1) return;
+if(current===-1)return;
 
-let nextIndex=activeIndex;
+let next=current;
 
-if(e.key==="ArrowRight"){
-nextIndex=Math.min(activeIndex+1,navItems.length-1);
-}
+if(e.key==="ArrowRight")
+next=Math.min(current+1,navItems.length-1);
 
-if(e.key==="ArrowLeft"){
-nextIndex=Math.max(activeIndex-1,0);
-}
+if(e.key==="ArrowLeft")
+next=Math.max(current-1,0);
 
-const nextItem=navItems[nextIndex];
-
-if(!nextItem) return;
-
-nextItem.click();
+navItems[next]?.click();
 
 });
+
 
 /*==================================================
     Init
