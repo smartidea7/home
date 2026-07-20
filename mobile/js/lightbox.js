@@ -143,18 +143,21 @@ lightboxImage.onerror = imageError;
 
 lightboxImage.src = item.href;
 
+lightboxImage.alt=
+item.dataset.caption||"";
+
 
 
 
   const imageName = item.href.split("/").pop();
 
-
-const captionText =
-    (typeof captions !== "undefined" &&
-     captions[currentFolder] &&
-     captions[currentFolder][imageName])
-     ||
-     item.querySelector("img").alt;
+const captionText=
+item.dataset.caption
+||
+item.querySelector("img").alt
+||
+"";
+    
 
 console.log("Folder:", currentFolder);
 console.log("Image:", imageName);
@@ -519,6 +522,12 @@ lightbox.addEventListener("contextmenu", e => {
     e.preventDefault();
 });
 
+
+document.addEventListener("galleryUpdated",()=>{
+
+buildGalleryMap();
+
+});
 
 
 
