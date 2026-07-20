@@ -161,7 +161,7 @@ data-target="${cat.id}">
 
 <span>نمایش بیشتر</span>
 
-<span class="more-icon">+</span>
+<span class="more-icon">↓</span>
 
 </button>
 
