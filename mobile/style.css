@@ -1442,6 +1442,23 @@ color:var(--accent);
 
 }
 
+.more-icon{
+
+display:inline-block;
+
+transition:.3s;
+
+}
+
+
+.show-more.open .more-icon{
+
+transform:rotate(180deg);
+
+}
+
+
+
 .zoom-guide{
 
 position:absolute;
