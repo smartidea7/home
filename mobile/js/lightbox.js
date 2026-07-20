@@ -36,6 +36,14 @@ let lastTouchX = 0;
 let lastTouchY = 0;
 
 let isTouchDragging = false;
+let lastTap = 0;
+
+let initialDistance = 0;
+
+let initialScale = 1;
+
+let isPinching = false;
+
 
 /* ---------- Loading Helpers ---------- */
 
@@ -318,66 +326,128 @@ if(e.key==="ArrowLeft")
 
 
 
-lightbox.addEventListener("touchstart", (e) => {
+lightbox.addEventListener("touchstart",e=>{
 
-    const touch = e.touches[0];
+if(e.touches.length===2){
 
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
+isPinching=true;
 
-    lastTouchX = touch.clientX;
-    lastTouchY = touch.clientY;
+initialDistance=getDistance(e.touches);
 
-    isTouchDragging = scale > 1;
+initialScale=scale;
 
-}, { passive: true });
+return;
 
-lightbox.addEventListener("touchmove", (e) => {
+}
 
-    if (!isTouchDragging) return;
 
-    const touch = e.touches[0];
+touchStartX=e.touches[0].clientX;
+touchStartY=e.touches[0].clientY;
 
-    translateX += touch.clientX - lastTouchX;
-    translateY += touch.clientY - lastTouchY;
+lastTouchX=touchStartX;
+lastTouchY=touchStartY;
 
-    lastTouchX = touch.clientX;
-    lastTouchY = touch.clientY;
 
-    updateTransform();
+isTouchDragging=scale>1;
 
-    e.preventDefault();
 
-}, { passive: false });
+},{passive:true});
 
 
 
-lightbox.addEventListener("touchend", (e) => {
 
-    if (isTouchDragging) {
+lightbox.addEventListener("touchmove",e=>{
 
-        isTouchDragging = false;
-        return;
 
-    }
+if(e.touches.length===2){
 
-    const touchEndX = e.changedTouches[0].clientX;
+const distance=getDistance(e.touches);
 
-    const diff = touchStartX - touchEndX;
+const newScale=
+initialScale*
+(distance/initialDistance);
 
-    if (Math.abs(diff) < 50) return;
 
-    if (diff > 0) {
+setZoom(newScale);
 
-        showImage(currentIndex + 1);
+return;
 
-    } else {
+}
 
-        showImage(currentIndex - 1);
 
-    }
+
+if(isTouchDragging){
+
+const touch=e.touches[0];
+
+
+translateX+=touch.clientX-lastTouchX;
+
+translateY+=touch.clientY-lastTouchY;
+
+
+lastTouchX=touch.clientX;
+lastTouchY=touch.clientY;
+
+
+updateTransform();
+
+
+}
+
+
+},{passive:false});
+
+
+
+
+
+lightbox.addEventListener("touchend",e=>{
+
+
+if(isPinching){
+
+isPinching=false;
+
+return;
+
+}
+
+
+
+if(isTouchDragging){
+
+isTouchDragging=false;
+
+return;
+
+}
+
+
+
+if(scale!==1)return;
+
+
+const endX=e.changedTouches[0].clientX;
+
+const diff=
+touchStartX-endX;
+
+
+if(Math.abs(diff)<50)return;
+
+
+if(diff>0)
+
+showImage(currentIndex+1);
+
+else
+
+showImage(currentIndex-1);
+
 
 });
+
 
 function clampPan() {
 
@@ -410,8 +480,28 @@ function updateTransform() {
 
 }
 
+function getDistance(touches){
+
+    const dx =
+    touches[0].clientX -
+    touches[1].clientX;
+
+
+    const dy =
+    touches[0].clientY -
+    touches[1].clientY;
+
+
+    return Math.sqrt(
+        dx*dx + dy*dy
+    );
+
+}
 
 /* ---------- Zoom Engine ---------- */
+
+
+
 
 const MIN_SCALE = 1;
 const MAX_SCALE = 3;
