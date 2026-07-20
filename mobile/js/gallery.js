@@ -117,8 +117,7 @@ draggable="false">
 
                                    return`
 
-<section
-class="product-section fade"
+<section class="product-section fade"
 id="${cat.id}">
 
 <div class="section-title">
@@ -128,6 +127,9 @@ id="${cat.id}">
 <div class="section-info">
 
 <h2>${cat.title}</h2>
+<p class="section-description">
+${cat.description}
+</p>
 
 <span>${cat.en}</span>
 
