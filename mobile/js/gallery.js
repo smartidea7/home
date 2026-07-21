@@ -265,15 +265,22 @@ const navItems=[
 
 function updateActiveMenu(){
 
-const scrollPos=window.scrollY+180;
+const headerHeight =
+document.querySelector(".category-wrapper")
+?.offsetHeight || 0;
 
-let current=sections[0]?.id;
+const scrollPos =
+window.scrollY +
+headerHeight +
+120;
+
+let current = sections[0]?.id;
 
 sections.forEach(section=>{
 
-if(scrollPos>=section.offsetTop){
+if(scrollPos >= section.offsetTop){
 
-current=section.id;
+current = section.id;
 
 }
 
@@ -291,6 +298,8 @@ item.dataset.target===current
 centerActiveItem(current);
 
 }
+
+    
 
 window.addEventListener(
 "scroll",
