@@ -199,7 +199,7 @@ entry.target.classList.add("show");
 });
 
 },{
-threshold:.15
+threshold:.2
 });
 
 document
