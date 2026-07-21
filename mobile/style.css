@@ -101,7 +101,7 @@ position:sticky;
 top:0;
 z-index:999;
 background:#fafafa;
-padding:4px 0 6px;
+padding:5px 0 7px;
 
 }
 
@@ -118,11 +118,11 @@ overflow-y:hidden;
 scroll-behavior:smooth;
 -webkit-overflow-scrolling:touch;
 
-gap:6px;
+gap:7px;
 
-padding:2px 8px 6px;
+padding:3px 9px 7px;
 
-border-bottom:1px solid #e8e8e8;
+border-bottom:1.2px solid #e8e8e8;
 
 scrollbar-width:none;
 
@@ -143,14 +143,14 @@ flex-direction:column;
 align-items:center;
 justify-content:flex-start;
 
-gap:0px;
+gap:1px;
 
 text-decoration:none;
 
 color:#555;
 
 font-size:.7rem;
-font-weight:420;
+font-weight:410;
 line-height:1.3;
 
 transition:.25s;
@@ -176,8 +176,8 @@ line-height:1.3;
 
 .cat-icon{
 
-width:46px;
-height:46px;
+width:47px;
+height:47px;
 
 border-radius:50%;
 
@@ -218,7 +218,7 @@ color:var(--accent);
 .cat-item.active .cat-icon{
 background:#fff;
 
-border:1.3px solid var(--accent);
+border:1.4px solid var(--accent);
 
 border-color:var(--accent);
 
@@ -610,7 +610,7 @@ color:var(--accent);
 
 cursor:pointer;
 
-font-size:30px;
+font-size:40px;
 
 display:flex;
 
@@ -650,7 +650,7 @@ opacity:1;
 .lightbox-prev span,
 .lightbox-next span{
 
-font-size:.58rem;
+font-size:.6rem;
 font-weight:500;
 color:var(--accent);
 margin-top:-2px;
