@@ -39,7 +39,7 @@ captions:[           ]
 
 {
 id:"gas",
-menu:"گازهای طبی",
+menu:"گازهای   طبی",
 title:"کنسول و تجهیزات گازهای طبی",
 en:"Medical Gas Systems",
 icon:"icon-gas",
