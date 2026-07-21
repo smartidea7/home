@@ -120,7 +120,7 @@ scroll-behavior:smooth;
 
 gap:8px;
 
-padding:9px 9px 2px;
+padding:8px 9px 2px;
 
 border-bottom:1.2px solid #e8e8e8;
 
@@ -192,8 +192,8 @@ justify-content:center;
 background:#fff;
 
 box-shadow:
-0 0 8px rgba(228,111,31,.40),
-0 2px 2px rgba(0,0,0,.05);
+0 0 7px rgba(228,111,31,.45),
+0 2px 1px rgba(0,0,0,.05);
    
 transition:
 border-color .25s,
