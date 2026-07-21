@@ -133,7 +133,7 @@ captions:[           ]
 
 {
 id:"lead",
-menu:"ایزولاسیون اشعهX",
+menu:"ایزولاسیون اشعه",
 title:"اجرای پروژه های ایزولاسیون اشعه",
 en:"Lead Shielding",
 icon:"icon-lead",
