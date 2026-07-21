@@ -101,7 +101,7 @@ position:sticky;
 top:0;
 z-index:999;
 background:#fafafa;
-padding:4px 0 0;
+padding:6px 0 0;
 
 }
 
@@ -120,7 +120,7 @@ scroll-behavior:smooth;
 
 gap:8px;
 
-padding:5px 9px 2px;
+padding:8px 9px 2px;
 
 border-bottom:1.2px solid #e8e8e8;
 
