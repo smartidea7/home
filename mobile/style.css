@@ -101,7 +101,7 @@ position:sticky;
 top:0;
 z-index:999;
 background:#fafafa;
-padding:5px 0 7px;
+padding:4px 0 0;
 
 }
 
@@ -120,7 +120,7 @@ scroll-behavior:smooth;
 
 gap:12px;
 
-padding:6px 14px 10px;
+padding:3px 9px 2px;
 
 border-bottom:1.2px solid #e8e8e8;
 
@@ -222,7 +222,9 @@ color:var(--accent);
 .cat-item.active .cat-icon{
 background:#fff;
 
-border:1.4px solid var(--accent);
+border:1px solid #222;
+box-shadow:
+0 0 0 2px rgba(0,0,0,.25);
 
 border-color:var(--accent);
    box-shadow:
