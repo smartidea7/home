@@ -306,26 +306,38 @@ updateActiveMenu();
 
 function centerActiveItem(id){
 
-const active=menu.querySelector(
+const active = menu.querySelector(
 `[data-target="${id}"]`
 );
 
-if(!active)return;
+if(!active) return;
 
-const left=
-active.offsetLeft-
-(menu.clientWidth/2)+
-(active.clientWidth/2);
+const menuRect = menu.getBoundingClientRect();
+const itemRect = active.getBoundingClientRect();
+
+const targetLeft =
+menu.scrollLeft +
+(itemRect.left - menuRect.left) -
+(menuRect.width / 2) +
+(itemRect.width / 2);
+
+const maxScroll =
+menu.scrollWidth - menu.clientWidth;
 
 menu.scrollTo({
 
-left,
+left:Math.max(
+0,
+Math.min(targetLeft,maxScroll)
+),
 
 behavior:"smooth"
 
 });
 
 }
+
+    
 
                           /*==================================================
     Menu Click
