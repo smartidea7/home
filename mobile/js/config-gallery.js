@@ -87,25 +87,25 @@ categories:[
 
     {
 id:"interior",
-menu:"داخلی",
+menu:"دکور داخلی",
 title:"دکوراسیون داخلی",
 en:"Interior Decoration",
 icon:"icon-interior",
 folder:"interior",
 count:23,
-description:"طراحی و اجرای فضاهای داخلی با ترکیب زیبایی، عملکرد و هویت بصری.",
+description:"طراحی و اجرای پروژه های دکوراسیون داخلی و بازسازی /شامل کلیه خدمات ساختمانی/کابینت چوب/کابینت ام دی اف/کمد دیواری/سرامیک کاری و سنگ کاری / اسلب/کناف/نقاشی و نورپردازی و ...",
 captions:[           ]
 },
 
 {
 id:"office",
-menu:"اداری",
-title:"دکوراسیون اداری و فروشگاهی",
+menu:"دکور اداری",
+title:"دکوراسیون اداری و تجاری",
 en:"Office Decoration",
 icon:"icon-office",
 folder:"office",
 count:23,
-description:"طراحی فضاهای اداری و تجاری متناسب با هویت برند.",
+description:"طراحی و اجرای دکوراسیون دفاتر، فروشگاه‌ها و محیط‌های کاری",
 captions:[           ]
 },
 
@@ -117,7 +117,7 @@ en:"Kitchen Decoration",
 icon:"icon-kitchen",
 folder:"kitchen",
 count:26,
-description:"طراحی و اجرای آشپزخانه‌های مدرن با توجه به زیبایی و کارایی.",
+description:"طراحی و اجرای انواع کابینت، جزیره و فضاهای آشپزخانه با متریال باکیفیت.",
 captions:[           ]
 },
 
@@ -129,43 +129,43 @@ en:"Exhibition Decoration",
 icon:"icon-exhibition",
 folder:"exhibition",
 count:10,
-description:"طراحی و اجرای غرفه‌های نمایشگاهی برای معرفی حرفه‌ای برند.",
+description:"طراحی و اجرای انواع غرفه‌های نمایشگاهی",
 captions:[           ]
 },
 
 {
 id:"lead",
-menu:"سرب",
-title:"سرب‌کوبی، طراحی و ساخت درب‌های سربی",
+menu:"ایزولاسیون اشعهX",
+title:"اجرای پروژه های ایزولاسیون اشعه",
 en:"Lead Shielding",
 icon:"icon-lead",
 folder:"lead",
 count:14,
-description:"طراحی و اجرای حفاظت پرتویی و فضاهای تصویربرداری پزشکی.",
+description:"طراحی و اجرای انواع درب های سربی ریلی و بازشو/استیل،ام دی اف و کامپوزیت/اجرای پروژه های سرب کوبی بخش های تصویر برداری پزشکی/تجهیزات تخصصی محافظت در برابر اشعه/اجرای دیوارهای ماژولار و ...",
 captions:[           ]
 },
 
 {
 id:"camper",
-menu:"کلینیک سیار",
+menu:"تغییر کاربری",
 title:"کلینیک سیار پزشکی و کمپرهای مسافرتی",
 en:"Mobile Clinic & Camper",
 icon:"icon-camper",
 folder:"camper",
 count:10,
-description:"طراحی و تبدیل خودروها و سازه‌های متحرک به فضاهای درمانی و کاربردی.",
+description:"طراحی، تجهیز و ساخت و تغییر کاربری انواع خودروهای پزشکی، درمانی و پروژه‌های سفارشی کلینیک های سیار و کمپر های مسافرتی.",
 captions:[           ]
 },
 
 {
 id:"other",
 menu:"سایر",
-title:"پروژه‌ها و محصولات تخصصی",
+title:"پروژه‌ها و محصولات تخصصی و سفارشی",
 en:"Special Projects",
 icon:"icon-special",
 folder:"other",
 count:11,
-description:"طراحی و ساخت راهکارهای اختصاصی متناسب با نیاز هر پروژه.",
+description:"طراحی و ساخت پروژه های تخصصی و محصولات سفارشی.",
 captions:[           ]
 }
 
