@@ -137,7 +137,7 @@ display:none;
 
 .cat-item{
 
-flex:0 0 72px;
+flex:0 0 84px;
 
 display:flex;
 flex-direction:column;
@@ -182,7 +182,7 @@ height:57px;
 
 border-radius:50%;
 
-border:1px solid #222 ;
+border:1px solid #222;
 
 display:flex;
 
@@ -191,7 +191,9 @@ justify-content:center;
 
 background:#fff;
 
-box-shadow:0 1px 3px rgba(0,0,0,.05);
+box-shadow:
+0 0 0 2px rgba(228,111,31,.25),
+0 2px 6px rgba(228,111,31,.12);
 
 transition:
 border-color .25s,
@@ -228,11 +230,10 @@ color:#222;
 
 .cat-item.active .cat-icon{
 
-border:1px solid #222;
+border-color:#111;
 
 box-shadow:
-0 0 0 3px rgba(228,111,31,.25),
-0 5px 14px rgba(228,111,31,.18);
+0 3px 12px rgba(0,0,0,.25);
 
 transform:translateY(-1px);
 
