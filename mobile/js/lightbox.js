@@ -578,9 +578,9 @@ function getDistance(touches){
 
 
 
-const MIN_SCALE = 1.6;
-const MAX_SCALE = 3.2;
-const STEP = 0.8;
+const MIN_SCALE = 1;
+const MAX_SCALE = 3.4;
+const STEP = 1.2;
 
 function setZoom(newScale) {
 
