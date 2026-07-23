@@ -67,7 +67,7 @@ margin-bottom:4px;
 
 .logo{
 
-width:70px;
+width:65px;
 height:auto;
 
 }
@@ -103,8 +103,6 @@ z-index:999;
 background:#fafafa;
 padding:6px 0 0;
 
-display:flex;
-justify-content:center;
 }
 
 
@@ -113,16 +111,14 @@ justify-content:center;
 
 display:flex;
 align-items:flex-start;
-width:max-content;
+
 overflow-x:auto;
 overflow-y:hidden;
-
 
 scroll-behavior:smooth;
 -webkit-overflow-scrolling:touch;
 
 gap:8px;
-
 
 padding:8px 9px 2px;
 
@@ -139,14 +135,9 @@ scroll-snap-type:x proximity;
 
 }
 
-
-
-
 .category-nav::-webkit-scrollbar{
 display:none;
 }
-
-
 
 
 
@@ -299,9 +290,9 @@ display:flex;
 
 align-items:center;
 
-margin-bottom:3px;
+margin-bottom:6px;
 
-padding-bottom:2px;
+padding-bottom:5px;
 
 border-bottom:1px solid #eee;
 
@@ -313,7 +304,7 @@ border-bottom:1px solid #eee;
 
 width:4px;
 
-height:30px;
+height:28px;
 
 background:var(--accent);
 
@@ -335,7 +326,7 @@ flex:1;
 
 .section-info h2{
 
-font-size:0.8rem;
+font-size:1rem;
 
 font-weight:500;
 
