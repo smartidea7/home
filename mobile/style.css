@@ -103,6 +103,8 @@ z-index:999;
 background:#fafafa;
 padding:6px 0 0;
 
+display:flex;
+justify-content:center;
 }
 
 
@@ -111,9 +113,11 @@ padding:6px 0 0;
 
 display:flex;
 align-items:flex-start;
-
+justify-content:flex-start;
+width:max-content;
 overflow-x:auto;
 overflow-y:hidden;
+min-width:100%;
 
 scroll-behavior:smooth;
 -webkit-overflow-scrolling:touch;
