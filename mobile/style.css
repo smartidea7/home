@@ -140,17 +140,45 @@ scroll-snap-type:x proximity;
 
 }
 
+.category-nav2{
+
+display:flex;
+align-items:flex-start;
+justify-content:center;
+width:max-content;
+overflow-x:auto;
+overflow-y:hidden;
+min-width:100%;
+
+scroll-behavior:smooth;
+-webkit-overflow-scrolling:touch;
+
+gap:8px;
+
+
+padding:8px 9px 2px;
+
+border-bottom:1.2px solid #e8e8e8;
+
+scrollbar-width:none;
+scroll-padding-inline:18px;
+
+overscroll-behavior-x:contain;
+
+touch-action:pan-x;
+
+scroll-snap-type:x proximity;
+
+}
+
 .category-nav::-webkit-scrollbar{
 display:none;
 }
 
-.category-nav.center{
-    justify-content:center;
+.category-nav2::-webkit-scrollbar{
+display:none;
 }
 
-.category-nav.scroll{
-    justify-content:flex-start;
-}
 
 
 
