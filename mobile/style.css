@@ -37,7 +37,7 @@ color:var(--text);
 line-height:1.7;
 max-width:480px;
 margin:auto;
-padding-bottom:70px;
+padding-bottom:20px;
 
 }
 
@@ -67,7 +67,7 @@ margin-bottom:4px;
 
 .logo{
 
-width:65px;
+width:75px;
 height:auto;
 
 }
@@ -290,9 +290,9 @@ display:flex;
 
 align-items:center;
 
-margin-bottom:6px;
+margin-bottom:4px;
 
-padding-bottom:5px;
+padding-bottom:2px;
 
 border-bottom:1px solid #eee;
 
@@ -304,7 +304,7 @@ border-bottom:1px solid #eee;
 
 width:4px;
 
-height:28px;
+height:30px;
 
 background:var(--accent);
 
@@ -326,7 +326,7 @@ flex:1;
 
 .section-info h2{
 
-font-size:1rem;
+font-size:0.8rem;
 
 font-weight:500;
 
@@ -821,7 +821,7 @@ color:#999;
 
 padding:20px;
 margin-top:20px;
-margin-bottom:50px;
+margin-bottom:20px;
 
 
 }
