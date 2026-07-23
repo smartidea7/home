@@ -269,15 +269,27 @@ const scrollPos=window.scrollY+180;
 
 let current=sections[0]?.id;
 
-sections.forEach(section=>{
+const reachedBottom =
+window.innerHeight + window.scrollY >=
+document.documentElement.scrollHeight - 10;
 
-if(scrollPos>=section.offsetTop){
+if (reachedBottom) {
 
-current=section.id;
+    current = sections[sections.length - 1]?.id;
+
+} else {
+
+    sections.forEach(section => {
+
+        if (scrollPos >= section.offsetTop) {
+
+            current = section.id;
+
+        }
+
+    });
 
 }
-
-});
 
 navItems.forEach(item=>{
 
