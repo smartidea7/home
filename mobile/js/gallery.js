@@ -269,27 +269,15 @@ const scrollPos=window.scrollY+180;
 
 let current=sections[0]?.id;
 
-const reachedBottom =
-window.innerHeight + window.scrollY >=
-document.documentElement.scrollHeight - 10;
+sections.forEach(section=>{
 
-if (reachedBottom) {
+if(scrollPos>=section.offsetTop){
 
-    current = sections[sections.length - 1]?.id;
-
-} else {
-
-    sections.forEach(section => {
-
-        if (scrollPos >= section.offsetTop) {
-
-            current = section.id;
-
-        }
-
-    });
+current=section.id;
 
 }
+
+});
 
 navItems.forEach(item=>{
 
@@ -323,7 +311,7 @@ const active=menu.querySelector(
 );
 
 if(!active)return;
-/*
+
 const left=
 active.offsetLeft-
 (menu.clientWidth/2)+
@@ -336,7 +324,6 @@ left,
 behavior:"smooth"
 
 });
-*/
 
 }
 
