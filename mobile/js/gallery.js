@@ -323,7 +323,7 @@ const active=menu.querySelector(
 );
 
 if(!active)return;
-
+/*
 const left=
 active.offsetLeft-
 (menu.clientWidth/2)+
@@ -336,6 +336,7 @@ left,
 behavior:"smooth"
 
 });
+*/
 
 }
 
