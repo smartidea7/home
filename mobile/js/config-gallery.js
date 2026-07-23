@@ -89,7 +89,7 @@ categories:[
     {
 id:"interior",
 menu:"دکور داخلی",
-title:"دکوراسیون داخلی",
+title:"دکور داخلی",
 en:"Interior Decoration",
 icon:"icon-interior",
 folder:"interior",
