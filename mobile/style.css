@@ -144,6 +144,14 @@ scroll-snap-type:x proximity;
 display:none;
 }
 
+.category-nav.center{
+    justify-content:center;
+}
+
+.category-nav.scroll{
+    justify-content:flex-start;
+}
+
 
 
 .cat-item{
