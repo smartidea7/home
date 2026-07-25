@@ -478,6 +478,8 @@ transition:.25s;
 z-index:3000;
 
 overflow:hidden;
+overscroll-behavior:none;
+touch-action:none;
 
 }
 
@@ -547,6 +549,11 @@ max-width:92vw;
 max-height:82vh;
 
 object-fit:contain;
+
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+
+transform:translateZ(0);
 
 border-radius:10px;
 
