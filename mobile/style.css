@@ -879,14 +879,6 @@ margin-bottom:20px;
 
 /* فقط لوگوی صفحه About */
 
-.about-logo{
-
-
-display:block;
-
-margin:0 auto 20px;
-
-}
 
 
 /* توضیحات هر دسته */
@@ -1117,8 +1109,8 @@ margin-bottom:18px;
 
 .about-logo{
 
-width:auto;
-height:110px;
+width:80px;
+height:auto;
 
 flex-shrink:0;
 
