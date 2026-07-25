@@ -439,7 +439,11 @@ navItems[next]?.click();
 
 });
 
-
+document.addEventListener("contextmenu", (e) => {
+    if (e.target.closest("img")) {
+        e.preventDefault();
+    }
+});
 /*==================================================
     Init
 ==================================================*/
