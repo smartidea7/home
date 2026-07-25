@@ -417,13 +417,13 @@ cursor:pointer;
 
 display:block;
 
-width:100%;
+width:auto;
 
-height:auto;
+height:100%;
 
 object-fit:contain;
 
-padding:1px;
+padding:1.5px;
 
 -webkit-user-drag:none;
 user-select:none;
