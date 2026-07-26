@@ -6,8 +6,7 @@ const galleryConfig={
 
 products:{
 
-thumbPath:"images/thumbs/",
-imagePath:"images/originals/",
+path:"images/originals/",
 
 categories:[
 
@@ -84,8 +83,7 @@ captions:[           ]
 projects:{
 
 path:"images/projects/",
-thumbPath:"images/thumbs/",
-imagePath:"images/projects/",
+
     
 categories:[
 
