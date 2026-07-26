@@ -75,7 +75,7 @@ let cards="";
 
 for(let i=1;i<=cat.count;i++){
 
-const thumbFile = String(i).padStart(3,"0") + ".webp";
+const thumbFile = String(i).padStart(3,"0") + ".wbm";
 const imageFile = String(i).padStart(3,"0") + ".jpg";
 
 const hidden=i>9?" hidden-image":"";
