@@ -6,7 +6,8 @@ const galleryConfig={
 
 products:{
 
-path:"images/originals/",
+thumbPath:"images/thumbs/",
+imagePath:"images/originals/",
 
 categories:[
 
@@ -17,7 +18,7 @@ title:"تجهیزات پزشکی مصرفی",
 en:"Medical Consumables",
 icon:"icon-consumables",
 folder:"consumables",
-count:46,
+count:45,
 description:"انواع تجهیزات مصرفی بیمارستانی، کلینیکی و آزمایشگاهی شامل انواع گان جراح و گان بیمار/انواع لباس بستری/انواع شان/مجموعه کاملی از ست های استریل جراحی/انواع زیر انداز با کیفیت و گرماژ مختلف/اقلام مصرفی پزشکی و ....",
 captions:["کلاه بیمار/اسپان باند","گان جراح/سرآستین کشباف","روپوش پزشکی","روپوش اسکراب پزشکی","","","","",""
 
@@ -39,7 +40,7 @@ captions:[           ]
 
 {
 id:"gas",
-menu:"گازهای   طبی",
+menu:"گازهای طبی",
 title:"کنسول و تجهیزات گازهای طبی",
 en:"Medical Gas Systems",
 icon:"icon-gas",
@@ -83,7 +84,9 @@ captions:[           ]
 projects:{
 
 path:"images/projects/",
-
+thumbPath:"images/thumbs/",
+imagePath:"images/projects/",
+    
 categories:[
 
     {
