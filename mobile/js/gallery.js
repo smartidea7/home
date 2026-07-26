@@ -26,9 +26,7 @@ if(!container||!menu)return;
 
 const categories=config.categories;
 
-const thumbPath = config.thumbPath;
-const imagePath = config.imagePath;
-
+const basePath=config.path;
 
 /*==================================================
     Build Menu
