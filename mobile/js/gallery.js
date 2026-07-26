@@ -75,7 +75,8 @@ let cards="";
 
 for(let i=1;i<=cat.count;i++){
 
-const file=String(i).padStart(3,"0")+".jpg";
+const thumbFile = String(i).padStart(3,"0") + ".webp";
+const imageFile = String(i).padStart(3,"0") + ".jpg";
 
 const hidden=i>9?" hidden-image":"";
 
@@ -90,7 +91,7 @@ cards+=`
 
 class="product-card gallery-link${hidden}"
 
-href="${imagePath}${cat.folder}/${file}"
+href="${imagePath}${cat.folder}/${imageFile}"
 
 data-folder="${cat.folder}"
 
@@ -104,7 +105,7 @@ loading="lazy"
 
 decoding="async"
 
-src="${thumbPath}${cat.folder}/${file}"
+src="${thumbPath}${cat.folder}/${thumbFile}"
 
 alt="${caption}"
 
