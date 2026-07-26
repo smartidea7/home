@@ -26,7 +26,8 @@ if(!container||!menu)return;
 
 const categories=config.categories;
 
-const basePath=config.path;
+const thumbPath = config.thumbPath;
+const imagePath = config.imagePath;
 
 
 /*==================================================
@@ -89,7 +90,7 @@ cards+=`
 
 class="product-card gallery-link${hidden}"
 
-href="${basePath}${cat.folder}/${file}"
+href="${imagePath}${cat.folder}/${file}"
 
 data-folder="${cat.folder}"
 
@@ -103,7 +104,7 @@ loading="lazy"
 
 decoding="async"
 
-src="${basePath}${cat.folder}/${file}"
+src="${thumbPath}${cat.folder}/${file}"
 
 alt="${caption}"
 
