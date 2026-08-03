@@ -71,7 +71,7 @@ display:flex;
 
 justify-content:space-between;
 
-align-items:bottom;
+align-items:center;
 
 padding:2px 140px;
 
@@ -199,9 +199,9 @@ justify-content:space-between;
 
 align-items:center;
 
-margin-bottom:24px;
+margin-bottom:8px;
 
-padding-bottom:12px;
+padding-bottom:2px;
 
 border-bottom:1px solid var(--border);
 
@@ -209,9 +209,9 @@ border-bottom:1px solid var(--border);
 
 .section-header h2{
 
-font-size:1.65rem;
+font-size:1.45rem;
 
-font-weight:700;
+font-weight:600;
 
 }
 
