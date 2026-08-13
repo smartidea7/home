@@ -6,7 +6,8 @@ const galleryConfig={
 
 products:{
 
-path:"images/originals/",
+thumbpath:"images/products/thumbs/",
+imagepath:"images/products/",
 
 categories:[
 
