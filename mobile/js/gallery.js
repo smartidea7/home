@@ -20,13 +20,14 @@ page==="products"
 "projectsContainer"
 );
 
-const menu=document.querySelector(".category-nav");
+ menu=document.querySelector(".category-nav");
 
 if(!container||!menu)return;
 
 const categories=config.categories;
 
-const basePath=config.path;
+const thumbPath=config.thumbpath;
+const imagePath=config.imagepath;
 
 /*==================================================
     Build Menu
@@ -73,7 +74,8 @@ let cards="";
 
 for(let i=1;i<=cat.count;i++){
 
-const file = String(i).padStart(3,"0") + ".jpg";
+const thumbfile = String(i).padStart(3,"0") + ".webp";
+const imagefile = String(i).padStart(3,"0") + ".webp";
 
 const hidden=i>9?" hidden-image":"";
 
@@ -88,7 +90,7 @@ cards+=`
 
 class="product-card gallery-link${hidden}"
 
-href="${basePath}${cat.folder}/${file}"
+href="${imagePath}${cat.folder}/${imagefile}"
 
 data-folder="${cat.folder}"
 
@@ -102,7 +104,7 @@ loading="lazy"
 
 decoding="async"
 
-src="${basePath}${cat.folder}/${file}"
+src="${thumbPath}${cat.folder}/${thumbfile}"
 
 alt="${caption}"
 
