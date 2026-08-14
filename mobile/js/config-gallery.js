@@ -83,7 +83,8 @@ captions:[           ]
 
 projects:{
 
-path:"images/projects/",
+thumbpath:"images/projects/thumbs/",
+imagepath:"images/projects/",
 
     
 categories:[
@@ -95,7 +96,7 @@ title:"دکور داخلی",
 en:"Interior Decoration",
 icon:"icon-interior",
 folder:"interior",
-count:23,
+count:25,
 description:"طراحی و اجرای پروژه های دکوراسیون داخلی و بازسازی /شامل کلیه خدمات ساختمانی/کابینت چوب/کابینت ام دی اف/کمد دیواری/سرامیک کاری و سنگ کاری / اسلب/کناف/نقاشی و نورپردازی و ...",
 captions:[           ]
 },
