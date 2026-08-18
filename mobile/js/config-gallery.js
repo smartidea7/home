@@ -102,6 +102,18 @@ captions:[           ]
 },
 
 {
+id:"kitchen",
+menu:"آشپزخانه",
+title:"دکوراسیون آشپزخانه",
+en:"Kitchen Decoration",
+icon:"icon-kitchen",
+folder:"kitchen",
+count:21,
+description:"طراحی و اجرای انواع کابینت، جزیره و فضاهای آشپزخانه با متریال باکیفیت.",
+captions:[           ]
+},
+
+{
 id:"office",
 menu:"دکور اداری",
 title:"دکوراسیون اداری و تجاری",
@@ -113,17 +125,7 @@ description:"طراحی و اجرای دکوراسیون دفاتر، فروشگ
 captions:[           ]
 },
 
-{
-id:"kitchen",
-menu:"آشپزخانه",
-title:"دکوراسیون آشپزخانه",
-en:"Kitchen Decoration",
-icon:"icon-kitchen",
-folder:"kitchen",
-count:26,
-description:"طراحی و اجرای انواع کابینت، جزیره و فضاهای آشپزخانه با متریال باکیفیت.",
-captions:[           ]
-},
+
 
 {
 id:"exhibition",
