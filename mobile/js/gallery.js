@@ -72,7 +72,7 @@ if(cat.count===0)return"";
 
 let cards="";
 
-for(let i=100;i<=cat.count;i++){
+for(let i=1;i<=cat.count;i++){
 
 const thumbfile = String(i).padStart(3,"0") + ".webp";
 const imagefile = String(i).padStart(3,"0") + ".webp";
