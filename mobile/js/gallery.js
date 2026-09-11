@@ -4,13 +4,24 @@
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-const page=document.body.dataset.gallery;
+const page = document.body.dataset.gallery;
 
-if(!page)return;
+if(!page) return;
 
-const config=galleryConfig[page];
+const assetBase =
+    document.body.dataset.galleryAssets || "";
 
-if(!config)return;
+if(page === "desktop"){
+
+    buildDesktopGallery();
+
+    return;
+
+}
+
+const config = galleryConfig[page];
+
+if(!config) return;
 
 const container=document.getElementById(
 page==="products"
