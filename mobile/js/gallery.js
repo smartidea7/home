@@ -455,6 +455,9 @@ document.addEventListener("contextmenu", (e) => {
     if (e.target.closest("img")) {
         e.preventDefault();
     }
+
+
+    
 });
 /*==================================================
     Init
@@ -466,4 +469,280 @@ updateActiveMenu();
 
 });
 
+/*==================================================
+    DESKTOP GALLERY
+==================================================*/
+
+function buildDesktopGallery(){
+
+    const productsContainer =
+        document.getElementById("products-container");
+
+    const projectsContainer =
+        document.getElementById("projects-container");
+
+    if(!productsContainer && !projectsContainer)
+        return;
+
+
+    const assetBase =
+        document.body.dataset.galleryAssets || "";
+
+
+    function renderCategories(config, container){
+
+        if(!container) return;
+
+
+        const thumbPath =
+            assetBase + config.thumbpath;
+
+        const imagePath =
+            assetBase + config.imagepath;
+
+
+        container.innerHTML = config.categories.map(
+            (cat,index)=>{
+
+                if(cat.count === 0)
+                    return "";
+
+
+                let cards = "";
+
+
+                for(let i=1; i<=cat.count; i++){
+
+                    const file =
+                        String(i).padStart(3,"0")
+                        + ".webp";
+
+
+                    const hidden =
+                        i > 3
+                        ? " hidden"
+                        : "";
+
+
+                    const caption =
+                        cat.captions?.[i-1]
+                        || cat.title;
+
+
+                    cards += `
+
+                    <a
+
+                        class="thumb gallery-link${hidden}"
+
+                        href="${imagePath}${cat.folder}/${file}"
+
+                        data-folder="${cat.folder}"
+
+                        data-index="${i-1}"
+
+                        data-caption="${caption}">
+
+                        <img
+
+                            loading="lazy"
+
+                            decoding="async"
+
+                            src="${thumbPath}${cat.folder}/${file}"
+
+                            alt="${caption}"
+
+                            draggable="false">
+
+                    </a>
+
+                    `;
+
+                }
+
+
+                return `
+
+                <section
+                    class="category fade"
+                    id="${cat.id}">
+
+                    <div class="category-head">
+
+                        <div class="category-info">
+
+                            <div class="category-icon">
+
+                                <svg class="icon">
+
+                                    <use
+                                        href="${assetBase}images/icons.svg#${cat.icon}">
+                                    </use>
+
+                                </svg>
+
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    ${cat.title}
+                                </h3>
+
+                                <p>
+                                    ${cat.description}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        ${
+                            cat.count > 3
+
+                            ?
+
+                            `<button
+
+                                class="more-btn"
+
+                                data-gallery="${cat.id}">
+
+                                نمایش بیشتر +
+
+                            </button>`
+
+                            :
+
+                            ""
+
+                        }
+
+                    </div>
+
+
+                    <div
+
+                        class="gallery"
+
+                        id="gallery-${cat.id}"
+
+                        data-group="${cat.id}">
+
+                        ${cards}
+
+                    </div>
+
+                </section>
+
+                `;
+
+            }
+
+        ).join("");
+
+
+        /*
+            Desktop Show More
+        */
+
+        container
+            .querySelectorAll(".more-btn")
+            .forEach(btn=>{
+
+                btn.addEventListener("click",()=>{
+
+                    const id =
+                        btn.dataset.gallery;
+
+                    const gallery =
+                        container.querySelector(
+                            `#gallery-${id}`
+                        );
+
+                    if(!gallery)
+                        return;
+
+
+                    const hidden =
+                        gallery.querySelectorAll(
+                            ".hidden"
+                        );
+
+
+                    hidden.forEach(item=>{
+
+                        item.classList.remove(
+                            "hidden"
+                        );
+
+                    });
+
+
+                    btn.remove();
+
+                });
+
+            });
+
+    }
+
+
+    renderCategories(
+        galleryConfig.products,
+        productsContainer
+    );
+
+
+    renderCategories(
+        galleryConfig.projects,
+        projectsContainer
+    );
+
+
+    /*
+        Lazy / Fade Observer
+    */
+
+    const observer =
+        new IntersectionObserver(
+            entries=>{
+
+                entries.forEach(entry=>{
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList.add("show");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12
+            }
+        );
+
+
+    document
+        .querySelectorAll(".fade")
+        .forEach(el=>{
+            observer.observe(el);
+        });
+
+
+    document.dispatchEvent(
+        new Event("galleryUpdated")
+    );
+
+}
+    
 });
