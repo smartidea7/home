@@ -170,7 +170,7 @@ title:"پروژه‌ها و محصولات تخصصی و سفارشی",
 en:"Special Projects",
 icon:"icon-special",
 folder:"other",
-count:11,
+count:10,
 description:"طراحی و ساخت پروژه های تخصصی و محصولات سفارشی.",
 captions:[           ]
 }
