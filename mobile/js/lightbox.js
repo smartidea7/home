@@ -112,13 +112,47 @@ buildGalleryMap();
 
 
 /* ---------- Show Image ---------- */
+
+const desktopImageCache = new Map();
+
 function preloadImage(src){
+
+    /* موبایل: بدون هیچ تغییر */
+    if(document.body.dataset.gallery !== "desktop"){
+
+        const img = new Image();
+        img.src = src;
+        return;
+
+    }
+
+    /* دسکتاپ: استفاده از Cache */
+    if(desktopImageCache.has(src))
+        return desktopImageCache.get(src);
 
     const img = new Image();
 
+    const promise = new Promise(resolve=>{
+
+        img.onload = ()=>{
+            resolve(img);
+        };
+
+        img.onerror = ()=>{
+            resolve(null);
+        };
+
+    });
+
     img.src = src;
 
+    desktopImageCache.set(src,promise);
+
+    return promise;
+
 }
+
+
 function showImage(index){
 
     if(!activeGallery || activeGallery.length===0)
@@ -137,23 +171,85 @@ function showImage(index){
 
 const item = activeGallery[currentIndex];
 
-if(lightboxImage.src.endsWith(item.href.split("/").pop())){
-    return;
-}
+
 
 setZoom(1);
 
-  startLoading();
+/* ==========================================
+   DESKTOP SMART LOADING
+   موبایل دقیقاً رفتار قبلی را حفظ می‌کند
+========================================== */
 
-lightboxImage.onload = finishLoading;
-    
-lightboxImage.onerror = imageError;
-    
+if(document.body.dataset.gallery === "desktop"){
 
-lightboxImage.src = item.href;
+    const cachedImage = desktopImageCache.get(item.href);
 
-lightboxImage.alt=
+    if(cachedImage){
+
+        cachedImage.then(img=>{
+
+            if(!img){
+
+                imageError();
+                return;
+
+            }
+
+            lightboxImage.onload = null;
+            lightboxImage.onerror = null;
+
+            lightboxImage.src = img.src;
+
+            finishLoading();
+
+        });
+
+    }else{
+
+        startLoading();
+
+        const imagePromise = preloadImage(item.href);
+
+        imagePromise.then(img=>{
+
+            if(!img){
+
+                imageError();
+                return;
+
+            }
+
+            lightboxImage.onload = null;
+            lightboxImage.onerror = null;
+
+            lightboxImage.src = img.src;
+
+            finishLoading();
+
+        });
+
+    }
+
+}else{
+
+    /* ===============================
+       MOBILE — بدون تغییر
+    =============================== */
+
+    startLoading();
+
+    lightboxImage.onload = finishLoading;
+
+    lightboxImage.onerror = imageError;
+
+    lightboxImage.src = item.href;
+
+}
+
+lightboxImage.alt =
 item.dataset.caption||"";
+
+    
 
 
 
@@ -193,7 +289,7 @@ preloadImage(prevItem.href);
     
    preloadAdjacentImages();
 
-   function preloadAdjacentImages(){
+  function preloadAdjacentImages(){
 
     if(activeGallery.length < 2) return;
 
@@ -207,16 +303,13 @@ preloadImage(prevItem.href);
             (currentIndex + 1) % activeGallery.length
         ];
 
-    [prev, next].forEach(item => {
+    [prev,next].forEach(item=>{
 
-        const img = new Image();
-
-        img.src = item.href;
+        preloadImage(item.href);
 
     });
 
 }
-
 }
 
 
