@@ -840,7 +840,7 @@ id="${cat.id}">
 
 <svg class="icon">
 
-<use href="images/icons.svg#${cat.icon}"></use>
+<use href="../mobile/images/icons.svg#${cat.icon}"></use>
 
 </svg>
 
