@@ -43,7 +43,7 @@ line-height: 1.7; padding-bottom: 70px; }
 }
 .container { padding: 16px; }
 header { margin-bottom:10px; text-align:center; }
-.logo { width: 100px; max-width: 100%; margin-bottom:6px; }
+.logo { width: 80px; max-width: 100%; margin-bottom:6px; }
 header h1 { font-size:1rem; font-weight:400; letter-spacing:-0.3px; }
 header h1 span{
     display:block;
