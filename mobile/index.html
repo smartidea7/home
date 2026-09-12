@@ -1,6 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,54 +14,80 @@
       content="ایده هوشمند؛ گروه بازرگانی، طراحی و مهندسی در زمینه تأمین کالاهای تخصصی، تجهیزات پزشکی و اجرای پروژه‌های طراحی و مهندسی.">
 
 <link rel="stylesheet" href="style-index.css">
+
 </head>
+
 <body>
+
 <div class="container">
 
-  <header>
-  <img src="images/logo.png" alt="Smart Idea Logo" class="logo">
+<header>
+
+<img
+    src="images/logo.png"
+    alt="لوگوی ایده هوشمند"
+    class="logo"
+>
 
 <h1>
 گروه بازرگانی، طراحی و مهندسی ایده هوشمند
 <span>Smart Idea | Trading, Design & Engineering Group</span>
 </h1>
-  <p>
-      تأمین کالاهای تخصصی و اجرای پروژه‌های طراحی و مهندسی
-  </p>
+
+<p>
+تأمین کالاهای تخصصی و اجرای پروژه‌های طراحی و مهندسی
+</p>
+
 </header>
 
-  
+
 <section class="gallery">
 
-<a class="card-link" href="products.html" aria-label="مشاهده محصولات تخصصی و تجهیزات بیمارستانی">
+<a
+    class="card-link"
+    href="products.html"
+    aria-label="مشاهده محصولات تخصصی و تجهیزات بیمارستانی"
+>
 
 <div class="gallery-item fade" id="products">
 
-    <div class="hero-image-box">
-      <img src="images/products.jpg" alt="محصولات تخصصی و تجهیزات بیمارستانی">
-    </div>
+<div class="hero-image-box">
+
+<img
+    src="images/products.jpg"
+    alt="محصولات تخصصی و تجهیزات بیمارستانی"
+>
 
 </div>
-
-</a>	
-
-<a class="card-link" href="projects.html" aria-label="مشاهده پروژه‌های طراحی و مهندسی">
-
-<div class="gallery-item fade" id="projects">
-
-    <div class="hero-image-box">
-        <img src="images/projects.jpg" alt="پروژه‌های طراحی و مهندسی">
-    </div>
 
 </div>
 
 </a>
 
 
+<a
+    class="card-link"
+    href="projects.html"
+    aria-label="مشاهده پروژه‌های طراحی و مهندسی"
+>
+
+<div class="gallery-item fade" id="projects">
+
+<div class="hero-image-box">
+
+<img
+    src="images/projects.jpg"
+    alt="پروژه‌های طراحی و مهندسی"
+>
+
+</div>
+
+</div>
+
+</a>
+
 </section>
 
-
-<object type="image/svg+xml" data="icons.svg" style="display:none;"></object>
 
 <nav class="bottom-nav">
 
@@ -72,6 +101,7 @@
 
 </a>
 
+
 <a href="products.html">
 
 <svg class="icon">
@@ -81,6 +111,7 @@
 محصولات
 
 </a>
+
 
 <a href="projects.html">
 
@@ -92,6 +123,7 @@
 
 </a>
 
+
 <a href="contact.html">
 
 <svg class="icon">
@@ -101,6 +133,7 @@
 تماس
 
 </a>
+
 
 <a href="about.html">
 
@@ -113,31 +146,47 @@
 </a>
 
 </nav>
-  
+
 
 <footer class="footer">
-  
-  <p class="copy">© 2026 Smart Idea. All rights reserved.</p>
+
+<p class="copy">
+© 2026 Smart Idea. All rights reserved.
+</p>
+
 </footer>
 
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const faders = document.querySelectorAll('.fade');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  faders.forEach(el => observer.observe(el));
 
-  
+<script>
+
+document.addEventListener('DOMContentLoaded', function(){
+
+    const faders = document.querySelectorAll('.fade');
+
+    const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting) {
+
+                entry.target.classList.add('show');
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    }, { threshold: 0.2 });
+
+    faders.forEach(el => observer.observe(el));
+
 });
+
 </script>
 
 </body>
 </html>
+```
