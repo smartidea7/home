@@ -786,7 +786,7 @@ cards += `
 
 class="thumb gallery-link${hidden}"
 
-href="${imagePath}${cat.folder}/${file}"
+href="../mobile/${imagePath}${cat.folder}/${file}"
 
 data-folder="${cat.folder}"
 
@@ -801,7 +801,7 @@ loading="lazy"
 
 decoding="async"
 
-src="${thumbPath}${cat.folder}/${file}"
+src="../mobile/${thumbPath}${cat.folder}/${file}"
 
 alt="${caption}"
 
