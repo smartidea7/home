@@ -730,7 +730,9 @@ ${
         galleryConfig.projects,
         projectsContainer
     );
-
+document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+});
 
     /*
         Lazy / Fade Observer
