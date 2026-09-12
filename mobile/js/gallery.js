@@ -537,7 +537,7 @@ function buildDesktopGallery(){
 
                         href="${imagePath}${cat.folder}/${file}"
 
-                        data-folder="${cat.folder}"
+                        data-folder="${page === "desktop" ? (container === productsContainer ? "products-" : "projects-") + cat.folder : cat.folder}"
 
                         data-index="${i-1}"
 
