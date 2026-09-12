@@ -519,7 +519,7 @@ function buildDesktopGallery(){
 
 
                     const hidden =
-                        i > 3
+                        i > 4
                         ? " hidden"
                         : "";
 
@@ -623,17 +623,34 @@ function buildDesktopGallery(){
                     </div>
 
 
-                    <div
+                   <div
+    class="gallery"
+    id="gallery-${cat.id}"
+    data-group="${cat.id}">
 
-                        class="gallery"
+    ${cards}
 
-                        id="gallery-${cat.id}"
+</div>
 
-                        data-group="${cat.id}">
+${
+    cat.count > 4
+    ?
+    `
+    <div class="more-area">
 
-                        ${cards}
+        <button
+            class="more-btn more-btn-bottom"
+            data-gallery="${cat.id}">
 
-                    </div>
+            نمایش بیشتر +
+
+        </button>
+
+    </div>
+    `
+    :
+    ""
+}
 
                 </section>
 
@@ -648,44 +665,57 @@ function buildDesktopGallery(){
             Desktop Show More
         */
 
-        container
-            .querySelectorAll(".more-btn")
-            .forEach(btn=>{
+       container
+    .querySelectorAll(".more-btn")
+    .forEach(btn=>{
 
-                btn.addEventListener("click",()=>{
+        btn.addEventListener("click",()=>{
 
-                    const id =
-                        btn.dataset.gallery;
+            const id =
+                btn.dataset.gallery;
 
-                    const gallery =
-                        container.querySelector(
-                            `#gallery-${id}`
-                        );
+            const gallery =
+                container.querySelector(
+                    `#gallery-${id}`
+                );
 
-                    if(!gallery)
-                        return;
+            if(!gallery)
+                return;
 
+            const buttons =
+                container.querySelectorAll(
+                    `.more-btn[data-gallery="${id}"]`
+                );
 
-                    const hidden =
-                        gallery.querySelectorAll(
-                            ".hidden"
-                        );
+            const opened =
+                gallery.classList.toggle("expanded");
 
+            const hidden =
+                gallery.querySelectorAll(".hidden");
 
-                    hidden.forEach(item=>{
+            hidden.forEach(item=>{
 
-                        item.classList.remove(
-                            "hidden"
-                        );
-
-                    });
-
-
-                    btn.remove();
-
-                });
+                item.classList.toggle(
+                    "show",
+                    opened
+                );
 
             });
+
+            buttons.forEach(button=>{
+
+                button.textContent =
+                    opened
+                    ?
+                    "نمایش کمتر −"
+                    :
+                    "نمایش بیشتر +";
+
+            });
+
+        });
+
+    });
 
     }
 
