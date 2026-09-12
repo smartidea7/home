@@ -1,26 +1,17 @@
 /*==================================================
-    Smart Idea Gallery Engine v3
-    Optimized
+    Smart Idea Gallery Engine v2
 ==================================================*/
-
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-
 const page = document.body.dataset.gallery;
 
+if(!page) return;
 
-/* اگر صفحه گالری نیست */
-if(!page && !document.body.dataset.galleryAssets)
-    return;
+const assetBase =
+    document.body.dataset.galleryAssets || "";
 
-
-
-/*==================================================
-    Desktop Mode
-==================================================*/
-
-if(page==="desktop"){
+if(page === "desktop"){
 
     buildDesktopGallery();
 
@@ -28,173 +19,97 @@ if(page==="desktop"){
 
 }
 
-
-
-/*==================================================
-    Mobile Gallery
-==================================================*/
-
-
 const config = galleryConfig[page];
 
-if(!config)
-    return;
+if(!config) return;
 
-
-
-const container =
-document.getElementById(
-    page==="products"
-    ?
-    "productsContainer"
-    :
-    "projectsContainer"
+const container=document.getElementById(
+page==="products"
+?
+"productsContainer"
+:
+"projectsContainer"
 );
 
+ menu=document.querySelector(".category-nav");
 
-const menu =
-document.querySelector(".category-nav");
+if(!container||!menu)return;
 
+const categories=config.categories;
 
-if(!container || !menu)
-    return;
-
-
-
-const categories =
-config.categories;
-
-
-
-const thumbPath =
-config.thumbpath;
-
-
-
-const imagePath =
-config.imagepath;
-
-
-
-
+const thumbPath=config.thumbpath;
+const imagePath=config.imagepath;
 
 /*==================================================
     Build Menu
 ==================================================*/
 
-
 function buildMenu(){
 
-
-menu.innerHTML =
-categories.map((cat,index)=>{
-
-
-return `
+menu.innerHTML=categories.map((cat,index)=>`
 
 <a href="#${cat.id}"
 class="cat-item ${index===0?"active":""}"
 data-target="${cat.id}">
 
-
 <div class="cat-icon">
 
 <svg class="cat-svg">
 
-<use href="images/icons.svg#${cat.icon}">
-</use>
+<use href="images/icons.svg#${cat.icon}"></use>
 
 </svg>
 
 </div>
 
-
-<span>
-${cat.menu}
-</span>
-
+<span>${cat.menu}</span>
 
 </a>
 
-`;
-
-
-}).join("");
+`).join("");
 
 }
-
-
 
 
 /*==================================================
     Build Gallery
 ==================================================*/
 
-
 function buildGallery(){
 
+container.innerHTML=categories.map(cat=>{
 
-container.innerHTML =
-
-
-categories.map(cat=>{
-
-
-if(cat.count===0)
-return "";
-
-
+if(cat.count===0)return"";
 
 let cards="";
 
-
-
 for(let i=1;i<=cat.count;i++){
 
+const thumbfile = String(i).padStart(3,"0") + ".webp";
+const imagefile = String(i).padStart(3,"0") + ".webp";
 
+const hidden=i>9?" hidden-image":"";
 
-const file =
-String(i).padStart(3,"0")
-+".webp";
-
-
-
-const hidden =
-i>9
-?
-" hidden-image"
-:
-"";
-
-
-
-const caption =
+const caption=
 cat.captions?.[i-1]
 ||
 cat.title;
 
-
-
-cards += `
-
+cards+=`
 
 <a
 
 class="product-card gallery-link${hidden}"
 
-href="${imagePath}${cat.folder}/${file}"
+href="${imagePath}${cat.folder}/${imagefile}"
 
+data-folder="${page === "desktop" ? (container === productsContainer ? "products-" : 
 
-data-folder="${cat.folder}"
+"projects-") + cat.folder : cat.folder}"
 
 data-index="${i-1}"
 
-
-data-caption="${caption}"
-
->
-
-
+data-caption="${caption}">
 
 <img
 
@@ -202,86 +117,48 @@ loading="lazy"
 
 decoding="async"
 
-src="${thumbPath}${cat.folder}/${file}"
+src="${thumbPath}${cat.folder}/${thumbfile}"
 
 alt="${caption}"
 
-draggable="false"
-
->
-
+draggable="false">
 
 </a>
 
-
 `;
-
-
 
 }
 
+                                   return`
 
-
-
-return `
-
-
-
-<section
-
-class="product-section fade"
-
+<section class="product-section fade"
 id="${cat.id}">
-
 
 <div class="section-title">
 
 
 <div class="section-line"></div>
 
-
-
 <div class="section-info">
 
+<h2>${cat.title}</h2>
 
-<h2>
-${cat.title}
-</h2>
-
-
-<span>
-${cat.en}
-</span>
-
+<span>${cat.en}</span>
 
 </div>
-
-
 
 <svg class="icon">
 
-
-<use href="images/icons.svg#${cat.icon}">
-</use>
-
+<use href="images/icons.svg#${cat.icon}"></use>
 
 </svg>
 
-
 </div>
-
-
-
-
 <p class="section-description">
 
 ${cat.description}
 
 </p>
-
-
-
-
 
 <div class="product-grid">
 
@@ -289,340 +166,190 @@ ${cards}
 
 </div>
 
-
-
-
-
-${
-cat.count>9
-?
-
-`
+${cat.count>9?`
 
 <button
-
 class="show-more"
+data-target="${cat.id}">
 
-data-target="${cat.id}"
+<span>نمایش بیشتر</span>
 
->
-
-<span>
-نمایش بیشتر
-</span>
-
-
-<span class="more-icon">
-↓
-</span>
-
+<span class="more-icon">↓</span>
 
 </button>
 
-`
-
-:
-
-""
-
-}
-
+`:""}
 
 </section>
 
-
 `;
-
-
 
 }).join("");
 
 }
 
-
-
 buildMenu();
 
 buildGallery();
-
-
 
 document.dispatchEvent(
 new Event("galleryUpdated")
 );
 
+                          
 
- 
 /*==================================================
     Fade Animation
 ==================================================*/
 
-
-const observer =
-new IntersectionObserver(entries=>{
-
+const observer=new IntersectionObserver(entries=>{
 
 entries.forEach(entry=>{
 
-
 if(entry.isIntersecting){
-
 
 entry.target.classList.add("show");
 
-
-observer.unobserve(entry.target);
-
-
 }
 
-
 });
-
 
 },{
-threshold:.15
+threshold:.2
 });
-
-
 
 document
 .querySelectorAll(".fade")
-.forEach(el=>observer.observe(el));
+.forEach(item=>observer.observe(item));
 
-
-
-
+                          
 
 /*==================================================
     Show More
 ==================================================*/
 
-
 document.addEventListener("click",e=>{
 
+const btn=e.target.closest(".show-more");
 
-const btn =
-e.target.closest(".show-more");
+if(!btn)return;
 
-
-if(!btn)
-return;
-
-
-
-const section =
-document.getElementById(
+const section=document.getElementById(
 btn.dataset.target
 );
 
+if(!section)return;
 
+const hidden=
+section.querySelectorAll(".hidden-image");
 
-if(!section)
-return;
-
-
-
-
-const images =
-section.querySelectorAll(
-".hidden-image"
-);
-
-
-
-const opened =
+const opened=
 btn.classList.toggle("open");
 
-
-
-images.forEach((img,index)=>{
-
+hidden.forEach((img,index)=>{
 
 setTimeout(()=>{
-
 
 img.classList.toggle(
 "show-image",
 opened
 );
 
-
-
-},index*40);
-
-
+}, index * 40);
 
 });
+    
 
-
-
-
-btn.querySelector("span")
-.textContent =
-
+btn.querySelector("span").textContent=
 opened
 ?
 "بستن تصاویر"
 :
 "نمایش بیشتر";
 
-
-
 });
 
-
-
-
-
-
+                          
 
 /*==================================================
     Scroll Spy
 ==================================================*/
 
-
-const sections =
-[
-...document.querySelectorAll(
-".product-section"
-)
+const sections=[
+...document.querySelectorAll(".product-section")
 ];
 
-
-
-const navItems =
-[
-...document.querySelectorAll(
-".cat-item"
-)
+const navItems=[
+...document.querySelectorAll(".cat-item")
 ];
-
-
-
 
 function updateActiveMenu(){
 
+const scrollPos=window.scrollY+180;
 
+let current=sections[0]?.id;
 
-const scrollPos =
-window.scrollY + 180;
+const reachedBottom =
+window.innerHeight + window.scrollY >=
+document.documentElement.scrollHeight - 10;
 
+if (reachedBottom) {
 
+    current = sections[sections.length - 1]?.id;
 
-let current =
-sections[0]?.id;
+} else {
 
+    sections.forEach(section => {
 
+        if (scrollPos >= section.offsetTop) {
 
-const bottom =
-window.innerHeight + window.scrollY
->=
-document.documentElement.scrollHeight-10;
+            current = section.id;
 
+        }
 
-
-if(bottom){
-
-
-current =
-sections.at(-1)?.id;
-
+    });
 
 }
-else{
-
-
-sections.forEach(section=>{
-
-
-if(scrollPos >= section.offsetTop){
-
-current =
-section.id;
-
-}
-
-
-});
-
-
-}
-
-
-
 
 navItems.forEach(item=>{
-
 
 item.classList.toggle(
 "active",
 item.dataset.target===current
 );
 
-
-
 });
-
-
 
 centerActiveItem(current);
 
-
 }
-
-
-
-
 
 window.addEventListener(
 "scroll",
 updateActiveMenu,
-{
-passive:true
-}
+{passive:true}
 );
-
-
 
 updateActiveMenu();
 
-
-
-
-
-
-
+                          
 
 /*==================================================
-    Center Active Category
+    Center Active Menu
 ==================================================*/
-
 
 function centerActiveItem(id){
 
-
-
-const active =
-menu.querySelector(
+const active=menu.querySelector(
 `[data-target="${id}"]`
 );
 
+if(!active)return;
 
-
-if(!active)
-return;
-
-
-
-const left =
-active.offsetLeft
--
-(menu.clientWidth/2)
-+
+const left=
+active.offsetLeft-
+(menu.clientWidth/2)+
 (active.clientWidth/2);
-
-
 
 menu.scrollTo({
 
@@ -632,726 +359,438 @@ behavior:"smooth"
 
 });
 
-
 }
 
-
-
-
-
-
+                          
 
 /*==================================================
-    Category Click
+    Menu Click
 ==================================================*/
-
 
 menu.addEventListener("click",e=>{
 
+const item=e.target.closest(".cat-item");
 
-const item =
-e.target.closest(".cat-item");
-
-
-
-if(!item)
-return;
-
-
+if(!item)return;
 
 e.preventDefault();
 
-
-
-const section =
-document.getElementById(
+const section=document.getElementById(
 item.dataset.target
 );
 
-
-
-if(!section)
-return;
-
-
+if(!section)return;
 
 window.scrollTo({
 
-top:
-section.offsetTop-120,
+top:section.offsetTop-120,
 
 behavior:"smooth"
 
 });
 
-
-
 });
 
-
-
-
-
-
+                          
 
 /*==================================================
-    Horizontal Wheel Scroll
+    Horizontal Scroll
 ==================================================*/
 
+menu.addEventListener("wheel",e=>{
 
-menu.addEventListener(
-"wheel",
-e=>{
-
-
-if(
-Math.abs(e.deltaY)
-<=
-Math.abs(e.deltaX)
-)
-return;
-
-
+if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
 
 e.preventDefault();
 
+menu.scrollLeft+=e.deltaY;
 
-
-menu.scrollLeft += e.deltaY;
-
-
-
-},
-{
+},{
 passive:false
-}
-);
-
-
-
-
+});
 
 
 /*==================================================
-    Touch Drag Menu
+    Touch Drag
 ==================================================*/
 
-
-let startX=0;
-
+let touchX=0;
 let startScroll=0;
 
+menu.addEventListener("touchstart",e=>{
 
+touchX=e.touches[0].clientX;
 
-menu.addEventListener(
-"touchstart",
-e=>{
+startScroll=menu.scrollLeft;
 
-
-startX =
-e.touches[0].clientX;
-
-
-startScroll =
-menu.scrollLeft;
-
-
-},
-{
+},{
 passive:true
-}
-);
+});
 
+menu.addEventListener("touchmove",e=>{
 
+const move=e.touches[0].clientX;
 
+menu.scrollLeft=
+startScroll-(move-touchX);
 
-menu.addEventListener(
-"touchmove",
-e=>{
-
-
-const move =
-e.touches[0].clientX;
-
-
-
-menu.scrollLeft =
-startScroll -
-(move-startX);
-
-
-
-},
-{
+},{
 passive:true
-}
-);
-
-
-
-
+});
 
 
 /*==================================================
-    Keyboard Navigation
+    Keyboard
 ==================================================*/
 
+document.addEventListener("keydown",e=>{
 
-document.addEventListener(
-"keydown",
-e=>{
+if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
 
-
-if(
-e.key!=="ArrowLeft"
-&&
-e.key!=="ArrowRight"
-)
-return;
-
-
-
-const current =
-navItems.findIndex(
-item=>
+const current=navItems.findIndex(item=>
 item.classList.contains("active")
 );
 
-
-
-if(current<0)
-return;
-
-
+if(current===-1)return;
 
 let next=current;
 
-
-
 if(e.key==="ArrowRight")
-
-next =
-Math.min(
-current+1,
-navItems.length-1
-);
-
-
+next=Math.min(current+1,navItems.length-1);
 
 if(e.key==="ArrowLeft")
-
-next =
-Math.max(
-current-1,
-0
-);
-
-
+next=Math.max(current-1,0);
 
 navItems[next]?.click();
 
-
-
 });
 
+document.addEventListener("contextmenu", (e) => {
+    if (e.target.closest("img")) {
+        e.preventDefault();
+    }
 
 
-
-
-
-
-/*==================================================
-    Image Protection
-==================================================*/
-
-
-document.addEventListener(
-"contextmenu",
-e=>{
-
-
-if(
-e.target.closest("img")
-)
-
-e.preventDefault();
-
-
-}
-);
-
-
-
-
-
-
-
+    
+});
 /*==================================================
     Init
 ==================================================*/
 
-
-window.addEventListener(
-"load",
-()=>{
+window.addEventListener("load",()=>{
 
 updateActiveMenu();
 
-}
-);
-
-
+});
 
 /*==================================================
     DESKTOP GALLERY
 ==================================================*/
 
-
 function buildDesktopGallery(){
 
+    const productsContainer =
+        document.getElementById("products-container");
 
+    const projectsContainer =
+        document.getElementById("projects-container");
 
-const productsContainer =
-document.getElementById(
-"products-container"
-);
+    if(!productsContainer && !projectsContainer)
+        return;
 
 
+    const assetBase =
+        document.body.dataset.galleryAssets || "";
 
-const projectsContainer =
-document.getElementById(
-"projects-container"
-);
 
+    function renderCategories(config, container){
 
+        if(!container) return;
 
-if(
-!productsContainer &&
-!projectsContainer
-)
-return;
 
+        const thumbPath =
+            assetBase + config.thumbpath;
 
+        const imagePath =
+            assetBase + config.imagepath;
 
 
+        container.innerHTML = config.categories.map(
+            (cat,index)=>{
 
-function renderCategories(
-config,
-container,
-type
-){
+                if(cat.count === 0)
+                    return "";
 
 
+                let cards = "";
 
-if(!container)
-return;
 
+                for(let i=1; i<=cat.count; i++){
 
+                    const file =
+                        String(i).padStart(3,"0")
+                        + ".webp";
 
-const thumbPath =
-config.thumbpath;
 
+                    const hidden =
+                        i > 4
+                        ? " hidden"
+                        : "";
 
 
-const imagePath =
-config.imagepath;
+                    const caption =
+                        cat.captions?.[i-1]
+                        || cat.title;
 
 
+                    cards += `
 
+                    <a
 
+                        class="thumb gallery-link${hidden}"
 
-container.innerHTML =
+                        href="${imagePath}${cat.folder}/${file}"
 
+                        data-folder="${page === "desktop" ? (container === productsContainer ? 
 
-config.categories.map(cat=>{
+"products-" : "projects-") + cat.folder : cat.folder}"
 
+                        data-index="${i-1}"
 
+                        data-caption="${caption}">
 
-if(cat.count===0)
-return "";
+                        <img
 
+                            loading="lazy"
 
+                            decoding="async"
 
-let cards="";
+                            src="${thumbPath}${cat.folder}/${file}"
 
+                            alt="${caption}"
 
+                            draggable="false">
 
-for(
-let i=1;
-i<=cat.count;
-i++
-){
+                    </a>
 
+                    `;
 
+                }
 
-const file =
-String(i).padStart(3,"0")
-+
-".webp";
 
+                return `
 
+                <section
+                    class="category fade"
+                    id="${cat.id}">
 
-const hidden =
-i>4
-?
-" hidden"
-:
-"";
+                    <div class="category-head">
 
+                        <div class="category-info">
 
+                            <div class="category-icon">
 
-const caption =
-cat.captions?.[i-1]
-||
-cat.title;
+                                <svg class="icon">
 
+                                    <use
+                                        href="${assetBase}images/icons.svg#${cat.icon}">
+                                    </use>
 
+                                </svg>
 
+                            </div>
 
+                            <div>
 
-cards += `
+                                <h3>
+                                    ${cat.title}
+                                </h3>
 
+                                <p>
+                                    ${cat.description}
+                                </p>
 
-<a
+                            </div>
 
-class="thumb gallery-link${hidden}"
+                        </div>
 
-href="${imagePath}${cat.folder}/${file}"
 
-data-folder="${type}-${cat.folder}"
+                        ${
+                            cat.count > 3
 
-data-index="${i-1}"
+                            ?
 
-data-caption="${caption}"
+                            `<button
 
->
+                                class="more-btn"
 
+                                data-gallery="${cat.id}">
 
-<img
+                                نمایش بیشتر +
 
-loading="lazy"
+                            </button>`
 
-decoding="async"
+                            :
 
-src="${thumbPath}${cat.folder}/${file}"
+                            ""
 
-alt="${caption}"
+                        }
 
-draggable="false"
+                    </div>
 
->
 
+                   <div
+    class="gallery"
+    id="gallery-${cat.id}"
+    data-group="${cat.id}">
 
-</a>
-
-
-`;
-
-
-
-}
-
-
-
-
-return `
-
-
-<section
-
-class="category fade"
-
-id="${cat.id}"
-
->
-
-
-
-<div class="category-head">
-
-
-
-<div class="category-info">
-
-
-
-<div class="category-icon">
-
-
-<svg class="icon">
-
-<use href="images/icons.svg#${cat.icon}">
-</use>
-
-</svg>
-
+    ${cards}
 
 </div>
-
-
-
-
-<div>
-
-
-<h3>
-
-${cat.title}
-
-</h3>
-
-
-
-<p>
-
-${cat.description}
-
-</p>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<div
-
-class="gallery"
-
-id="gallery-${cat.id}"
-
->
-
-
-${cards}
-
-
-</div>
-
-
-
-
 
 ${
-cat.count>4
-?
+    cat.count > 4
+    ?
+    `
+    <div class="more-area">
 
-`
+        <button
+            class="more-btn more-btn-bottom"
+            data-gallery="${cat.id}">
 
-<button
+            نمایش بیشتر +
 
-class="more-btn"
+        </button>
 
-data-gallery="${cat.id}"
-
->
-
-نمایش بیشتر +
-
-</button>
-
-`
-
-:
-
-""
-
+    </div>
+    `
+    :
+    ""
 }
 
+                </section>
+
+                `;
+
+            }
+
+        ).join("");
 
 
-</section>
+        /*
+            Desktop Show More
+        */
+
+       container
+    .querySelectorAll(".more-btn")
+    .forEach(btn=>{
+
+        btn.addEventListener("click",()=>{
+
+            const id =
+                btn.dataset.gallery;
+
+            const gallery =
+                container.querySelector(
+                    `#gallery-${id}`
+                );
+
+            if(!gallery)
+                return;
+
+            const buttons =
+                container.querySelectorAll(
+                    `.more-btn[data-gallery="${id}"]`
+                );
+
+            const opened =
+                gallery.classList.toggle("expanded");
+
+            const hidden =
+                gallery.querySelectorAll(".hidden");
+
+            hidden.forEach(item=>{
+
+                item.classList.toggle(
+                    "show",
+                    opened
+                );
+
+            });
+
+            buttons.forEach(button=>{
+
+                button.textContent =
+                    opened
+                    ?
+                    "نمایش کمتر −"
+                    :
+                    "نمایش بیشتر +";
+
+            });
+
+        });
+
+    });
+
+    }
 
 
-`;
+    renderCategories(
+        galleryConfig.products,
+        productsContainer
+    );
 
 
-
-
-}).join("");
-
-
-
-
-
-
-
-container
-.querySelectorAll(".more-btn")
-.forEach(btn=>{
-
-
-
-btn.addEventListener(
-"click",
-()=>{
-
-
-
-const id =
-btn.dataset.gallery;
-
-
-
-const gallery =
-container.querySelector(
-`#gallery-${id}`
-);
-
-
-
-if(!gallery)
-return;
-
-
-
-
-const hidden =
-gallery.querySelectorAll(
-".hidden"
-);
-
-
-
-const opened =
-gallery.classList.toggle(
-"expanded"
-);
-
-
-
-
-
-hidden.forEach(item=>{
-
-
-item.classList.toggle(
-"show",
-opened
-);
-
-
-
+    renderCategories(
+        galleryConfig.projects,
+        projectsContainer
+    );
+document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
 });
 
+    /*
+        Lazy / Fade Observer
+    */
+
+    const observer =
+        new IntersectionObserver(
+            entries=>{
+
+                entries.forEach(entry=>{
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList.add("show");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12
+            }
+        );
 
 
-
-btn.textContent =
-
-opened
-?
-"نمایش کمتر −"
-:
-"نمایش بیشتر +";
+    document
+        .querySelectorAll(".fade")
+        .forEach(el=>{
+            observer.observe(el);
+        });
 
 
-
-
-});
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-renderCategories(
-galleryConfig.products,
-productsContainer,
-"products"
-);
-
-
-
-renderCategories(
-galleryConfig.projects,
-projectsContainer,
-"projects"
-);
-
-
-
-
-
-
-/*==================================================
-    Desktop Fade
-==================================================*/
-
-
-const observer =
-new IntersectionObserver(
-entries=>{
-
-
-entries.forEach(entry=>{
-
-
-if(entry.isIntersecting){
-
-
-entry.target.classList.add(
-"show"
-);
-
-
-
-observer.unobserve(
-entry.target
-);
-
-
+    document.dispatchEvent(
+        new Event("galleryUpdated")
+    );
 
 }
-
-
-});
-
-
-},
-{
-threshold:.12
-}
-);
-
-
-
-
-
-document
-.querySelectorAll(".fade")
-.forEach(el=>
-observer.observe(el)
-);
-
-
-
-
-
-document.dispatchEvent(
-new Event("galleryUpdated")
-);
-
-
-
-}
-
     
-                        
+});
