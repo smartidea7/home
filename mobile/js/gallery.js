@@ -10,10 +10,6 @@ const page = document.body.dataset.gallery;
 if(!page) return;
 
 
-/*==================================================
-    Desktop Entry
-==================================================*/
-
 if(page === "desktop"){
 
     buildDesktopGallery();
@@ -21,11 +17,6 @@ if(page === "desktop"){
     return;
 
 }
-
-
-/*==================================================
-    Mobile Gallery
-==================================================*/
 
 
 const config = galleryConfig[page];
@@ -48,13 +39,11 @@ const menu = document.querySelector(".category-nav");
 if(!container || !menu) return;
 
 
-
 const categories = config.categories;
 
 const thumbPath = config.thumbpath;
 
 const imagePath = config.imagepath;
-
 
 
 /*==================================================
@@ -65,25 +54,25 @@ function buildMenu(){
 
     menu.innerHTML = categories.map((cat,index)=>`
 
-    <a href="#${cat.id}"
-    class="cat-item ${index===0?"active":""}"
-    data-target="${cat.id}">
+<a href="#${cat.id}"
+class="cat-item ${index===0?"active":""}"
+data-target="${cat.id}">
 
-        <div class="cat-icon">
+<div class="cat-icon">
 
-            <svg class="cat-svg">
+<svg class="cat-svg">
 
-                <use href="images/icons.svg#${cat.icon}"></use>
+<use href="images/icons.svg#${cat.icon}"></use>
 
-            </svg>
+</svg>
 
-        </div>
+</div>
 
-        <span>${cat.menu}</span>
+<span>${cat.menu}</span>
 
-    </a>
+</a>
 
-    `).join("");
+`).join("");
 
 }
 
@@ -95,7 +84,6 @@ function buildMenu(){
 
 function buildGallery(){
 
-
 container.innerHTML = categories.map(cat=>{
 
 
@@ -103,18 +91,14 @@ if(cat.count===0)
 return "";
 
 
-
 let cards="";
-
 
 
 for(let i=1;i<=cat.count;i++){
 
 
-
 const file =
 String(i).padStart(3,"0")+".webp";
-
 
 
 const hidden =
@@ -123,7 +107,6 @@ i>9
 " hidden-image"
 :
 "";
-
 
 
 const caption =
@@ -163,7 +146,6 @@ draggable="false">
 
 </a>
 
-
 `;
 
 }
@@ -171,7 +153,6 @@ draggable="false">
 
 
 return `
-
 
 <section
 
@@ -195,7 +176,6 @@ id="${cat.id}">
 </div>
 
 
-
 <svg class="icon">
 
 <use href="images/icons.svg#${cat.icon}"></use>
@@ -203,9 +183,7 @@ id="${cat.id}">
 </svg>
 
 
-
 </div>
-
 
 
 <p class="section-description">
@@ -215,7 +193,6 @@ ${cat.description}
 </p>
 
 
-
 <div class="product-grid">
 
 ${cards}
@@ -223,12 +200,9 @@ ${cards}
 </div>
 
 
-
 ${
 cat.count>9
-
 ?
-
 `
 
 <button
@@ -239,36 +213,26 @@ data-target="${cat.id}">
 
 
 <span>
-
 نمایش بیشتر
-
 </span>
 
 
 <span class="more-icon">
-
 ↓
-
 </span>
 
 
 </button>
 
 `
-
 :
-
 ""
-
 }
 
 
 </section>
 
-
-
 `;
-
 
 
 }).join("");
@@ -276,23 +240,20 @@ data-target="${cat.id}">
 }
 
 
-
 buildMenu();
 
 buildGallery();
 
 
-
 document.dispatchEvent(
 new Event("galleryUpdated")
 );
-                          
 
 /*==================================================
     Fade Animation
 ==================================================*/
 
-const observer=new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver(entries=>{
 
 entries.forEach(entry=>{
 
@@ -308,11 +269,12 @@ entry.target.classList.add("show");
 threshold:.2
 });
 
+
 document
 .querySelectorAll(".fade")
 .forEach(item=>observer.observe(item));
 
-                          
+
 
 /*==================================================
     Show More
@@ -320,126 +282,192 @@ document
 
 document.addEventListener("click",e=>{
 
-const btn=e.target.closest(".show-more");
 
-if(!btn)return;
+const btn = e.target.closest(".show-more");
 
-const section=document.getElementById(
+
+if(!btn) return;
+
+
+const section = document.getElementById(
 btn.dataset.target
 );
 
-if(!section)return;
 
-const hidden=
+if(!section) return;
+
+
+
+const hidden =
 section.querySelectorAll(".hidden-image");
 
-const opened=
+
+const opened =
 btn.classList.toggle("open");
+
+
 
 hidden.forEach((img,index)=>{
 
+
 setTimeout(()=>{
+
 
 img.classList.toggle(
 "show-image",
 opened
 );
 
-}, index * 40);
+
+},index*40);
+
+
 
 });
-    
 
-btn.querySelector("span").textContent=
+
+
+btn.querySelector("span").textContent =
 opened
 ?
 "بستن تصاویر"
 :
 "نمایش بیشتر";
 
+
 });
 
-                          
+
 
 /*==================================================
     Scroll Spy
 ==================================================*/
 
-const sections=[
+
+const sections = [
 ...document.querySelectorAll(".product-section")
 ];
 
-const navItems=[
+
+const navItems = [
 ...document.querySelectorAll(".cat-item")
 ];
 
+
+
 function updateActiveMenu(){
 
-const scrollPos=window.scrollY+180;
 
-let current=sections[0]?.id;
+const scrollPos =
+window.scrollY + 180;
+
+
+
+let current =
+sections[0]?.id;
+
+
 
 const reachedBottom =
 window.innerHeight + window.scrollY >=
 document.documentElement.scrollHeight - 10;
 
-if (reachedBottom) {
 
-    current = sections[sections.length - 1]?.id;
 
-} else {
+if(reachedBottom){
 
-    sections.forEach(section => {
 
-        if (scrollPos >= section.offsetTop) {
+current =
+sections[sections.length-1]?.id;
 
-            current = section.id;
 
-        }
+}
+else{
 
-    });
+
+sections.forEach(section=>{
+
+
+if(scrollPos >= section.offsetTop){
+
+
+current = section.id;
+
 
 }
 
-navItems.forEach(item=>{
-
-item.classList.toggle(
-"active",
-item.dataset.target===current
-);
 
 });
 
-centerActiveItem(current);
 
 }
+
+
+
+navItems.forEach(item=>{
+
+
+item.classList.toggle(
+
+"active",
+
+item.dataset.target===current
+
+);
+
+
+});
+
+
+
+centerActiveItem(current);
+
+
+}
+
+
 
 window.addEventListener(
 "scroll",
 updateActiveMenu,
-{passive:true}
+{
+passive:true
+}
 );
+
+
 
 updateActiveMenu();
 
-                          
+
+
+
 
 /*==================================================
     Center Active Menu
 ==================================================*/
 
+
 function centerActiveItem(id){
 
-const active=menu.querySelector(
+
+const active =
+menu.querySelector(
 `[data-target="${id}"]`
 );
 
-if(!active)return;
 
-const left=
-active.offsetLeft-
-(menu.clientWidth/2)+
+
+if(!active) return;
+
+
+
+const left =
+active.offsetLeft -
+(menu.clientWidth/2) +
 (active.clientWidth/2);
+
+
 
 menu.scrollTo({
 
@@ -449,27 +477,44 @@ behavior:"smooth"
 
 });
 
+
 }
 
-                          
+
+
+
 
 /*==================================================
     Menu Click
 ==================================================*/
 
+
 menu.addEventListener("click",e=>{
 
-const item=e.target.closest(".cat-item");
 
-if(!item)return;
+const item =
+e.target.closest(".cat-item");
+
+
+
+if(!item) return;
+
+
 
 e.preventDefault();
 
-const section=document.getElementById(
+
+
+const section =
+document.getElementById(
 item.dataset.target
 );
 
-if(!section)return;
+
+
+if(!section) return;
+
+
 
 window.scrollTo({
 
@@ -479,90 +524,172 @@ behavior:"smooth"
 
 });
 
+
 });
 
-                          
+
+
+
 
 /*==================================================
     Horizontal Scroll
 ==================================================*/
 
+
 menu.addEventListener("wheel",e=>{
 
-if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
+
+if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))
+return;
+
+
 
 e.preventDefault();
 
-menu.scrollLeft+=e.deltaY;
+
+
+menu.scrollLeft += e.deltaY;
+
+
 
 },{
 passive:false
 });
 
 
+
+
+
 /*==================================================
     Touch Drag
 ==================================================*/
 
-let touchX=0;
-let startScroll=0;
+
+let touchX = 0;
+
+let startScroll = 0;
+
+
 
 menu.addEventListener("touchstart",e=>{
 
-touchX=e.touches[0].clientX;
 
-startScroll=menu.scrollLeft;
+touchX =
+e.touches[0].clientX;
+
+
+
+startScroll =
+menu.scrollLeft;
+
+
 
 },{
 passive:true
 });
+
+
+
 
 menu.addEventListener("touchmove",e=>{
 
-const move=e.touches[0].clientX;
 
-menu.scrollLeft=
-startScroll-(move-touchX);
+const move =
+e.touches[0].clientX;
+
+
+
+menu.scrollLeft =
+startScroll - (move-touchX);
+
+
 
 },{
 passive:true
 });
+
+
+
 
 
 /*==================================================
     Keyboard
 ==================================================*/
 
+
 document.addEventListener("keydown",e=>{
 
-if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
 
-const current=navItems.findIndex(item=>
+if(
+e.key!=="ArrowLeft" &&
+e.key!=="ArrowRight"
+)
+return;
+
+
+
+const current =
+navItems.findIndex(item=>
 item.classList.contains("active")
 );
 
-if(current===-1)return;
+
+
+if(current===-1) return;
+
+
 
 let next=current;
 
+
+
 if(e.key==="ArrowRight")
-next=Math.min(current+1,navItems.length-1);
+
+next=Math.min(
+current+1,
+navItems.length-1
+);
+
+
 
 if(e.key==="ArrowLeft")
-next=Math.max(current-1,0);
+
+next=Math.max(
+current-1,
+0
+);
+
+
 
 navItems[next]?.click();
 
+
+
 });
 
-document.addEventListener("contextmenu", (e) => {
-    if (e.target.closest("img")) {
-        e.preventDefault();
-    }
 
 
-    
+
+
+/*==================================================
+    Protect Images
+==================================================*/
+
+
+document.addEventListener(
+"contextmenu",
+e=>{
+
+if(e.target.closest("img")){
+
+e.preventDefault();
+
+}
+
 });
+
+
+
 /*==================================================
     Init
 ==================================================*/
@@ -573,314 +700,426 @@ updateActiveMenu();
 
 });
 
+
+
+
+
 /*==================================================
     DESKTOP GALLERY
 ==================================================*/
 
 function buildDesktopGallery(){
 
-    const productsContainer =
-        document.getElementById("products-container");
 
-    const projectsContainer =
-        document.getElementById("projects-container");
+const productsContainer =
+document.getElementById("products-container");
 
-    if(!productsContainer && !projectsContainer)
-        return;
 
+const projectsContainer =
+document.getElementById("projects-container");
 
-    const assetBase =
-        document.body.dataset.galleryAssets || "";
 
 
-    function renderCategories(config, container){
+if(!productsContainer && !projectsContainer)
+return;
 
-        if(!container) return;
 
 
-        const thumbPath =
-            assetBase + config.thumbpath;
+function renderCategories(config,container){
 
-        const imagePath =
-            assetBase + config.imagepath;
 
+if(!container)
+return;
 
-        container.innerHTML = config.categories.map(
-            (cat,index)=>{
 
-                if(cat.count === 0)
-                    return "";
 
+const thumbPath =
+config.thumbpath;
 
-                let cards = "";
 
+const imagePath =
+config.imagepath;
 
-                for(let i=1; i<=cat.count; i++){
 
-                    const file =
-                        String(i).padStart(3,"0")
-                        + ".webp";
 
+container.innerHTML =
+config.categories.map(cat=>{
 
-                    const hidden =
-                        i > 4
-                        ? " hidden"
-                        : "";
 
+if(cat.count===0)
+return "";
 
-                    const caption =
-                        cat.captions?.[i-1]
-                        || cat.title;
 
 
-                    cards += `
+let cards="";
 
-                    <a
 
-                        class="thumb gallery-link${hidden}"
 
-                        href="${imagePath}${cat.folder}/${file}"
+for(let i=1;i<=cat.count;i++){
 
-                        data-folder="${page === "desktop" ? (container === productsContainer ? 
 
-"products-" : "projects-") + cat.folder : cat.folder}"
 
-                        data-index="${i-1}"
+const file =
+String(i).padStart(3,"0")+".webp";
 
-                        data-caption="${caption}">
 
-                        <img
 
-                            loading="lazy"
+const hidden =
+i>4
+?
+" hidden"
+:
+"";
 
-                            decoding="async"
 
-                            src="${thumbPath}${cat.folder}/${file}"
 
-                            alt="${caption}"
+const caption =
+cat.captions?.[i-1]
+||
+cat.title;
 
-                            draggable="false">
 
-                    </a>
 
-                    `;
+cards += `
 
-                }
+<a
 
+class="thumb gallery-link${hidden}"
 
-                return `
+href="${imagePath}${cat.folder}/${file}"
 
-                <section
-                    class="category fade"
-                    id="${cat.id}">
+data-folder="${cat.folder}"
 
-                    <div class="category-head">
+data-index="${i-1}"
 
-                        <div class="category-info">
+data-caption="${caption}">
 
-                            <div class="category-icon">
 
-                                <svg class="icon">
+<img
 
-                                    <use
-                                        href="${assetBase}images/icons.svg#${cat.icon}">
-                                    </use>
+loading="lazy"
 
-                                </svg>
+decoding="async"
 
-                            </div>
+src="${thumbPath}${cat.folder}/${file}"
 
-                            <div>
+alt="${caption}"
 
-                                <h3>
-                                    ${cat.title}
-                                </h3>
+draggable="false">
 
-                                <p>
-                                    ${cat.description}
-                                </p>
 
-                            </div>
+</a>
 
-                        </div>
+`;
 
+}
 
-                        ${
-                            cat.count > 3
 
-                            ?
 
-                            `<button
 
-                                class="more-btn"
 
-                                data-gallery="${cat.id}">
+return `
 
-                                نمایش بیشتر +
+<section
 
-                            </button>`
+class="category fade"
 
-                            :
+id="${cat.id}">
 
-                            ""
 
-                        }
 
-                    </div>
+<div class="category-head">
 
 
-                   <div
-    class="gallery"
-    id="gallery-${cat.id}"
-    data-group="${cat.id}">
+<div class="category-info">
 
-    ${cards}
+
+
+<div class="category-icon">
+
+
+<svg class="icon">
+
+<use href="images/icons.svg#${cat.icon}"></use>
+
+</svg>
+
+
 
 </div>
 
+
+
+<div>
+
+
+<h3>
+
+${cat.title}
+
+</h3>
+
+
+<p>
+
+${cat.description}
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
 ${
-    cat.count > 4
-    ?
-    `
-    <div class="more-area">
+cat.count>3
+?
+`
 
-        <button
-            class="more-btn more-btn-bottom"
-            data-gallery="${cat.id}">
+<button
 
-            نمایش بیشتر +
+class="more-btn"
 
-        </button>
+data-gallery="${cat.id}">
 
-    </div>
-    `
-    :
-    ""
+نمایش بیشتر +
+
+</button>
+
+`
+:
+""
+
 }
 
-                </section>
 
-                `;
-
-            }
-
-        ).join("");
+</div>
 
 
-        /*
-            Desktop Show More
-        */
-
-       container
-    .querySelectorAll(".more-btn")
-    .forEach(btn=>{
-
-        btn.addEventListener("click",()=>{
-
-            const id =
-                btn.dataset.gallery;
-
-            const gallery =
-                container.querySelector(
-                    `#gallery-${id}`
-                );
-
-            if(!gallery)
-                return;
-
-            const buttons =
-                container.querySelectorAll(
-                    `.more-btn[data-gallery="${id}"]`
-                );
-
-            const opened =
-                gallery.classList.toggle("expanded");
-
-            const hidden =
-                gallery.querySelectorAll(".hidden");
-
-            hidden.forEach(item=>{
-
-                item.classList.toggle(
-                    "show",
-                    opened
-                );
-
-            });
-
-            buttons.forEach(button=>{
-
-                button.textContent =
-                    opened
-                    ?
-                    "نمایش کمتر −"
-                    :
-                    "نمایش بیشتر +";
-
-            });
-
-        });
-
-    });
-
-    }
 
 
-    renderCategories(
-        galleryConfig.products,
-        productsContainer
-    );
+
+<div
+
+class="gallery"
+
+id="gallery-${cat.id}">
 
 
-    renderCategories(
-        galleryConfig.projects,
-        projectsContainer
-    );
-document.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
+${cards}
+
+
+</div>
+
+
+
+${
+cat.count>4
+?
+`
+
+<div class="more-area">
+
+
+<button
+
+class="more-btn more-btn-bottom"
+
+data-gallery="${cat.id}">
+
+نمایش بیشتر +
+
+</button>
+
+
+</div>
+
+`
+:
+""
+
+}
+
+
+
+</section>
+
+`;
+
+
+
+}).join("");
+
+
+
+
+
+/*==================================================
+    Desktop Show More
+==================================================*/
+
+
+container
+.querySelectorAll(".more-btn")
+.forEach(btn=>{
+
+
+btn.addEventListener("click",()=>{
+
+
+const id =
+btn.dataset.gallery;
+
+
+
+const gallery =
+container.querySelector(
+`#gallery-${id}`
+);
+
+
+
+if(!gallery)
+return;
+
+
+
+const buttons =
+container.querySelectorAll(
+`.more-btn[data-gallery="${id}"]`
+);
+
+
+
+const opened =
+gallery.classList.toggle("expanded");
+
+
+
+gallery
+.querySelectorAll(".hidden")
+.forEach(item=>{
+
+
+item.classList.toggle(
+"show",
+opened
+);
+
+
 });
 
-    /*
-        Lazy / Fade Observer
-    */
-
-    const observer =
-        new IntersectionObserver(
-            entries=>{
-
-                entries.forEach(entry=>{
-
-                    if(entry.isIntersecting){
-
-                        entry.target
-                            .classList.add("show");
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-            {
-                threshold:.12
-            }
-        );
 
 
-    document
-        .querySelectorAll(".fade")
-        .forEach(el=>{
-            observer.observe(el);
-        });
+buttons.forEach(button=>{
 
 
-    document.dispatchEvent(
-        new Event("galleryUpdated")
-    );
+button.textContent =
+opened
+?
+"نمایش کمتر −"
+:
+"نمایش بیشتر +";
+
+
+});
+
+
+
+});
+
+
+});
+
+
+
+}
+
+
+
+
+
+renderCategories(
+galleryConfig.products,
+productsContainer
+);
+
+
+
+renderCategories(
+galleryConfig.projects,
+projectsContainer
+);
+
+
+
+
+
+/*==================================================
+    Desktop Fade
+==================================================*/
+
+
+const observer =
+new IntersectionObserver(entries=>{
+
+
+entries.forEach(entry=>{
+
+
+if(entry.isIntersecting){
+
+
+entry.target.classList.add("show");
+
+
+observer.unobserve(entry.target);
+
+
+}
+
+
+});
+
+
+},{
+
+threshold:.12
+
+});
+
+
+
+
+document
+.querySelectorAll(".fade")
+.forEach(el=>{
+
+
+observer.observe(el);
+
+
+});
+
+
+
+
+document.dispatchEvent(
+new Event("galleryUpdated")
+);
+
+
 
 }
     
 });
+
+
+
+    
+    
+                          
