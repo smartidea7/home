@@ -4,12 +4,15 @@
 
 document.addEventListener("DOMContentLoaded",()=>{
 
+
 const page = document.body.dataset.gallery;
 
 if(!page) return;
 
-const assetBase =
-    document.body.dataset.galleryAssets || "";
+
+/*==================================================
+    Desktop Entry
+==================================================*/
 
 if(page === "desktop"){
 
@@ -19,26 +22,40 @@ if(page === "desktop"){
 
 }
 
+
+/*==================================================
+    Mobile Gallery
+==================================================*/
+
+
 const config = galleryConfig[page];
 
 if(!config) return;
 
-const container=document.getElementById(
-page==="products"
-?
-"productsContainer"
-:
-"projectsContainer"
+
+const container = document.getElementById(
+    page==="products"
+    ?
+    "productsContainer"
+    :
+    "projectsContainer"
 );
 
- menu=document.querySelector(".category-nav");
 
-if(!container||!menu)return;
+const menu = document.querySelector(".category-nav");
 
-const categories=config.categories;
 
-const thumbPath=config.thumbpath;
-const imagePath=config.imagepath;
+if(!container || !menu) return;
+
+
+
+const categories = config.categories;
+
+const thumbPath = config.thumbpath;
+
+const imagePath = config.imagepath;
+
+
 
 /*==================================================
     Build Menu
@@ -46,29 +63,30 @@ const imagePath=config.imagepath;
 
 function buildMenu(){
 
-menu.innerHTML=categories.map((cat,index)=>`
+    menu.innerHTML = categories.map((cat,index)=>`
 
-<a href="#${cat.id}"
-class="cat-item ${index===0?"active":""}"
-data-target="${cat.id}">
+    <a href="#${cat.id}"
+    class="cat-item ${index===0?"active":""}"
+    data-target="${cat.id}">
 
-<div class="cat-icon">
+        <div class="cat-icon">
 
-<svg class="cat-svg">
+            <svg class="cat-svg">
 
-<use href="images/icons.svg#${cat.icon}"></use>
+                <use href="images/icons.svg#${cat.icon}"></use>
 
-</svg>
+            </svg>
 
-</div>
+        </div>
 
-<span>${cat.menu}</span>
+        <span>${cat.menu}</span>
 
-</a>
+    </a>
 
-`).join("");
+    `).join("");
 
 }
+
 
 
 /*==================================================
@@ -77,39 +95,58 @@ data-target="${cat.id}">
 
 function buildGallery(){
 
-container.innerHTML=categories.map(cat=>{
 
-if(cat.count===0)return"";
+container.innerHTML = categories.map(cat=>{
+
+
+if(cat.count===0)
+return "";
+
+
 
 let cards="";
 
+
+
 for(let i=1;i<=cat.count;i++){
 
-const thumbfile = String(i).padStart(3,"0") + ".webp";
-const imagefile = String(i).padStart(3,"0") + ".webp";
 
-const hidden=i>9?" hidden-image":"";
 
-const caption=
+const file =
+String(i).padStart(3,"0")+".webp";
+
+
+
+const hidden =
+i>9
+?
+" hidden-image"
+:
+"";
+
+
+
+const caption =
 cat.captions?.[i-1]
 ||
 cat.title;
 
-cards+=`
+
+
+cards += `
 
 <a
 
 class="product-card gallery-link${hidden}"
 
-href="${imagePath}${cat.folder}/${imagefile}"
+href="${imagePath}${cat.folder}/${file}"
 
-data-folder="${page === "desktop" ? (container === productsContainer ? "products-" : 
-
-"projects-") + cat.folder : cat.folder}"
+data-folder="${cat.folder}"
 
 data-index="${i-1}"
 
 data-caption="${caption}">
+
 
 <img
 
@@ -117,27 +154,37 @@ loading="lazy"
 
 decoding="async"
 
-src="${thumbPath}${cat.folder}/${thumbfile}"
+src="${thumbPath}${cat.folder}/${file}"
 
 alt="${caption}"
 
 draggable="false">
 
+
 </a>
+
 
 `;
 
 }
 
-                                   return`
 
-<section class="product-section fade"
+
+return `
+
+
+<section
+
+class="product-section fade"
+
 id="${cat.id}">
+
 
 <div class="section-title">
 
 
 <div class="section-line"></div>
+
 
 <div class="section-info">
 
@@ -147,18 +194,27 @@ id="${cat.id}">
 
 </div>
 
+
+
 <svg class="icon">
 
 <use href="images/icons.svg#${cat.icon}"></use>
 
 </svg>
 
+
+
 </div>
+
+
+
 <p class="section-description">
 
 ${cat.description}
 
 </p>
+
+
 
 <div class="product-grid">
 
@@ -166,36 +222,70 @@ ${cards}
 
 </div>
 
-${cat.count>9?`
+
+
+${
+cat.count>9
+
+?
+
+`
 
 <button
+
 class="show-more"
+
 data-target="${cat.id}">
 
-<span>نمایش بیشتر</span>
 
-<span class="more-icon">↓</span>
+<span>
+
+نمایش بیشتر
+
+</span>
+
+
+<span class="more-icon">
+
+↓
+
+</span>
+
 
 </button>
 
-`:""}
+`
+
+:
+
+""
+
+}
+
 
 </section>
 
+
+
 `;
+
+
 
 }).join("");
 
 }
 
+
+
 buildMenu();
 
 buildGallery();
 
+
+
 document.dispatchEvent(
 new Event("galleryUpdated")
 );
-
                           
 
 /*==================================================
