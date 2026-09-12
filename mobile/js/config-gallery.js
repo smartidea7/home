@@ -2,178 +2,187 @@
     Smart Idea Gallery Config
 ==================================================*/
 
-const galleryConfig={
+const galleryConfig = {
 
-products:{
+products: {
 
-thumbpath:"images/products/thumbs/",
-imagepath:"images/products/",
+    thumbpath: "images/products/thumbs/",
+    imagepath: "images/products/",
 
-categories:[
+    categories: [
 
-{
-id:"consumables",
-menu:"تجهیزات مصرفی",
-title:"تجهیزات پزشکی مصرفی",
-en:"Medical Consumables",
-icon:"icon-consumables",
-folder:"consumables",
-count:46,
-description:"انواع تجهیزات مصرفی بیمارستانی، کلینیکی و آزمایشگاهی شامل انواع گان جراح و گان بیمار/انواع لباس بستری/انواع شان/مجموعه کاملی از ست های استریل جراحی/انواع زیر انداز با کیفیت و گرماژ مختلف/اقلام مصرفی پزشکی و ....",
-captions:["کلاه بیمار/اسپان باند","گان جراح/سرآستین کشباف","روپوش پزشکی","روپوش اسکراب پزشکی","","","","",""
+        {
+            id: "consumables",
+            menu: "تجهیزات مصرفی",
+            title: "تجهیزات پزشکی مصرفی",
+            en: "Medical Consumables",
+            icon: "icon-consumables",
+            folder: "consumables",
+            count: 46,
 
-    
+            description:
+            "تجهیزات مصرفی بیمارستانی، کلینیکی و آزمایشگاهی شامل گان جراحی، لباس بیمار، شان، ست‌های استریل جراحی و اقلام تخصصی پزشکی.",
+
+            captions: [
+                "کلاه بیمار / اسپان باند",
+                "گان جراح / سرآستین کشباف",
+                "روپوش پزشکی",
+                "روپوش اسکراب پزشکی"
+            ]
+        },
+
+
+        {
+            id: "hospital",
+            menu: "ترالی و هتلینگ",
+            title: "ترالی و تجهیزات هتلینگ بیمارستانی",
+            en: "Hospital Equipment",
+            icon: "icon-hospital",
+            folder: "hospital",
+            count: 20,
+
+            description:
+            "انواع ترالی بیمارستانی، تجهیزات هتلینگ، پایه‌های سرم، پایه پمپ، ترالی تجهیزات پزشکی و تجهیزات تولید داخل."
+        },
+
+
+        {
+            id: "gas",
+            menu: "گازهای طبی",
+            title: "کنسول و تجهیزات گازهای طبی",
+            en: "Medical Gas Systems",
+            icon: "icon-gas",
+            folder: "gas",
+            count: 9,
+
+            description:
+            "تأمین انواع اتلت و کنسول گازهای طبی بیمارستانی."
+        },
+
+
+        {
+            id: "lead",
+            menu: "سرب",
+            title: "سرب و تجهیزات حفاظت اشعه",
+            en: "Lead Shielding Materials",
+            icon: "icon-lead",
+            folder: "lead",
+            count: 4,
+
+            description:
+            "تأمین سرب با خلوص بالا، شمش سرب، رول سربی و محصولات حفاظت پرتویی."
+        }
+
     ]
-},
-
-{
-id:"hospital",
-menu:"ترالی و هتلینگ",
-title:"ترالی و تجهیزات هتلینگ بیمارستانی",
-en:"Hospital Equipment",
-icon:"icon-hospital",
-folder:"hospital",
-count:20,
-description:"انواع ترالی : ترالی ابزار/ترالی اورژانس/ترالی دارو/ترالی احیا/انواع ترالی تجهیزات اندو ویژن/ترالی بیهوشی/ترالی پانسمان/ترالی بین و ... / انواع پایه سرم ثابت ،متحرک و دیواری و پایه پمپ سرنگ و سرم/انواع پایه و ترالی مونیتورینگ/ترالی ECG و ترالی سونوگرافی/برانکارد اورژانس و آمبولانس/صد در صد تولید داخل",
-captions:[           ]
-},
-
-{
-id:"gas",
-menu:"گازهای طبی",
-title:"کنسول و تجهیزات گازهای طبی",
-en:"Medical Gas Systems",
-icon:"icon-gas",
-folder:"gas",
-count:9,
-description:"تامین انواع اتلت های گازهای طبی و کنسول گاز های طبی مدیکال ",
-captions:[           ]
-},
-
-{
-id:"lead",
-menu:"سرب",
-title:"سرب و تجهیزات حفاظت اشعه XRAY",
-en:"Lead Shielding Materials",
-icon:"icon-lead",
-folder:"lead",
-count:4,
-description:"تامین انواع سرب با خلوص بالا تا 99.99/شمش سرب/رول سربی/شمش خالص و کارگاهی و...",
-captions:[           ]
-},
-
-/*
-{
-id:"special",
-menu:"تجهیزات تخصصی",
-title:"تجهیزات تخصصی",
-en:"Specialized Products",
-icon:"icon-special",
-folder:"special",
-count:0,
-description:"تأمین انواع تجهیزات تخصصی پزشکی و صنعتی از تامین کننده و یا تولید کننده اصلی",
-captions:[           ]
-}
-*/
-
-
-]
 
 },
 
-projects:{
-
-thumbpath:"images/projects/thumbs/",
-imagepath:"images/projects/",
-
-    
-categories:[
-
-    {
-id:"interior",
-menu:"دکور داخلی",
-title:"دکور داخلی",
-en:"Interior Decoration",
-icon:"icon-interior",
-folder:"interior",
-count:25,
-description:"طراحی و اجرای پروژه های دکوراسیون داخلی و بازسازی /شامل کلیه خدمات ساختمانی/کابینت چوب/کابینت ام دی اف/کمد دیواری/سرامیک کاری و سنگ کاری / اسلب/کناف/نقاشی و نورپردازی و ...",
-captions:[           ]
-},
-
-{
-id:"kitchen",
-menu:"آشپزخانه",
-title:"دکوراسیون آشپزخانه",
-en:"Kitchen Decoration",
-icon:"icon-kitchen",
-folder:"kitchen",
-count:21,
-description:"طراحی و اجرای انواع کابینت، جزیره و فضاهای آشپزخانه با متریال باکیفیت.",
-captions:[           ]
-},
-
-{
-id:"office",
-menu:"دکور اداری",
-title:"دکوراسیون اداری و تجاری",
-en:"Office Decoration",
-icon:"icon-office",
-folder:"office",
-count:23,
-description:"طراحی و اجرای دکوراسیون دفاتر، فروشگاه‌ها و محیط‌های کاری",
-captions:[           ]
-},
 
 
+projects: {
 
-{
-id:"exhibition",
-menu:"نمایشگاه",
-title:"دکوراسیون نمایشگاه",
-en:"Exhibition Decoration",
-icon:"icon-exhibition",
-folder:"exhibition",
-count:10,
-description:"طراحی و اجرای انواع غرفه‌های نمایشگاهی",
-captions:[           ]
-},
+    thumbpath: "images/projects/thumbs/",
+    imagepath: "images/projects/",
 
-{
-id:"lead",
-menu:"ایزولاسیون اشعه",
-title:"اجرای پروژه های ایزولاسیون اشعه",
-en:"Lead Shielding",
-icon:"icon-lead",
-folder:"lead",
-count:13,
-description:"طراحی و اجرای انواع درب های سربی ریلی و بازشو/استیل،ام دی اف و کامپوزیت/اجرای پروژه های سرب کوبی بخش های تصویر برداری پزشکی/تجهیزات تخصصی محافظت در برابر اشعه/اجرای دیوارهای ماژولار و ...",
-captions:[           ]
-},
 
-{
-id:"camper",
-menu:"تغییر کاربری",
-title:"کلینیک سیار پزشکی و کمپرهای مسافرتی",
-en:"Mobile Clinic & Camper",
-icon:"icon-camper",
-folder:"camper",
-count:10,
-description:"طراحی، تجهیز و ساخت و تغییر کاربری انواع خودروهای پزشکی، درمانی و پروژه‌های سفارشی کلینیک های سیار و کمپر های مسافرتی.",
-captions:[           ]
-},
+    categories: [
 
-{
-id:"other",
-menu:"سایر",
-title:"پروژه‌ها و محصولات تخصصی و سفارشی",
-en:"Special Projects",
-icon:"icon-special",
-folder:"other",
-count:10,
-description:"طراحی و ساخت پروژه های تخصصی و محصولات سفارشی.",
-captions:[           ]
-}
+        {
+            id: "interior",
+            menu: "دکور داخلی",
+            title: "دکوراسیون داخلی",
+            en: "Interior Decoration",
+            icon: "icon-interior",
+            folder: "interior",
+            count: 25,
+
+            description:
+            "طراحی و اجرای پروژه‌های دکوراسیون داخلی، بازسازی، کابینت، کمد، کف، دیوار، نورپردازی و خدمات اجرایی."
+        },
+
+
+        {
+            id: "kitchen",
+            menu: "آشپزخانه",
+            title: "دکوراسیون آشپزخانه",
+            en: "Kitchen Decoration",
+            icon: "icon-kitchen",
+            folder: "kitchen",
+            count: 21,
+
+            description:
+            "طراحی و اجرای کابینت، جزیره و فضاهای آشپزخانه با متریال باکیفیت."
+        },
+
+
+        {
+            id: "office",
+            menu: "دکور اداری",
+            title: "دکوراسیون اداری و تجاری",
+            en: "Office Decoration",
+            icon: "icon-office",
+            folder: "office",
+            count: 23,
+
+            description:
+            "طراحی و اجرای فضاهای اداری، تجاری و محیط‌های کاری."
+        },
+
+
+        {
+            id: "exhibition",
+            menu: "نمایشگاه",
+            title: "غرفه‌های نمایشگاهی",
+            en: "Exhibition Decoration",
+            icon: "icon-exhibition",
+            folder: "exhibition",
+            count: 10,
+
+            description:
+            "طراحی و اجرای غرفه‌های نمایشگاهی و فضاهای معرفی برند."
+        },
+
+
+        {
+            id: "lead",
+            menu: "ایزولاسیون اشعه",
+            title: "اجرای پروژه‌های حفاظت اشعه",
+            en: "Lead Shielding",
+            icon: "icon-lead",
+            folder: "lead",
+            count: 13,
+
+            description:
+            "طراحی و اجرای درب‌های سربی، سرب‌کوبی اتاق‌های تصویربرداری، دیوارهای حفاظتی و تجهیزات محافظ اشعه."
+        },
+
+
+        {
+            id: "camper",
+            menu: "تغییر کاربری",
+            title: "کلینیک سیار و خودروهای تخصصی",
+            en: "Mobile Clinic & Camper",
+            icon: "icon-camper",
+            folder: "camper",
+            count: 10,
+
+            description:
+            "طراحی، تجهیز و ساخت خودروهای پزشکی، کلینیک‌های سیار و پروژه‌های سفارشی."
+        },
+
+
+        {
+            id: "other",
+            menu: "سایر",
+            title: "پروژه‌های تخصصی و سفارشی",
+            en: "Special Projects",
+            icon: "icon-special",
+            folder: "other",
+            count: 10,
+
+            description:
+            "طراحی و ساخت پروژه‌ها و محصولات تخصصی سفارشی."
+        }
 
     ]
 
