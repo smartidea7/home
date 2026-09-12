@@ -550,22 +550,26 @@ fill:none;
 
 /* ============================================= */
 
-.category.open .hidden{
-
-display:block;
-
+.gallery .hidden{
+    display:none;
 }
 
-.category.open .more-link span{
-
-display:none;
-
+.gallery.expanded .hidden{
+    display:block;
 }
 
-.category.open .more-link::after{
+.gallery .hidden.show{
+    animation:fadeIn .45s ease;
+}
 
-content:"بستن";
+.more-area{
+    display:flex;
+    justify-content:center;
+    margin-top:8px;
+}
 
+.more-btn-bottom{
+    min-width:120px;
 }
 
 /* ============================================= */
